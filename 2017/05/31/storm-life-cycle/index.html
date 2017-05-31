@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="storm的部署，初始化流程####1. 首先配置好topology，并定义好Spout实例和Bolt实例 #####2. 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutput">
+<meta name="description" content="1. 首先配置好topology，并定义好Spout实例和Bolt实例2. 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentC">
 <meta name="keywords" content="storm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="storm-life-cycle">
+<meta property="og:title" content="Topology的初始化流程">
 <meta property="og:url" content="http://yoursite.com/2017/05/31/storm-life-cycle/index.html">
 <meta property="og:site_name" content="Haoer Blog">
-<meta property="og:description" content="storm的部署，初始化流程####1. 首先配置好topology，并定义好Spout实例和Bolt实例 #####2. 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutput">
-<meta property="og:updated_time" content="2017-05-31T10:36:50.000Z">
+<meta property="og:description" content="1. 首先配置好topology，并定义好Spout实例和Bolt实例2. 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentC">
+<meta property="og:updated_time" content="2017-05-31T10:39:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="storm-life-cycle">
-<meta name="twitter:description" content="storm的部署，初始化流程####1. 首先配置好topology，并定义好Spout实例和Bolt实例 #####2. 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutput">
+<meta name="twitter:title" content="Topology的初始化流程">
+<meta name="twitter:description" content="1. 首先配置好topology，并定义好Spout实例和Bolt实例2. 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentC">
 
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <title> storm-life-cycle | Haoer Blog </title>
+  <title> Topology的初始化流程 | Haoer Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -338,7 +338,7 @@
             
             
               
-                storm-life-cycle
+                Topology的初始化流程
               
             
           </h1>
@@ -411,13 +411,8 @@
       
 
       
-        <h3 id="storm的部署，初始化流程"><a href="#storm的部署，初始化流程" class="headerlink" title="storm的部署，初始化流程"></a>storm的部署，初始化流程</h3><p>####1. 首先配置好topology，并定义好Spout实例和Bolt实例</p>
-<p>#####2. 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentConfiguration()方法，declareOutputFields()方法配置Spout和Bolt实例的输出，getComponentConfiguration()方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。</p>
-<p>####3、在Worker Node上运行的thread，从Nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields()和getComponentConfiguration()不会再运行。</p>
-<p>####4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare()方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple</p>
-<p>####5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute()方法</p>
-<p>####6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup()方法<br>    不过如果是强制关闭，这个cleanup()方法有可能不会被调用到</p>
-
+        <h5 id="1-首先配置好topology，并定义好Spout实例和Bolt实例"><a href="#1-首先配置好topology，并定义好Spout实例和Bolt实例" class="headerlink" title="1. 首先配置好topology，并定义好Spout实例和Bolt实例"></a>1. 首先配置好topology，并定义好Spout实例和Bolt实例</h5><h5 id="2-在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology-方法，以获取定义的Topology实例。在运行createTopology-方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields-方法和getComponentConfiguration-方法，declareOutputFields-方法配置Spout和Bolt实例的输出，getComponentConfiguration-方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。"><a href="#2-在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology-方法，以获取定义的Topology实例。在运行createTopology-方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields-方法和getComponentConfiguration-方法，declareOutputFields-方法配置Spout和Bolt实例的输出，getComponentConfiguration-方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。" class="headerlink" title="2. 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentConfiguration()方法，declareOutputFields()方法配置Spout和Bolt实例的输出，getComponentConfiguration()方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。"></a>2. 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentConfiguration()方法，declareOutputFields()方法配置Spout和Bolt实例的输出，getComponentConfiguration()方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。</h5><h4 id="3、在Worker-Node上运行的thread，从Nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields-和getComponentConfiguration-不会再运行。"><a href="#3、在Worker-Node上运行的thread，从Nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields-和getComponentConfiguration-不会再运行。" class="headerlink" title="3、在Worker Node上运行的thread，从Nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields()和getComponentConfiguration()不会再运行。"></a>3、在Worker Node上运行的thread，从Nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields()和getComponentConfiguration()不会再运行。</h4><h4 id="4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare-方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple"><a href="#4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare-方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple" class="headerlink" title="4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare()方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple"></a>4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare()方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple</h4><h4 id="5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute-方法"><a href="#5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute-方法" class="headerlink" title="5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute()方法"></a>5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute()方法</h4><h4 id="6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup-方法"><a href="#6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup-方法" class="headerlink" title="6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup()方法"></a>6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup()方法</h4><pre><code>不过如果是强制关闭，这个cleanup()方法有可能不会被调用到
+</code></pre>
       
     </div>
 
@@ -674,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#storm的部署，初始化流程"><span class="nav-number">1.</span> <span class="nav-text">storm的部署，初始化流程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首先配置好topology，并定义好Spout实例和Bolt实例"><span class="nav-number">1.</span> <span class="nav-text">1. 首先配置好topology，并定义好Spout实例和Bolt实例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology-方法，以获取定义的Topology实例。在运行createTopology-方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields-方法和getComponentConfiguration-方法，declareOutputFields-方法配置Spout和Bolt实例的输出，getComponentConfiguration-方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。"><span class="nav-number">2.</span> <span class="nav-text">2. 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentConfiguration()方法，declareOutputFields()方法配置Spout和Bolt实例的输出，getComponentConfiguration()方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、在Worker-Node上运行的thread，从Nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields-和getComponentConfiguration-不会再运行。"><span class="nav-number"></span> <span class="nav-text">3、在Worker Node上运行的thread，从Nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields()和getComponentConfiguration()不会再运行。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare-方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple"><span class="nav-number"></span> <span class="nav-text">4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare()方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute-方法"><span class="nav-number"></span> <span class="nav-text">5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup-方法"><span class="nav-number"></span> <span class="nav-text">6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup()方法</span></a></div>
             
 
           </div>
