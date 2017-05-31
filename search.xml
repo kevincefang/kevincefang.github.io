@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[storm-life-cycle]]></title>
+      <url>%2F2017%2F05%2F31%2Fstorm-life-cycle%2F</url>
+      <content type="text"><![CDATA[storm的部署，初始化流程####1. 首先配置好topology，并定义好Spout实例和Bolt实例 #####2. 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentConfiguration()方法，declareOutputFields()方法配置Spout和Bolt实例的输出，getComponentConfiguration()方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。 ####3、在Worker Node上运行的thread，从Nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields()和getComponentConfiguration()不会再运行。 ####4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare()方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple ####5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute()方法 ####6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup()方法 不过如果是强制关闭，这个cleanup()方法有可能不会被调用到]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[storm 启动相关命令]]></title>
+      <url>%2F2017%2F05%2F31%2Fstart-storm-command%2F</url>
+      <content type="text"><![CDATA[在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动1.查看zk的状态：./zkServer.sh status 2.如果zk没有开启，将nimbus和supervisor的zk开启./zkServer.sh start 3.启动nimbus（切换到storm的bin目录下）nohup ./storm nimbus &amp; 4.启动supervisornohup ./storm supervisor &amp; 4.启动storm UInohup ./storm ui &amp; 在浏览器中输入ip:8080/index.html进入storm UI界面（注意端口不一定是8080，注意配置）]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Hello World]]></title>
       <url>%2F2017%2F04%2F20%2Fhello-world%2F</url>
       <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>

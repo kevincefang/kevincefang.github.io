@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="storm," />
 
 
 
@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords">
+<meta name="description" content="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动1.查看zk的状态：./zkServer.sh status 2.如果zk没有开启，将nimbus和supervisor的zk开启./zkServer.sh start 3.启动nimbus（切换到storm的bin目录下）nohup ./storm nimbus &amp;amp; 4.启动supervisorno">
+<meta name="keywords" content="storm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/04/20/hello-world/index.html">
+<meta property="og:title" content="storm 启动相关命令">
+<meta property="og:url" content="http://yoursite.com/2017/05/31/start-storm-command/index.html">
 <meta property="og:site_name" content="Haoer Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2017-04-20T06:25:57.000Z">
+<meta property="og:description" content="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动1.查看zk的状态：./zkServer.sh status 2.如果zk没有开启，将nimbus和supervisor的zk开启./zkServer.sh start 3.启动nimbus（切换到storm的bin目录下）nohup ./storm nimbus &amp;amp; 4.启动supervisorno">
+<meta property="og:updated_time" content="2017-05-31T09:11:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="storm 启动相关命令">
+<meta name="twitter:description" content="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动1.查看zk的状态：./zkServer.sh status 2.如果zk没有开启，将nimbus和supervisor的zk开启./zkServer.sh start 3.启动nimbus（切换到storm的bin目录下）nohup ./storm nimbus &amp;amp; 4.启动supervisorno">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/20/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/31/start-storm-command/"/>
 
 
 
 
 
-  <title> Hello World | Haoer Blog </title>
+  <title> storm 启动相关命令 | Haoer Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -317,7 +317,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/31/start-storm-command/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kevin">
@@ -338,7 +338,7 @@
             
             
               
-                Hello World
+                storm 启动相关命令
               
             
           </h1>
@@ -353,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-20T09:36:14+08:00">
-                Apr 20 2017
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T00:00:00+08:00">
+                May 31 2017
               </time>
             
 
@@ -363,6 +363,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/storm/" itemprop="url" rel="index">
+                    <span itemprop="name">storm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -389,16 +411,13 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        <h5 id="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动"><a href="#在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动" class="headerlink" title="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动"></a>在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动</h5><h6 id="1-查看zk的状态："><a href="#1-查看zk的状态：" class="headerlink" title="1.查看zk的状态："></a>1.查看zk的状态：</h6><p><code>./zkServer.sh status</code></p>
+<h5 id="2-如果zk没有开启，将nimbus和supervisor的zk开启"><a href="#2-如果zk没有开启，将nimbus和supervisor的zk开启" class="headerlink" title="2.如果zk没有开启，将nimbus和supervisor的zk开启"></a>2.如果zk没有开启，将nimbus和supervisor的zk开启</h5><p><code>./zkServer.sh start</code></p>
+<h5 id="3-启动nimbus（切换到storm的bin目录下）"><a href="#3-启动nimbus（切换到storm的bin目录下）" class="headerlink" title="3.启动nimbus（切换到storm的bin目录下）"></a>3.启动nimbus（切换到storm的bin目录下）</h5><p><code>nohup ./storm nimbus &amp;</code></p>
+<h5 id="4-启动supervisor"><a href="#4-启动supervisor" class="headerlink" title="4.启动supervisor"></a>4.启动supervisor</h5><p><code>nohup ./storm supervisor  &amp;</code></p>
+<h5 id="4-启动storm-UI"><a href="#4-启动storm-UI" class="headerlink" title="4.启动storm UI"></a>4.启动storm UI</h5><p><code>nohup ./storm ui &amp;</code>    </p>
+<pre><code>在浏览器中输入ip:8080/index.html进入storm UI界面（注意端口不一定是8080，注意配置）
+</code></pre>
       
     </div>
 
@@ -446,6 +465,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/storm/" rel="tag"># storm</a>
+          
+        </div>
+      
 
       
         
@@ -455,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/31/start-storm-command/" rel="next" title="storm 启动相关命令">
-                <i class="fa fa-chevron-left"></i> storm 启动相关命令
+              <a href="/2017/05/31/storm-life-cycle/" rel="next" title="storm-life-cycle">
+                <i class="fa fa-chevron-left"></i> storm-life-cycle
               </a>
             
           </div>
@@ -464,6 +489,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/20/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -649,7 +678,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动"><span class="nav-number">1.</span> <span class="nav-text">在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-查看zk的状态："><span class="nav-number">1.1.</span> <span class="nav-text">1.查看zk的状态：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-如果zk没有开启，将nimbus和supervisor的zk开启"><span class="nav-number">2.</span> <span class="nav-text">2.如果zk没有开启，将nimbus和supervisor的zk开启</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-启动nimbus（切换到storm的bin目录下）"><span class="nav-number">3.</span> <span class="nav-text">3.启动nimbus（切换到storm的bin目录下）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-启动supervisor"><span class="nav-number">4.</span> <span class="nav-text">4.启动supervisor</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-启动storm-UI"><span class="nav-number">5.</span> <span class="nav-text">4.启动storm UI</span></a></li></ol></div>
             
 
           </div>
