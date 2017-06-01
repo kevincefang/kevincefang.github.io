@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="storm,spring,springboot," />
 
 
 
@@ -90,12 +90,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Haoer Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="最近在搭建storm与springboot框架的集成，由于本身对storm分布式框架的不熟悉，加上网上能搜到的spring与storm集成的案例也比较少，这一路走来真的是各种坎坷啊，所以也在此总结一下遇到的一些问题，同时也希望能帮到有需要的朋友。  在搭建框架之前，有必要先熟悉一下storm的topology在提交过程中，初始化了什么，实例化了哪些类？ (1) 首先简单说一下，提交topolog">
+<meta name="keywords" content="storm,spring,springboot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-storm-integration">
+<meta property="og:url" content="http://yoursite.com/2017/06/01/spring-storm-integration/index.html">
 <meta property="og:site_name" content="Haoer Blog">
+<meta property="og:description" content="最近在搭建storm与springboot框架的集成，由于本身对storm分布式框架的不熟悉，加上网上能搜到的spring与storm集成的案例也比较少，这一路走来真的是各种坎坷啊，所以也在此总结一下遇到的一些问题，同时也希望能帮到有需要的朋友。  在搭建框架之前，有必要先熟悉一下storm的topology在提交过程中，初始化了什么，实例化了哪些类？ (1) 首先简单说一下，提交topolog">
+<meta property="og:updated_time" content="2017-06-01T07:14:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Haoer Blog">
+<meta name="twitter:title" content="spring-storm-integration">
+<meta name="twitter:description" content="最近在搭建storm与springboot框架的集成，由于本身对storm分布式框架的不熟悉，加上网上能搜到的spring与storm集成的案例也比较少，这一路走来真的是各种坎坷啊，所以也在此总结一下遇到的一些问题，同时也希望能帮到有需要的朋友。  在搭建框架之前，有必要先熟悉一下storm的topology在提交过程中，初始化了什么，实例化了哪些类？ (1) 首先简单说一下，提交topolog">
 
 
 
@@ -123,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/01/spring-storm-integration/"/>
 
 
 
 
 
-  <title> Haoer Blog </title>
+  <title> spring-storm-integration | Haoer Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -164,9 +169,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -303,9 +306,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -335,10 +338,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/06/01/spring-storm-integration/" itemprop="url">
-                  spring-storm-integration
-                </a>
+                spring-storm-integration
               
             
           </h1>
@@ -411,9 +411,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>最近在搭建storm与springboot框架的集成，由于本身对storm分布式框架的不熟悉，加上网上能搜到的spring与storm集成的案例也比较少，这一路走来真的是各种坎坷啊，所以也在此总结一下遇到的一些问题，同时也希望能帮到有需要的朋友。</p>
 </blockquote>
 <pre><code>在搭建框架之前，有必要先熟悉一下storm的topology在提交过程中，初始化了什么，实例化了哪些类？
@@ -443,492 +441,120 @@
 </blockquote>
 <p><strong>到此简单的整合就完成了，重点是每个bolt都需要独立的ApplicationContext，才能获取beans，切入点也就是bolt的prepare()方法中。</strong> </p>
 
-          
-        
       
     </div>
 
     <div>
       
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="kevin wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的公众号！</div>
+</div>
+
+
+      
     </div>
 
     <div>
       
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/31/storm-life-cycle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kevin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haoer Blog">
-    </span>
-
-    
-      <header class="post-header">
-
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/31/storm-life-cycle/" itemprop="url">
-                  Topology的初始化流程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T17:30:10+08:00">
-                May 31 2017
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/storm/" itemprop="url" rel="index">
-                    <span itemprop="name">storm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作^_^</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-pay.jpg" alt="kevin WeChat Pay"/>
+          <p>微信打赏</p>
         </div>
-      </header>
-    
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
       
       
+    </div>
+  </div>
 
+
+      
+    </div>
+
+    <div>
       
         
-          
-            <blockquote>
-<p>1、 首先配置好topology，并定义好Spout实例和Bolt实例</p>
-<p>2、 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentConfiguration()方法，declareOutputFields()方法配置Spout和Bolt实例的输出，getComponentConfiguration()方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。</p>
-<p>3、在Worker Node上运行的thread，从Nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields()和getComponentConfiguration()不会再运行。</p>
-<p>4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare()方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple</p>
-<p>5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute()方法</p>
-<p>6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup()方法</p>
-</blockquote>
-<pre><code>不过如果是强制关闭，这个cleanup()方法有可能不会被调用到
-</code></pre>
-          
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/31/start-storm-command/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kevin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haoer Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/31/start-storm-command/" itemprop="url">
-                  storm 启动相关命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T00:00:00+08:00">
-                May 31 2017
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/storm/" itemprop="url" rel="index">
-                    <span itemprop="name">storm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/storm/" rel="tag"># storm</a>
           
-
+            <a href="/tags/spring/" rel="tag"># spring</a>
           
-            
+            <a href="/tags/springboot/" rel="tag"># springboot</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
       
 
       
         
-          
-            <h5 id="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动"><a href="#在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动" class="headerlink" title="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动"></a>在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动</h5><h6 id="1-查看zk的状态："><a href="#1-查看zk的状态：" class="headerlink" title="1.查看zk的状态："></a>1.查看zk的状态：</h6><p><code>./zkServer.sh status</code></p>
-<h5 id="2-如果zk没有开启，将nimbus和supervisor的zk开启"><a href="#2-如果zk没有开启，将nimbus和supervisor的zk开启" class="headerlink" title="2.如果zk没有开启，将nimbus和supervisor的zk开启"></a>2.如果zk没有开启，将nimbus和supervisor的zk开启</h5><p><code>./zkServer.sh start</code></p>
-<h5 id="3-启动nimbus（切换到storm的bin目录下）"><a href="#3-启动nimbus（切换到storm的bin目录下）" class="headerlink" title="3.启动nimbus（切换到storm的bin目录下）"></a>3.启动nimbus（切换到storm的bin目录下）</h5><p><code>nohup ./storm nimbus &amp;</code></p>
-<h5 id="4-启动supervisor"><a href="#4-启动supervisor" class="headerlink" title="4.启动supervisor"></a>4.启动supervisor</h5><p><code>nohup ./storm supervisor  &amp;</code></p>
-<h5 id="4-启动storm-UI"><a href="#4-启动storm-UI" class="headerlink" title="4.启动storm UI"></a>4.启动storm UI</h5><p><code>nohup ./storm ui &amp;</code>    </p>
-<pre><code>在浏览器中输入ip:8080/index.html进入storm UI界面（注意端口不一定是8080，注意配置）
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/20/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kevin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haoer Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-              
-                
-                <a class="post-title-link" href="/2017/04/20/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
+              <a href="/2017/05/31/storm-life-cycle/" rel="prev" title="Topology的初始化流程">
+                Topology的初始化流程 <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-20T09:36:14+08:00">
-                Apr 20 2017
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -936,6 +562,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -955,8 +592,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpeg"
@@ -1052,6 +698,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首先简单说一下，提交topology的流程："><span class="nav-number">1.</span> <span class="nav-text">(1) 首先简单说一下，提交topology的流程：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（2）storm与springboot的集成"><span class="nav-number">2.</span> <span class="nav-text">（2）storm与springboot的集成</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1172,6 +834,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
@@ -1187,6 +853,18 @@
 
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/06/01/spring-storm-integration/';
+          this.page.identifier = '2017/06/01/spring-storm-integration/';
+          this.page.title = 'spring-storm-integration';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://fhaoer.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
