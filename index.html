@@ -314,6 +314,224 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/SonarQube/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kevin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haoer Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/15/SonarQube/" itemprop="url">
+                  SonarQube 代码质量管理平台的搭建
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T10:03:44+08:00">
+                Jun 15 2017
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SonarQube/" itemprop="url" rel="index">
+                    <span itemprop="name">SonarQube</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h5><blockquote>
+<p>由于公司项目的代码量比较大，框架使用也比较混乱，还有项目中没有用到类似spring管理的框架，例如获取数据库的session等操作，都是需要手动操作的，操作多了难免会造成session的未关闭等问题。上周就是因为session的为关闭导致应用运行一段时间后，莫名的不再接受任何请求和处理，也没有任何的异常信息，就像卡住一样。因此排查问题浪费了很多时间，最后检查代码才发现有一处因为数据库的session未关闭的原因造成的。其实如果用到了代码检查工具，这些细节问题是完全可以避免的。</p>
+<pre><code>这里推荐使用开源的SonarQube质量管理平台工具
+</code></pre></blockquote>
+<h5 id="下面是搭建步骤："><a href="#下面是搭建步骤：" class="headerlink" title="下面是搭建步骤："></a>下面是搭建步骤：</h5><h5 id="1、准备环境"><a href="#1、准备环境" class="headerlink" title="1、准备环境"></a>1、准备环境</h5><ul>
+<li>jdk1.8 </li>
+<li>mysql5.6+</li>
+</ul>
+<h5 id="2、-安装mysql并创建数据库sonar"><a href="#2、-安装mysql并创建数据库sonar" class="headerlink" title="2、 安装mysql并创建数据库sonar"></a>2、 安装mysql并创建数据库sonar</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># mysql -u root -p</div><div class="line"></div><div class="line"># mysql&gt; CREATE DATABASE sonar CHARACTER SET utf8 COLLATE utf8_general_ci;</div><div class="line"></div><div class="line"># mysql&gt; CREATE USER &apos;sonar&apos; IDENTIFIED BY &apos;sonar&apos;;</div><div class="line"></div><div class="line"># mysql&gt; GRANT ALL ON sonar.* TO &apos;sonar&apos;@&apos;%&apos; IDENTIFIED BY &apos;sonar&apos;;</div><div class="line"></div><div class="line"># mysql&gt; GRANT ALL ON sonar.* TO &apos;sonar&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;sonar&apos;;</div><div class="line"></div><div class="line"># mysql&gt; FLUSH PRIVILEGES;</div></pre></td></tr></table></figure>
+<h5 id="3、-下载安装包"><a href="#3、-下载安装包" class="headerlink" title="3、 下载安装包"></a>3、 下载安装包</h5><h6 id="服务端工具："><a href="#服务端工具：" class="headerlink" title="服务端工具："></a>服务端工具：</h6><p>sonarqube:<a href="http://www.sonarqube.org/downloads/" target="_blank" rel="external">http://www.sonarqube.org/downloads/</a></p>
+<h6 id="客户端工具"><a href="#客户端工具" class="headerlink" title="客户端工具"></a>客户端工具</h6><p>sonar-runner:<a href="http://repo1.maven.org/maven2/org/codehaus/sonar/runner/sonar-runner-dist/2.3/sonar-runner-dist-2.4.zip" target="_blank" rel="external">http://repo1.maven.org/maven2/org/codehaus/sonar/runner/sonar-runner-dist/2.3/sonar-runner-dist-2.4.zip</a></p>
+<h5 id="4、-安装SonarQube"><a href="#4、-安装SonarQube" class="headerlink" title="4、 安装SonarQube"></a>4、 安装SonarQube</h5><blockquote>
+<p>第一步： 将下载的SonarQube解压安装到/usr/local 目录下。具体步骤如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># wget -c http://downloads.sonarsource.com/sonarqube/sonarqube-5.1.1.zip</div><div class="line"></div><div class="line"># unzip sonarqube-5.1.1.zip</div><div class="line"></div><div class="line"># mv sonarqube-5.1.1 /usr/local/</div></pre></td></tr></table></figure>
+<blockquote>
+<p>第二步： 配置环境变量</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">vim + /etc/profile`</div><div class="line"></div><div class="line">添加</div><div class="line">SONAR_HOME=/usr/local/sonarqube-5.1.1 </div><div class="line"></div><div class="line">export SONAR_HOME</div><div class="line"></div><div class="line">保存退出并使配置生效</div><div class="line">source /etc/profile</div></pre></td></tr></table></figure>
+<blockquote>
+<p>第三步： 修改配置文件sonar.properties</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># vim /usr/local/sonarqube-5.1.1/conf/sonar.properties</div><div class="line">打开后，找到</div><div class="line">sonar.host.url=http://192.168.1.168:9000</div><div class="line">sonar.jdbc.username=root</div><div class="line">sonar.jdbc.password=123456</div><div class="line">sonar.jdbc.url=jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;useConfigs=maxPerformance</div><div class="line">sonar.web.host=0.0.0.0</div><div class="line">sonar.web.context=/</div><div class="line">sonar.web.port=9000</div></pre></td></tr></table></figure>
+<blockquote>
+<p>第四步： 修改配置文件wrapper.conf</p>
+<p><code>wrapper.java.command=/usr/local/sonar/jdk/bin/java</code></p>
+</blockquote>
+<p>注意：把wrapper.conf中的wrapper.java.command修改成jdk1.8路径<br>否则会找系统自带jdk版本的命令执行，启动的时候可能报错 , bin后面还需要加上/java</p>
+<blockquote>
+<p>第五步： 启动服务</p>
+</blockquote>
+<p><code># /usr/local/sonarqube-5.1.1/bin/linux-x86-64/sonar.sh start</code></p>
+<p> &nbsp;&nbsp;另外，启动/停止/重启命令如下： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># ./sonar.sh start   启动服务 </div><div class="line"># ./sonar.sh stop    停止服务 </div><div class="line"># ./sonar.sh restart 重启服务</div><div class="line"></div><div class="line">查看启动日志:</div><div class="line"># tail -f /usr/local/sonarqube-5.6.6/logs/sonar.log</div><div class="line"></div><div class="line">关闭命令:</div><div class="line"># ./sonar.sh stop</div><div class="line"></div><div class="line">登录：http://localhost:9000</div><div class="line"></div><div class="line">默认密码:admin/admin</div></pre></td></tr></table></figure>
+<blockquote>
+<p>第六步： 访问SonarQube Web管理界面。如果能够看到这个界面证明SonarQube安装成功啦。</p>
+<p>注：我这里访问的地址是：<a href="http://192.168.1.168:9000" target="_blank" rel="external">http://192.168.1.168:9000</a></p>
+</blockquote>
+<h5 id="5、-安装SonarQube-Runner"><a href="#5、-安装SonarQube-Runner" class="headerlink" title="5、 安装SonarQube Runner"></a>5、 安装SonarQube Runner</h5><blockquote>
+<p>第一步：将下载的<a href="http://repo1.maven.org/maven2/org/codehaus/sonar/runner/sonar-runner-dist/2.4/sonar-runner-dist-2.4.zip解压后放到/usr/local目录下。具体步骤如下：" target="_blank" rel="external">http://repo1.maven.org/maven2/org/codehaus/sonar/runner/sonar-runner-dist/2.4/sonar-runner-dist-2.4.zip解压后放到/usr/local目录下。具体步骤如下：</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># wget -c http://repo1.maven.org/maven2/org/codehaus/sonar/runner/#sonar-runner-dist/2.4/sonar-runner-dist-2.4.zip</div><div class="line"># unzip sonar-runner-dist-2.4.zip</div><div class="line"># mv sonar-runner-2.4/ /usr/local/</div></pre></td></tr></table></figure>
+<blockquote>
+<p>第二步：配置环境变量</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># vim + /etc/profile</div><div class="line"></div><div class="line">添加</div><div class="line">SONAR_RUNNER_HOME=/usr/local/sonar-runner-2.4/</div><div class="line">PATH=.:$SONAR_RUNNER_HOME/bin </div><div class="line">export SONAR_RUNNER_HOME</div><div class="line"></div><div class="line">保存并退出 </div><div class="line"># source /etc/profile</div></pre></td></tr></table></figure>
+<blockquote>
+<p>第三步：配置sonar-runner.properties</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># vim /usr/local/sonar-runner-2.4/conf/sonar-runner.properties</div><div class="line"></div><div class="line">找到</div><div class="line">sonar.host.url=http://192.168.1.168</div><div class="line">sonar.jdbc.url=jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;amp;characterEncoding=utf8</div><div class="line">sonar.jdbc.username=sonar</div><div class="line">sonar.jdbc.password=sonar</div><div class="line">sonar.login=admin</div><div class="line">sonar.password=admin</div><div class="line">将前面的#去掉</div></pre></td></tr></table></figure>
+<blockquote>
+<p>第四步：运行sonar-runner分析源代码</p>
+</blockquote>
+<p>Sonar官方已经提供了非常全的代码样例便于新手入门用。</p>
+<p>下载地址：<a href="https://github.com/SonarSource/sonar-examples/archive/master.zip" target="_blank" rel="external">https://github.com/SonarSource/sonar-examples/archive/master.zip</a></p>
+<p>下载后使用unzip解压。进入java执行sonar-runner命令即可。操作命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># wget -c https://github.com/SonarSource/sonar-examples/archive/master.zip</div><div class="line"># unzip master.zip</div><div class="line"># cd sonar-examples-master/projects/languages/java/maven/</div><div class="line"># sonar-runner</div></pre></td></tr></table></figure>
+<p>如果能够看到下面的输出信息，证明你的SonarQube Runner安装并配置正确啦。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">INFO: ------------------------------------------------------------------------</div><div class="line">INFO: EXECUTION SUCCESS</div><div class="line">INFO: ------------------------------------------------------------------------</div><div class="line">Total time: 2:59.167s</div><div class="line">Final Memory: 17M/204M</div><div class="line">INFO: ------------------------------------------------------------------------</div></pre></td></tr></table></figure>
+<blockquote>
+<p>第五步：看看SonarQube的Web界面，是否已经可以看到分析的结果啦。</p>
+</blockquote>
+<h5 id="6、扫描项目"><a href="#6、扫描项目" class="headerlink" title="6、扫描项目"></a>6、扫描项目</h5><blockquote>
+<p>(1) maven环境 (推荐方式，比较方便，扫描完了自动上传结果至sonar服务器中)</p>
+</blockquote>
+<p>Maven仓库中就有SonarQube Scanner工具的插件，只要在$M2_HOME/conf/setting.xml文件中添加如下配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;pluginGroups&gt;</div><div class="line"></div><div class="line">         &lt;pluginGroup&gt;org.sonarsource.scanner.maven&lt;/pluginGroup&gt;</div><div class="line"></div><div class="line">&lt;/pluginGroups&gt;</div><div class="line"></div><div class="line">&lt;profile&gt;</div><div class="line"></div><div class="line">     &lt;id&gt;sonar&lt;/id&gt;</div><div class="line"></div><div class="line">&lt;activation&gt;</div><div class="line"></div><div class="line">      &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</div><div class="line"></div><div class="line">&lt;/activation&gt;</div><div class="line"></div><div class="line">&lt;properties&gt;</div><div class="line"></div><div class="line">     &lt;sonar.host.url&gt;http://192.168.1.168:9000/sonarqube&lt;/sonar.host.url&gt;</div><div class="line"></div><div class="line">&lt;/properties&gt;</div><div class="line"></div><div class="line">&lt;/profile&gt;</div></pre></td></tr></table></figure>
+<p>配置完成后，在项目中，执行mvn sonar:sonar，SonarQube Scanner会自动扫描，根据pom.xml文件得出项目相关信息，不需要自定义sonar-project.properties。扫描完成后就会上传只Sonarqube服务器中。稍后，登陆服务器中就可以看到分析结果了。</p>
+<blockquote>
+<p>(2) 手动扫描</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">打开要进行代码分析的项目根目录，新建sonar-project.properties文件</div><div class="line"></div><div class="line">sonar.projectKey=my:task</div><div class="line"></div><div class="line"># this is the name displayed in the SonarQube UI</div><div class="line"></div><div class="line">sonar.projectName=My task</div><div class="line"></div><div class="line">sonar.projectVersion=1.0</div><div class="line"></div><div class="line">sonar.projectDescription= task 定时任务调度</div><div class="line"></div><div class="line"># Path is relative to the sonar-project.properties file. Replace &quot;\&quot; by &quot;/&quot; on Windows.</div><div class="line"></div><div class="line"># Since SonarQube 4.2, this property is optional if sonar.modules is set.</div><div class="line"></div><div class="line"># If not set, SonarQube starts looking for source code from the directory containing</div><div class="line"></div><div class="line"># the sonar-project.properties file.</div><div class="line"></div><div class="line">#sources是源文件所在的目录</div><div class="line"></div><div class="line">sonar.sources=master/src,slave/src</div><div class="line"></div><div class="line">sonar.binaries=WebRoot/WEB-INF/classes</div><div class="line"></div><div class="line"># Encoding of the source code. Default is default system encoding</div><div class="line"></div><div class="line">sonar.language=java</div><div class="line"></div><div class="line">sonar.my.property=value</div><div class="line"></div><div class="line">sonar.sourceEncoding=UTF-8</div><div class="line"></div><div class="line">在项目跟目录执行  输入命令：sonar-runner</div></pre></td></tr></table></figure>
+<h5 id="7、SonarQube默认是没有安装中文语言包的。如何安装语言包呢？进入SonarQube插件目录，下载语言包即可。步骤如下"><a href="#7、SonarQube默认是没有安装中文语言包的。如何安装语言包呢？进入SonarQube插件目录，下载语言包即可。步骤如下" class="headerlink" title="7、SonarQube默认是没有安装中文语言包的。如何安装语言包呢？进入SonarQube插件目录，下载语言包即可。步骤如下"></a>7、SonarQube默认是没有安装中文语言包的。如何安装语言包呢？进入SonarQube插件目录，下载语言包即可。步骤如下</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># cd /usr/local/sonarqube-5.1.1/extensions/plugins</div><div class="line"># wget -c http://repo1.maven.org/maven2/org/codehaus/sonar-plugins/l10n/sonar-l10n-zh-plugin/1.8/sonar-l10n-zh-plugin-1.8.jar</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这是中文语言包的源码地址：<a href="https://github.com/SonarCommunity/sonar-l10n-zh" target="_blank" rel="external">https://github.com/SonarCommunity/sonar-l10n-zh</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/01/spring-storm-integration/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -971,7 +1189,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -982,7 +1200,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -993,7 +1211,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
