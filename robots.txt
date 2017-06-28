@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/ 
+Allow: /about
+
+Sitemap: http://www.fhaoer.com/sitemap.xml
+Sitemap: http://www.fhaoer.com/baidusitemap.xml
