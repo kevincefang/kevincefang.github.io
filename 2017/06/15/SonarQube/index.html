@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="背景： 由于公司项目的代码量比较大，框架使用也比较混乱，还有项目中没有用到类似spring管理的框架，例如获取数据库的session等操作，都是需要手动操作的，操作多了难免会造成session的未关闭等问题。上周就是因为session的为关闭导致应用运行一段时间后，莫名的不再接受任何请求和处理，也没有任何的异常信息，就像卡住一样。因此排查问题浪费了很多时间，最后检查代码才发现有一处因为数据库的se">
+<meta name="description" content="背景： 由于公司项目用的是自己的内部框架，没有引入spring，例如获取数据库的session等操作，都是需要手动操作的，操作多了难免会造成session的未关闭等问题。上周就是因为session的为关闭导致应用运行一段时间后，莫名的不再接受任何请求和处理，也没有任何的异常信息，就像卡住一样。因此排查问题浪费了很多时间，最后检查代码才发现有一处因为数据库的session未关闭的原因造成的。其实如果">
 <meta name="keywords" content="SonarQube,java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SonarQube 代码质量管理平台的搭建">
 <meta property="og:url" content="http://yoursite.com/2017/06/15/SonarQube/index.html">
 <meta property="og:site_name" content="Haoer Blog">
-<meta property="og:description" content="背景： 由于公司项目的代码量比较大，框架使用也比较混乱，还有项目中没有用到类似spring管理的框架，例如获取数据库的session等操作，都是需要手动操作的，操作多了难免会造成session的未关闭等问题。上周就是因为session的为关闭导致应用运行一段时间后，莫名的不再接受任何请求和处理，也没有任何的异常信息，就像卡住一样。因此排查问题浪费了很多时间，最后检查代码才发现有一处因为数据库的se">
-<meta property="og:updated_time" content="2017-06-15T03:50:27.000Z">
+<meta property="og:description" content="背景： 由于公司项目用的是自己的内部框架，没有引入spring，例如获取数据库的session等操作，都是需要手动操作的，操作多了难免会造成session的未关闭等问题。上周就是因为session的为关闭导致应用运行一段时间后，莫名的不再接受任何请求和处理，也没有任何的异常信息，就像卡住一样。因此排查问题浪费了很多时间，最后检查代码才发现有一处因为数据库的session未关闭的原因造成的。其实如果">
+<meta property="og:updated_time" content="2017-07-31T08:01:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SonarQube 代码质量管理平台的搭建">
-<meta name="twitter:description" content="背景： 由于公司项目的代码量比较大，框架使用也比较混乱，还有项目中没有用到类似spring管理的框架，例如获取数据库的session等操作，都是需要手动操作的，操作多了难免会造成session的未关闭等问题。上周就是因为session的为关闭导致应用运行一段时间后，莫名的不再接受任何请求和处理，也没有任何的异常信息，就像卡住一样。因此排查问题浪费了很多时间，最后检查代码才发现有一处因为数据库的se">
+<meta name="twitter:description" content="背景： 由于公司项目用的是自己的内部框架，没有引入spring，例如获取数据库的session等操作，都是需要手动操作的，操作多了难免会造成session的未关闭等问题。上周就是因为session的为关闭导致应用运行一段时间后，莫名的不再接受任何请求和处理，也没有任何的异常信息，就像卡住一样。因此排查问题浪费了很多时间，最后检查代码才发现有一处因为数据库的session未关闭的原因造成的。其实如果">
 
 
 
@@ -421,7 +421,7 @@
 
       
         <h5 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h5><blockquote>
-<p>由于公司项目的代码量比较大，框架使用也比较混乱，还有项目中没有用到类似spring管理的框架，例如获取数据库的session等操作，都是需要手动操作的，操作多了难免会造成session的未关闭等问题。上周就是因为session的为关闭导致应用运行一段时间后，莫名的不再接受任何请求和处理，也没有任何的异常信息，就像卡住一样。因此排查问题浪费了很多时间，最后检查代码才发现有一处因为数据库的session未关闭的原因造成的。其实如果用到了代码检查工具，这些细节问题是完全可以避免的。</p>
+<p>由于公司项目用的是自己的内部框架，没有引入spring，例如获取数据库的session等操作，都是需要手动操作的，操作多了难免会造成session的未关闭等问题。上周就是因为session的为关闭导致应用运行一段时间后，莫名的不再接受任何请求和处理，也没有任何的异常信息，就像卡住一样。因此排查问题浪费了很多时间，最后检查代码才发现有一处因为数据库的session未关闭的原因造成的。其实如果用到了代码检查工具，这些细节问题是完全可以避免的。</p>
 <pre><code>这里推荐使用开源的SonarQube质量管理平台工具
 </code></pre></blockquote>
 <h5 id="下面是搭建步骤："><a href="#下面是搭建步骤：" class="headerlink" title="下面是搭建步骤："></a>下面是搭建步骤：</h5><h5 id="1、准备环境"><a href="#1、准备环境" class="headerlink" title="1、准备环境"></a>1、准备环境</h5><ul>
