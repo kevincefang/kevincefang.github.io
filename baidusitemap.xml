@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/08/30/chrome-plugins/</loc>
+    <lastmod>2017-08-30T02:52:17.000Z</lastmod>
+    <data>
+        <display>
+        <title>post</title>
+        <pubTime>2017-08-30T02:09:36.000Z</pubTime>
+        
+        <tag>chrome</tag>
+         
+        <tag>plugin</tag>
+         
+         
+           
+             
+              <breadCrumb title="plugins" url="http://yoursite.com/categories/plugins/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/06/15/SonarQube/</loc>
     <lastmod>2017-07-31T08:01:28.000Z</lastmod>
     <data>
