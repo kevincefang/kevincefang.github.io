@@ -5,20 +5,20 @@
     
   <url>
     <loc>http://yoursite.com/2017/11/01/eureka/</loc>
-    <lastmod>2017-11-01T02:37:54.000Z</lastmod>
+    <lastmod>2017-11-02T01:34:58.000Z</lastmod>
     <data>
         <display>
-        <title>chrome-plugins</title>
+        <title>Eureka</title>
         <pubTime>2017-11-01T02:09:36.000Z</pubTime>
         
-        <tag>chrome</tag>
+        <tag>springcloud</tag>
          
-        <tag>plugin</tag>
+        <tag>REST服务</tag>
          
          
            
              
-              <breadCrumb title="plugins" url="http://yoursite.com/categories/plugins/"/>
+              <breadCrumb title="springcloud" url="http://yoursite.com/categories/springcloud/"/>
           
         </display>
     </data>
