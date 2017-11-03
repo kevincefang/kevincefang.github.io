@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://yoursite.com/2017/11/03/classloader/</loc>
-    <lastmod>2017-11-03T09:55:06.000Z</lastmod>
+    <lastmod>2017-11-03T10:07:15.000Z</lastmod>
     <data>
         <display>
         <title>双亲委派模型</title>
@@ -19,6 +19,26 @@
            
              
               <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/04/20/hello-world/</loc>
+    <lastmod>2017-11-03T10:06:57.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2017-04-20T01:36:14.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="hexo" url="http://yoursite.com/categories/hexo/"/>
           
         </display>
     </data>
@@ -97,9 +117,9 @@
         <title>SonarQube 代码质量管理平台的搭建</title>
         <pubTime>2017-06-15T02:03:44.000Z</pubTime>
         
-        <tag>java</tag>
-         
         <tag>SonarQube</tag>
+         
+        <tag>java</tag>
          
          
            
@@ -130,26 +150,6 @@
            
              
               <breadCrumb title="storm" url="http://yoursite.com/categories/storm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/04/20/hello-world/</loc>
-    <lastmod>2017-06-01T01:44:07.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2017-04-20T01:36:14.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="hexo" url="http://yoursite.com/categories/hexo/"/>
           
         </display>
     </data>
