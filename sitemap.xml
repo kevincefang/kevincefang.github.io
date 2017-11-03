@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/11/03/classloader/</loc>
+    
+    <lastmod>2017-11-03T09:33:58.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/11/01/eureka/</loc>
     
     <lastmod>2017-11-02T01:34:58.000Z</lastmod>
