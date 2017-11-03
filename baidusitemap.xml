@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://yoursite.com/2017/11/03/classloader/</loc>
-    <lastmod>2017-11-03T09:33:58.000Z</lastmod>
+    <lastmod>2017-11-03T09:55:06.000Z</lastmod>
     <data>
         <display>
         <title>双亲委派模型</title>
@@ -97,9 +97,9 @@
         <title>SonarQube 代码质量管理平台的搭建</title>
         <pubTime>2017-06-15T02:03:44.000Z</pubTime>
         
-        <tag>SonarQube</tag>
-         
         <tag>java</tag>
+         
+        <tag>SonarQube</tag>
          
          
            
