@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[用栈实现队列]]></title>
+      <url>%2F2017%2F11%2F14%2F20171114%2F</url>
+      <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283package main.generic;import java.util.Stack;/** * @author: kevin * @date: 2017/11/14 * @description: 栈实现自定义队列 * * 用两个栈模拟一个队列 * A为插入栈--模拟入队列，B为弹出栈--模拟出队列 * (1)入队列，即入栈A * (2)出队列，B栈为空，则A栈元素全部出栈并入栈B，再从B出栈 * B栈不为空，从B出栈 */public class StatckToQueue &#123; private Stack stackA = new Stack(); private Stack stackB = new Stack(); //元素入队列--压入A栈 public void push(int value)&#123; stackA.push(value); &#125; //元素出队列--从B栈弹出 public int pop()&#123; //如果弹出栈B为空，则把A栈中的元素全部压入B栈 if (stackB.empty())&#123; while (!stackA.isEmpty())&#123; stackB.push(stackA.pop()); &#125; &#125; //B栈中元素出栈 return (int) stackB.pop(); &#125; //判断队列是否为空 private boolean isEmplty() &#123; if(stackA.empty() &amp;&amp; stackB.empty())&#123; return true; &#125;else&#123; return false; &#125; &#125; public static void main(String[] args) &#123; StatckToQueue Q = new StatckToQueue(); //元素入队列 System.out.print("元素入队列："); for(int i = 0; i &lt; 3; i++) &#123; Q.push(i); System.out.print(i +" "); &#125; System.out.println(); //元素出队列 System.out.print("元素出队列："); for(int i = 0; i &lt; 3; i++) &#123; int val = Q.pop(); System.out.print(val +" "); &#125; System.out.println(); &#125; 打印结果: 元素入队列：0 1 2 元素出队列：0 1 2 &#125;]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[volatile的实现原理]]></title>
+      <url>%2F2017%2F11%2F13%2Fvolatile%2F</url>
+      <content type="text"><![CDATA[将volatile修饰的java代码转换成汇编代码，进行写操作的时候会多出以lock前缀的汇编代码。lock前缀的指令在多核处理器下会引发两点： 将当前处理器缓存行的数据写回到系统内存。 这个写回内存的操作会使在其他CPU里缓存了该内存地址的数据无效。 volatile的两条实现原则： Lock前缀指令会引起处理器缓存回写到内存。 一个处理器的缓存回写到内存会导致其他处理器的缓存无效。 锁的状态：锁的级别从低到高依次是：无锁状态 -&gt; 偏向锁状态 -&gt; 轻量级锁状态 -&gt; 重量级锁状态 这几个状态随着竞争情况逐渐升级,锁可以升级但不能降级,意味着偏向锁升级成轻量级锁后不能降级偏向锁,]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[双亲委派模型]]></title>
       <url>%2F2017%2F11%2F03%2Fclassloader%2F</url>
       <content type="text"><![CDATA[双亲委派模型是java类加载器所使用的模型. 双亲委派模型的工作过程：如果一个类加载器收到了类加载器的请求.它首先不会自己去尝试加载这个类.而是把这个请求委派给父加载器去完成.每个层次的类加载器都是如此. 因此所有的加载请求最终都会传送到Bootstrap类加载器(启动类加载器)中.只有父类加载反馈自己无法加载这个请求(它的搜索范围中没有找到所需的类)时.子加载器才会尝试自己去加载. 双亲委派模型执行流程 双亲委派模型的好处 java类随着它的加载器一起具备了一种带有优先级的层次关系. 例如类java.lang.Object,它存放在rt.jart之中.无论哪一个类加载器都要加载这个类.最终都是双亲委派模型最顶端的Bootstrap类加载器去加载.因此Object类在程序的各种类加载器环境中都是同一个类.相反.如果没有使用双亲委派模型.由各个类加载器自行去加载的话.如果用户编写了一个称为“java.lang.Object”的类.并存放在程序的ClassPath中.那系统中将会出现多个不同的Object类.java类型体系中最基础的行为也就无法保证.应用程序也将会一片混乱. 双亲委派的代码实现(在ClassLoader类中的loadClass中)12345678910111213141516171819202122232425262728293031323334353637protected Class&lt;?&gt; loadClass(String name, boolean resolve) throws ClassNotFoundException &#123; synchronized (getClassLoadingLock(name)) &#123; // First, check if the class has already been loaded Class&lt;?&gt; c = findLoadedClass(name); if (c == null) &#123; long t0 = System.nanoTime(); try &#123; if (parent != null) &#123; c = parent.loadClass(name, false); &#125; else &#123; c = findBootstrapClassOrNull(name); &#125; &#125; catch (ClassNotFoundException e) &#123; // ClassNotFoundException thrown if class not found // from the non-null parent class loader &#125; if (c == null) &#123; // If still not found, then invoke findClass in order // to find the class. long t1 = System.nanoTime(); c = findClass(name); // this is the defining class loader; record the stats sun.misc.PerfCounter.getParentDelegationTime().addTime(t1 - t0); sun.misc.PerfCounter.getFindClassTime().addElapsedTimeFrom(t1); sun.misc.PerfCounter.getFindClasses().increment(); &#125; &#125; if (resolve) &#123; resolveClass(c); &#125; return c; &#125; &#125; 逻辑：先检查是否已经被加载过.若没有加载则调用父加载器的loadClass()方法.若父加载器为空则默认使用Bootstrap类加载器作为父加载器.若父加载失败.抛出ClassNotFoundException异常后再调用自己的findClass()方法进行加载]]></content>
