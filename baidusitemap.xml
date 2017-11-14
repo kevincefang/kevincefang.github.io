@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/11/14/20171114/</loc>
+    <lastmod>2017-11-14T07:21:58.000Z</lastmod>
+    <data>
+        <display>
+        <title>用栈实现队列</title>
+        <pubTime>2017-11-14T10:30:10.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>面试</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/11/13/volatile/</loc>
     <lastmod>2017-11-14T07:15:15.000Z</lastmod>
     <data>
@@ -34,28 +56,6 @@
         <display>
         <title>双亲委派模型</title>
         <pubTime>2017-11-03T09:09:36.000Z</pubTime>
-        
-        <tag>java</tag>
-         
-        <tag>面试</tag>
-         
-         
-           
-             
-              <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/11/14/20171114/</loc>
-    <lastmod>2017-11-14T07:15:04.000Z</lastmod>
-    <data>
-        <display>
-        <title>用栈实现队列</title>
-        <pubTime>2017-11-14T10:30:10.000Z</pubTime>
         
         <tag>java</tag>
          

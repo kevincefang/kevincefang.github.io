@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/11/14/20171114/</loc>
+    
+    <lastmod>2017-11-14T07:21:58.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/11/13/volatile/</loc>
     
     <lastmod>2017-11-14T07:15:15.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://yoursite.com/2017/11/03/classloader/</loc>
     
     <lastmod>2017-11-14T07:15:07.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/11/14/20171114/</loc>
-    
-    <lastmod>2017-11-14T07:15:04.000Z</lastmod>
     
   </url>
   
