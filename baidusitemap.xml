@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/11/20/20171122/</loc>
+    <lastmod>2017-11-22T01:31:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>堆(heap)和栈(stack)有什么区别?</title>
+        <pubTime>2017-11-20T10:30:10.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>面试</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/11/17/20171117/</loc>
     <lastmod>2017-11-17T09:57:34.000Z</lastmod>
     <data>
@@ -13,9 +35,9 @@
         
         <tag>java</tag>
          
-        <tag>面试</tag>
-         
         <tag>jvm</tag>
+         
+        <tag>面试</tag>
          
          
            
@@ -37,9 +59,9 @@
         
         <tag>java</tag>
          
-        <tag>面试</tag>
-         
         <tag>jvm</tag>
+         
+        <tag>面试</tag>
          
          
            
