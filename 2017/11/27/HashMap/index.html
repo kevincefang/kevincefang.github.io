@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://fhaoer.com/images/20171127/2.png">
 <meta property="og:image" content="http://fhaoer.com/images/20171127/3.png">
 <meta property="og:image" content="http://fhaoer.com/images/20171127/4.png">
-<meta property="og:updated_time" content="2017-11-27T03:56:56.000Z">
+<meta property="og:updated_time" content="2017-11-27T05:37:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap实现原理分析">
 <meta name="twitter:description" content="HashMap是Java程序员使用频率最高的用于映射(键值对)处理的数据类型。随着JDK（Java Developmet Kit）版本的更新，JDK1.8对HashMap底层的实现进行了优化，例如引入红黑树的数据结构和扩容的优化等。本文结合JDK1.7和JDK1.8的区别，深入探讨HashMap的结构实现和功能原理。  内部实现搞清楚HashMap，首先需要知道HashMap是什么，即它的存储结">
@@ -447,8 +447,7 @@
 <h5 id="内部实现"><a href="#内部实现" class="headerlink" title="内部实现"></a>内部实现</h5><p>搞清楚HashMap，首先需要知道HashMap是什么，即它的存储结构-字段；其次弄明白它能干什么，即它的功能实现-方法。下面我们针对这两个方面详细展开讲解。</p>
 <h5 id="存储结构-字段"><a href="#存储结构-字段" class="headerlink" title="存储结构-字段"></a>存储结构-字段</h5><p>从结构实现来讲，HashMap是数组+链表+红黑树（JDK1.8增加了红黑树部分）实现的，如下如所示。</p>
 <p><img src="http://fhaoer.com/images/20171127/1.png" alt="1"></p>
-<p>######数据底层具体存储的是什么？</p>
-<p>从源码可知，HashMap类中有一个非常重要的字段，就是 Node[] table，即哈希桶数组，明显它是一个Node的数组。我们来看Node[JDK1.8]是何物。</p>
+<h5 id="数据底层具体存储的是什么？"><a href="#数据底层具体存储的是什么？" class="headerlink" title="数据底层具体存储的是什么？"></a>数据底层具体存储的是什么？</h5><p>从源码可知，HashMap类中有一个非常重要的字段，就是 Node[] table，即哈希桶数组，明显它是一个Node的数组。我们来看Node[JDK1.8]是何物。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</div><div class="line">        <span class="keyword">final</span> <span class="keyword">int</span> hash;    <span class="comment">//用来定位数组索引位置</span></div><div class="line">        <span class="keyword">final</span> K key;</div><div class="line">        V value;</div><div class="line">        Node&lt;K,V&gt; next;   <span class="comment">//链表的下一个node</span></div><div class="line"></div><div class="line">        Node(<span class="keyword">int</span> hash, K key, V value, Node&lt;K,V&gt; next) &#123; ... &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> K <span class="title">getKey</span><span class="params">()</span></span>&#123; ... &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">getValue</span><span class="params">()</span> </span>&#123; ... &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123; ... &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123; ... &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">setValue</span><span class="params">(V newValue)</span> </span>&#123; ... &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123; ... &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Node是HashMap的一个内部类，实现了Map.Entry接口，本质是就是一个映射(键值对)。上图中的每个黑色圆点就是一个Node对象。</p>
 <p>HashMap就是使用哈希表来存储的。哈希表为解决冲突，可以采用开放地址法和链地址法等来解决问题，Java中HashMap采用了链地址法。链地址法，简单来说，就是数组加链表的结合。在每个数组元素上都一个链表结构，当数据被Hash后，得到数组下标，把数据放在对应下标元素的链表上。</p>
@@ -461,10 +460,8 @@
 <p>结合负载因子的定义公式可知，threshold就是在此Load factor和length(数组长度)对应下允许的最大元素数目，超过这个数目就重新resize(扩容)，扩容后的HashMap容量是之前容量的两倍。默认的负载因子0.75是对空间和时间效率的一个平衡选择，建议大家不要修改，除非在时间和空间比较特殊的情况下，如果内存空间很多而又对时间效率要求很高，可以降低负载因子Load factor的值；相反，如果内存空间紧张而对时间效率要求不高，可以增加负载因子loadFactor的值，这个值可以大于1。</p>
 <p>size这个字段其实很好理解，就是HashMap中实际存在的键值对数量。注意和table的长度length、容纳最大键值对数量threshold的区别。而modCount字段主要用来记录HashMap内部结构发生变化的次数，主要用于迭代的快速失败。强调一点，内部结构发生变化指的是结构发生变化，例如put新键值对，但是某个key对应的value值被覆盖不属于结构变化。</p>
 <p>这里存在一个问题，即使负载因子和Hash算法设计的再合理，也免不了会出现拉链过长的情况，一旦出现拉链过长，则会严重影响HashMap的性能。于是，在JDK1.8版本中，对数据结构做了进一步的优化，引入了红黑树。而当链表长度太长（默认超过8）时，链表就转换为红黑树，利用红黑树快速增删改查的特点提高HashMap的性能，其中会用到红黑树的插入、删除、查找等算法。本文不再对红黑树展开讨论，想了解更多红黑树数据结构的工作原理可以参考笔者的文章</p>
-<p>#####功能实现-方法</p>
-<p>HashMap的内部功能实现很多，本文主要从put方法的详细执行、扩容过程具有代表性的点深入展开讲解。</p>
-<p>#####分析HashMap的put方法</p>
-<p>HashMap的put方法执行过程可以通过下图来理解</p>
+<h5 id="功能实现-方法"><a href="#功能实现-方法" class="headerlink" title="功能实现-方法"></a>功能实现-方法</h5><p>HashMap的内部功能实现很多，本文主要从put方法的详细执行、扩容过程具有代表性的点深入展开讲解。</p>
+<h5 id="分析HashMap的put方法"><a href="#分析HashMap的put方法" class="headerlink" title="分析HashMap的put方法"></a>分析HashMap的put方法</h5><p>HashMap的put方法执行过程可以通过下图来理解</p>
 <p><img src="http://fhaoer.com/images/20171127/2.png" alt="1"></p>
 <p>①.判断键值对数组table[i]是否为空或为null，否则执行resize()进行扩容；</p>
 <p>②.根据键值key计算hash值得到插入的数组索引i，如果table[i]==null，直接新建节点添加，转向⑥，如果table[i]不为空，转向③；</p>
@@ -490,8 +487,7 @@
 <p>(4) TreeMap：TreeMap实现SortedMap接口，能够把它保存的记录根据键排序，默认是按键值的升序排序，也可以指定排序的比较器，当用Iterator遍历TreeMap时，得到的记录是排过序的。如果使用排序的映射，建议使用TreeMap。在使用TreeMap时，key必须实现Comparable接口或者在构造TreeMap传入自定义的Comparator，否则会在运行时抛出java.lang.ClassCastException类型的异常。</p>
 <p>对于上述四种Map类型的类，要求映射中的key是不可变对象。不可变对象是该对象在创建后它的哈希值不会被改变。如果对象的哈希值发生变化，Map对象很可能就定位不到映射的位置了。</p>
 <p>通过上面的比较，我们知道了HashMap是Java的Map家族中一个普通成员，鉴于它可以满足大多数场景的使用条件，所以是使用频度最高的一个。下文我们主要结合源码，从存储结构、常用方法分析、扩容以及安全性等方面深入讲解HashMap的工作原理。</p>
-<p>#####小结</p>
-<p>(1) 扩容是一个特别耗性能的操作，所以当程序员在使用HashMap的时候，估算map的大小，初始化的时候给一个大致的数值，避免map进行频繁的扩容。</p>
+<h5 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h5><p>(1) 扩容是一个特别耗性能的操作，所以当程序员在使用HashMap的时候，估算map的大小，初始化的时候给一个大致的数值，避免map进行频繁的扩容。</p>
 <p>(2) 负载因子是可以修改的，也可以大于1，但是建议不要轻易修改，除非情况非常特殊。</p>
 <p>(3) JDK1.8引入红黑树大程度优化了HashMap的性能。</p>
 <p>(4) 还没升级JDK1.8的，现在开始升级吧。HashMap的性能提升仅仅是JDK1.8的冰山一角。</p>
@@ -759,7 +755,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#内部实现"><span class="nav-number">1.</span> <span class="nav-text">内部实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储结构-字段"><span class="nav-number">2.</span> <span class="nav-text">存储结构-字段</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#JDK1-8HashMap的put方法源码如下"><span class="nav-number">2.1.</span> <span class="nav-text">JDK1.8HashMap的put方法源码如下:</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扩容机制"><span class="nav-number">3.</span> <span class="nav-text">扩容机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Map中各实现类的总结"><span class="nav-number">4.</span> <span class="nav-text">Map中各实现类的总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#内部实现"><span class="nav-number">1.</span> <span class="nav-text">内部实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储结构-字段"><span class="nav-number">2.</span> <span class="nav-text">存储结构-字段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据底层具体存储的是什么？"><span class="nav-number">3.</span> <span class="nav-text">数据底层具体存储的是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#功能实现-方法"><span class="nav-number">4.</span> <span class="nav-text">功能实现-方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分析HashMap的put方法"><span class="nav-number">5.</span> <span class="nav-text">分析HashMap的put方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#JDK1-8HashMap的put方法源码如下"><span class="nav-number">5.1.</span> <span class="nav-text">JDK1.8HashMap的put方法源码如下:</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扩容机制"><span class="nav-number">6.</span> <span class="nav-text">扩容机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Map中各实现类的总结"><span class="nav-number">7.</span> <span class="nav-text">Map中各实现类的总结</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小结"><span class="nav-number">8.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>
