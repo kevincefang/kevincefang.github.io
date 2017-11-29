@@ -3,6 +3,30 @@
 
 
     
+  <url>
+    <loc>http://yoursite.com/2017/11/29/synchronized/</loc>
+    <lastmod>2017-11-29T02:26:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>同步锁Synchronized及实现原理</title>
+        <pubTime>2017-11-29T10:30:10.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>面试</tag>
+         
+        <tag>jvm</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://yoursite.com/2017/11/27/HashMap/</loc>
