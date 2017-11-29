@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Git常用命令]]></title>
+    <url>%2F2017%2F11%2F29%2Fgit-operators%2F</url>
+    <content type="text"><![CDATA[理解这些指令，觉得最重要的是理解Git的内部原理，比如Git的分布式版本控制，分清楚工作区、暂存区、版本库，还有就是理解Git跟踪并管理的是修改，而非文件。 第一步是要获得一个GIT仓库有两种获得GIT仓库的方法，一是在需要用GIT管理的项目的根目录执行： 1git init 执行后可以看到，仅仅在项目目录多出了一个.git目录，关于版本等的所有信息都在这个目录里面。 另一种方式是克隆远程目录，由于是将远程服务器上的仓库完全镜像一份至本地，而不是取某一个特定版本，所以用clone而不是checkout： 1git clone &lt;url&gt; 设置12$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot; ssh -v git@github.com //检验下Git安装是否正确，显示hi github用户名！You’ve successfully authenticated 说明Git安装正确 提交git tracked的是修改，而不是文件 1234#将“当前修改”移动到暂存区(stage)$ git add somfile.txt#将暂存区修改提交$ git commit -m "Add somfile.txt." 状态12$ git status$ git diff 回退12345678910111213# 放弃工作区修改$ git checkout -- file.name$ git checkout -- .# 取消commit(比如需要重写commit信息)$ git reset --soft HEAD# 取消commit、add(重新提交代码和commit)$ git reset HEAD$ git reset --mixed HEAD# 取消commit、add、工作区修改(需要完全重置)$ git reset --hard HEAD 记录12$ git reflog$ git log 删除123$ rm file.name$ git rm file.name$ git commit -m "Del" Git 远程分支管理1234567891011121314git pull # 抓取远程仓库所有分支更新并合并到本地git pull --no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并git fetch origin # 抓取远程仓库更新git merge origin/master # 将远程主分支合并到本地当前分支git checkout --track origin/branch # 跟踪某个远程分支创建相应的本地分支git checkout -b &lt;local_branch&gt; origin/&lt;remote_branch&gt; # 基于远程分支创建本地分支，功能同上 git push # push所有分支git push origin master # 将本地主分支推到远程主分支# 第一次推送，-u(--set-upstream)指定默认上游git push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)git push origin &lt;local_branch&gt; # 创建远程分支， origin是远程仓库名git push origin &lt;local_branch&gt;:&lt;remote_branch&gt; # 创建远程分支git push origin :&lt;remote_branch&gt; #先删除本地分支(git branch -d &lt;branch&gt;)，然后再push删除远程分支 Git 远程仓库管理12345git remote -v # 查看远程服务器地址和仓库名称git remote show origin # 查看远程服务器仓库状态git remote add origin git@github.com:whuhacker/Unblock-Youku-Firefox.git # 添加远程仓库地址git remote set-url origin git@github.com:whuhacker/Unblock-Youku-Firefox.git # 设置远程仓库地址(用于修改远程仓库地址)git remote rm &lt;repository&gt; # 删除远程仓库 克隆12$ git clone https://github.com/Yikun/yikun.github.com.git path$ git clone git@github.com:Yikun/yikun.github.com.git path 分支操作 12345678910111213141516# 查看当前分支$ git branch# 创建分支$ git branch dev# 切换分支$ git checkout dev# 创建并checkout分支$ git checkout -b dev# 合并分支$ git merge dev# 删除分支$ git branch -d dev 标签12$ git tag 0.1.1$ git push origin --tags 目前使用git主要流程就是先在本地clone一个git仓库，然后设置一下看git是否连接成功，接着git remote add origin git@github.com:michaelliao/learngit.git，添加要连接的远程仓库地址，进行push（将本地主分支推到远程主分支）还是pull（抓取远程仓库所有分支更新并合并到本地）操作即可。]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[良好的个人作息时间表]]></title>
+    <url>%2F2017%2F11%2F29%2Fzuoxi%2F</url>
+    <content type="text"><![CDATA[5:00-5:10 新的一天就此开始，请笑对每一天。关爱自己和身边的人。缓慢的起床穿衣服(尽量不要快速起床，容易对心脏等器官造成较大的冲击）。英国威斯敏斯特大学的研究人员发现，那些在早上5:22―7:21 分起床的人，其血液中有一种能引起心脏病的物质含量较高，因此，在7:21之后或者5点之前起床对身体健康更加有益。 打开台灯。“一醒来，就将灯打开，这样将会重新调整体内的生物钟，调整睡眠和醒来模式。”拉夫堡大学睡眠研究中心教授吉姆·霍恩说。喝一杯水。水是身体内成千上万化学反应得以进行的必需物质。早上喝一杯清水，可以补充晚上的缺水状态。 5:10-5:40 在早饭之前刷牙。“在早饭之前刷牙 可以防止牙齿的腐蚀，因为刷牙之后，可以在牙齿外面涂上一层含氟的保护层。要么，就等早饭之后半小时再刷牙。”英国牙齿协会健康和安全研究人员戈登·沃特金斯说。 5:40-7:00 吃点饼干喝点水，整理仪容仪表去健身房听听音乐，跑跑步。等待6点左右的日出。然后到一楼看看书 7:00-7:30 吃早饭。“早饭必须吃，因为它可以帮助你维持血糖水平的稳定。”伦敦大学国王学院营养师凯文·威尔伦说。早饭可以吃燕麦粥等，这类食物具有较低的血糖指数。同时这个时间段也是小肠吸收营养的最佳时段。 7:30-8:00 整理仪表，上班打卡。喝杯水，看看今日头条。 8:00-10:00 避免运动。来自布鲁奈尔大学的研究人员发现，在早晨进行锻炼的运动员更容易感染疾病，因为免疫系统在这个时间的功能最弱。步行上班。马萨诸塞州大学医学院的研究人员发现，每天走路的人，比那些久坐不运动的人患感冒病的几率低25%。然后开始一天中最困难的工作或者学习一下（因为这段时间是学习的一个比较好的时间）。纽约睡眠中心的研究人员发现，大部分人在每天醒来的一两个小时内头脑最清醒。 10:00-11:00 让眼睛离开屏幕休息一下。如果你使用电脑工作，那么每工作一小时，就让眼睛休息3分钟。 11:00-12:00 吃点水果。这是一种解决身体血糖下降的好方法。吃一个橙子或一些红色水果，这样做能同时补充体内的铁含量和维生素C含量。 12:00-12:30 在面包上加一些豆类蔬菜。你需要一顿可口的午餐，并且能够缓慢地释放能量。“烘烤的豆类食品富含纤维素，番茄酱可以当作是蔬菜的一部分。”维伦博士说。 12:30-13:00 午休一小会儿。雅典的一所大学研究发现，那些每天中午午休30分钟或更长时间，每周至少午休3次的人，因心脏病死亡的几率会下降37%。 13:00-16:00 起床清醒一下，开始下午的工作。 16:00-17:00 喝杯酸奶。这样做可以稳定血糖水平。在每天三餐之间喝些酸牛奶，有利于心脏健康。 17:00-17:30 晚餐少吃点。晚饭吃太多，会引起血糖升高，并增加消化系统的负担，影响睡眠。晚饭应该多吃蔬菜，少吃富含卡路里和蛋白质的食物。吃饭时要细嚼慢咽。 17:30-18:00 根据体内的生物钟，这个时间是运动的最佳时间，舍菲尔德大学运动学医生瑞沃·尼克说。 18:00-20:30 建议的学习时间。 20:30-21:00 洗脸刷牙并洗个热水澡。“体温的适当降低有助于放松和睡眠。”拉夫堡大学睡眠研究中心吉姆·霍恩教授说。 21:00-21:30 上床睡觉。如果你早上5点起床，现在入睡可以保证你享受7.5个小时充足的睡眠。而且这个时间段是免疫系统(淋巴)排毒时间，此段时间应安静或听音乐准备入睡。 21:30-23:00 如果您按照这份[作息时间表]作息的话，建议您尽快入睡。 23:00-5:00 当浏览器自动带你来到这段，相信时间已经不早了。切记不可超过12点睡觉，因为那样即使休息够8小时，那也无济于事，一般还是会觉得身体不舒服或者难受。而且最总要的是据说这也是引发心脏病的一个重要原因。但现实生活中多少会有些不如意的事情，也没必要完全遵守 [作息时间表]，只要持之以恒，尽量培养起自己的作息习惯就好。23:00-1:00 肝的排毒，需在熟睡中进行。0:00-4:00 脊椎造血时段，必须熟睡，不宜熬夜。1:00-3:00 胆的排毒，亦同。3:00-5:00 肺的排毒。此即为何咳嗽的人在这段时间咳得最剧烈，因排毒动作已走到肺；不应用止咳药，以免抑制废积物的排除。关于吃早餐。疗病者最好早吃，在6点半前，养生者在7点半前，不吃早餐者应改变习惯，即使拖到9、10点吃都比不吃好。 转载地址]]></content>
+      <categories>
+        <category>慢生活</category>
+      </categories>
+      <tags>
+        <tag>慢生活</tag>
+        <tag>作息时间</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[同步锁Synchronized及实现原理]]></title>
+    <url>%2F2017%2F11%2F29%2Fsynchronized%2F</url>
+    <content type="text"><![CDATA[同步的基本思想为了保证共享数据在同一时刻只被一个线程使用，我们有一种很简单的实现思想: 在共享数据里保存一个锁 ，当没有线程访问时，锁是空的。当有第一个线程访问时，就在锁里保存这个线程的标识 并允许这个线程访问共享数据。在当前线程释放共享数据之前，如果再有其他线程想要访问共享数据，就要等待锁释放。 在共享数据里保存一个锁 在锁里保存这个线程的标识 其他线程访问已加锁共享数据要等待锁释放 Jvm同步的实现jvm中有以下三种锁(由上到下越来越“重量级”)： 偏向锁 轻量级锁 重量级锁 锁的状态总共有四种：无锁状态、偏向锁、轻量级锁和重量级锁。 偏向锁根据轻量级锁的实现，我们知道虽然轻量级锁不支持“并发”，遇到“并发”就要膨胀为重量级锁，但是轻量级锁可以支持多个线程以串行的方式访问同一个加锁对象。 比如A线程可以先获取对象o的轻量锁，然后A释放了轻量锁，这个时候B线程来获取o的轻量锁，是可以成功获取得，以这种方式可以一直串行下去。 之所以能实现这种串行，是因为有一个释放锁的动作。那么假设有一个加锁的java方法，这个方法在运行的时候其实从始至终只有一个线程在调用，但是每次调用完却也要释放锁，下次调用还要重新获得锁。 那么我们能不能做一个假设：“假设加锁的代码从始至终就只有一个线程在调用，如果发现有多于一个线程调用，再膨胀成轻量级锁也不迟”。这个假设，就是偏向锁的核心思想。 偏向锁依赖了一种叫做CAS(compare and swap)的操作。 轻量级锁 JDK 1.6中默认是开启偏向锁和轻量级锁的，我们也可以通过-XX:-UseBiasedLocking来禁用偏向锁。 轻量级锁的核心思想就是“被加锁的代码不会发生并发，如果发生并发，那就膨胀成重量级锁(膨胀指的锁的重量级上升，一旦升级，就不会降级了)”。 轻量级锁依赖了一种叫做CAS(compare and swap)的操作。 重量级锁Synchronized 原理我们直接参考JVM规范中描述：每个对象有一个监视器锁（monitor）。 当monitor被占用时就会处于锁定状态，线程执行monitorenter指令时尝试获取monitor的所有权，过程如下： 如果monitor的进入数为0，则该线程进入monitor，然后将进入数设置为1，该线程即为monitor的所有者。 如果线程已经占有该monitor，只是重新进入，则进入monitor的进入数加1. 如果其他线程已经占用了monitor，则该线程进入阻塞状态，直到monitor的进入数为0，再重新尝试获取monitor的所有权。 Synchronized的语义底层是通过一个monitor的对象来完成，其实wait/notify等方法也依赖于monitor对象， 这就是为什么只有在同步的块或者方法中才能调用wait/notify等方法，否则会抛出java.lang.IllegalMonitorStateException的异常的原因。 Synchronized是通过对象内部的一个叫做监视器锁（monitor）来实现的。 但是监视器锁本质又是依赖于底层的操作系统的互斥锁（Mutex Lock）来实现的。而操作系统实现线程之间的切换这就需要从用户态转换到核心态，这个成本非常高，状态之间的转换需要相对比较长的时间，这就是为什么Synchronized效率低的原因。 因此，这种依赖于操作系统互斥锁（Mutex Lock）所实现的锁我们称之为“重量级锁”。 术语定义 术语 英文 说明 CAS Compare and Swap 比较并设置。用于在硬件层面上提供原子性操作。在 Intel 处理器中，比较并交换通过指令cmpxchg实现。比较是否和给定的数值一致，如果一致则修改，不一致则不修改。 总结 本文重点介绍了JDk中采用轻量级锁和偏向锁等对Synchronized的优化， 但是这两种锁也不是完全没缺点的，比如竞争比较激烈的时候，不但无法提升效率，反而会降低效率，因为多了一个锁升级的过程，这个时候就需要通过-XX:-UseBiasedLocking来禁用偏向锁。下面是这几种锁的对比： 锁 优点 缺点 适用场景 偏向锁 加锁和解锁不需要额外的消耗，和执行非同步方法比仅存在纳秒级的差距。 如果线程间存在锁竞争，会带来额外的锁撤销的消耗。 适用于只有一个线程访问同步块场景。 轻量级锁 竞争的线程不会阻塞，提高了程序的响应速度。 如果始终得不到锁竞争的线程使用自旋会消耗CPU。 追求响应时间。同步块执行速度非常快。 重量级锁 线程竞争不使用自旋，不会消耗CPU。 线程阻塞，响应时间缓慢。 追求吞吐量。同步块执行速度较长。]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>面试</tag>
+        <tag>jvm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[HashMap实现原理分析]]></title>
+    <url>%2F2017%2F11%2F27%2FHashMap%2F</url>
+    <content type="text"><![CDATA[HashMap是Java程序员使用频率最高的用于映射(键值对)处理的数据类型。随着JDK（Java Developmet Kit）版本的更新，JDK1.8对HashMap底层的实现进行了优化，例如引入红黑树的数据结构和扩容的优化等。本文结合JDK1.7和JDK1.8的区别，深入探讨HashMap的结构实现和功能原理。 内部实现搞清楚HashMap，首先需要知道HashMap是什么，即它的存储结构-字段；其次弄明白它能干什么，即它的功能实现-方法。下面我们针对这两个方面详细展开讲解。 存储结构-字段从结构实现来讲，HashMap是数组+链表+红黑树（JDK1.8增加了红黑树部分）实现的，如下如所示。 数据底层具体存储的是什么？从源码可知，HashMap类中有一个非常重要的字段，就是 Node[] table，即哈希桶数组，明显它是一个Node的数组。我们来看Node[JDK1.8]是何物。 1234567891011121314static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123; final int hash; //用来定位数组索引位置 final K key; V value; Node&lt;K,V&gt; next; //链表的下一个node Node(int hash, K key, V value, Node&lt;K,V&gt; next) &#123; ... &#125; public final K getKey()&#123; ... &#125; public final V getValue() &#123; ... &#125; public final String toString() &#123; ... &#125; public final int hashCode() &#123; ... &#125; public final V setValue(V newValue) &#123; ... &#125; public final boolean equals(Object o) &#123; ... &#125;&#125; Node是HashMap的一个内部类，实现了Map.Entry接口，本质是就是一个映射(键值对)。上图中的每个黑色圆点就是一个Node对象。 HashMap就是使用哈希表来存储的。哈希表为解决冲突，可以采用开放地址法和链地址法等来解决问题，Java中HashMap采用了链地址法。链地址法，简单来说，就是数组加链表的结合。在每个数组元素上都一个链表结构，当数据被Hash后，得到数组下标，把数据放在对应下标元素的链表上。 具体hash算法的原理我们不深入讨论，有兴趣的同学可以参考https://tech.meituan.com/java-hashmap.html我们只要知道我们通过hash方法可以得到对象所在数组的下标。 我们得先了解下HashMap的几个字段。从HashMap的默认构造函数源码可知，构造函数就是对下面几个字段进行初始化，源码如下： 123456789101112public HashMap(int initialCapacity, float loadFactor) &#123; if (initialCapacity &lt; 0) throw new IllegalArgumentException("Illegal initial capacity: " + initialCapacity); if (initialCapacity &gt; MAXIMUM_CAPACITY) initialCapacity = MAXIMUM_CAPACITY; if (loadFactor &lt;= 0 || Float.isNaN(loadFactor)) throw new IllegalArgumentException("Illegal load factor: " + loadFactor); this.loadFactor = loadFactor; this.threshold = tableSizeFor(initialCapacity); &#125; 主要就是一下几个字段： 1234int threshold; // 所能容纳的key-value对极限 final float loadFactor; // 负载因子int modCount; int size; 首先，Node[] table的初始化长度length(默认值是16)，Load factor为负载因子(默认值是0.75)，threshold是HashMap所能容纳的最大数据量的Node(键值对)个数。threshold = length * Load factor。也就是说，在数组定义好长度之后，负载因子越大，所能容纳的键值对个数越多。 结合负载因子的定义公式可知，threshold就是在此Load factor和length(数组长度)对应下允许的最大元素数目，超过这个数目就重新resize(扩容)，扩容后的HashMap容量是之前容量的两倍。默认的负载因子0.75是对空间和时间效率的一个平衡选择，建议大家不要修改，除非在时间和空间比较特殊的情况下，如果内存空间很多而又对时间效率要求很高，可以降低负载因子Load factor的值；相反，如果内存空间紧张而对时间效率要求不高，可以增加负载因子loadFactor的值，这个值可以大于1。 size这个字段其实很好理解，就是HashMap中实际存在的键值对数量。注意和table的长度length、容纳最大键值对数量threshold的区别。而modCount字段主要用来记录HashMap内部结构发生变化的次数，主要用于迭代的快速失败。强调一点，内部结构发生变化指的是结构发生变化，例如put新键值对，但是某个key对应的value值被覆盖不属于结构变化。 这里存在一个问题，即使负载因子和Hash算法设计的再合理，也免不了会出现拉链过长的情况，一旦出现拉链过长，则会严重影响HashMap的性能。于是，在JDK1.8版本中，对数据结构做了进一步的优化，引入了红黑树。而当链表长度太长（默认超过8）时，链表就转换为红黑树，利用红黑树快速增删改查的特点提高HashMap的性能，其中会用到红黑树的插入、删除、查找等算法。本文不再对红黑树展开讨论，想了解更多红黑树数据结构的工作原理可以参考笔者的文章 功能实现-方法HashMap的内部功能实现很多，本文主要从put方法的详细执行、扩容过程具有代表性的点深入展开讲解。 分析HashMap的put方法HashMap的put方法执行过程可以通过下图来理解 ①.判断键值对数组table[i]是否为空或为null，否则执行resize()进行扩容； ②.根据键值key计算hash值得到插入的数组索引i，如果table[i]==null，直接新建节点添加，转向⑥，如果table[i]不为空，转向③； ③.判断table[i]的首个元素是否和key一样，如果相同直接覆盖value，否则转向④，这里的相同指的是hashCode以及equals； ④.判断table[i] 是否为treeNode，即table[i] 是否是红黑树，如果是红黑树，则直接在树中插入键值对，否则转向⑤； ⑤.遍历table[i]，判断链表长度是否大于8，大于8的话把链表转换为红黑树，在红黑树中执行插入操作，否则进行链表的插入操作；遍历过程中若发现key已经存在直接覆盖value即可； ⑥.插入成功后，判断实际存在的键值对数量size是否超多了最大容量threshold，如果超过，进行扩容。 JDK1.8HashMap的put方法源码如下:1234public V put(K key, V value) &#123; // 对key的hashCode()做hash return putVal(hash(key), key, value, false, true);&#125; 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960/** * Implements Map.put and related methods * * @param hash hash for key * @param key the key * @param value the value to put * @param onlyIfAbsent if true, don't change existing value * @param evict if false, the table is in creation mode. * @return previous value, or null if none */final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) &#123; Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; int n, i; // 步骤①：tab为空则创建 if ((tab = table) == null || (n = tab.length) == 0) n = (tab = resize()).length; // 步骤②：计算index，并对null做处理 if ((p = tab[i = (n - 1) &amp; hash]) == null) tab[i] = newNode(hash, key, value, null); else &#123; Node&lt;K,V&gt; e; K k; // 步骤③：节点key存在，直接覆盖value if (p.hash == hash &amp;&amp; ((k = p.key) == key || (key != null &amp;&amp; key.equals(k)))) e = p; // 步骤④：判断该链为红黑树 else if (p instanceof TreeNode) e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(this, tab, hash, key, value); // 步骤⑤：该链为链表 else &#123; for (int binCount = 0; ; ++binCount) &#123; if ((e = p.next) == null) &#123; p.next = newNode(hash, key, value, null); //链表长度大于8转换为红黑树进行处理 if (binCount &gt;= TREEIFY_THRESHOLD - 1) // -1 for 1st treeifyBin(tab, hash); break; &#125; // key已经存在直接覆盖value if (e.hash == hash &amp;&amp; ((k = e.key) == key || (key != null &amp;&amp; key.equals(k)))) break; p = e; &#125; &#125; if (e != null) &#123; // existing mapping for key V oldValue = e.value; if (!onlyIfAbsent || oldValue == null) e.value = value; afterNodeAccess(e); return oldValue; &#125; &#125; ++modCount; // 步骤⑥：超过最大容量 就扩容 if (++size &gt; threshold) resize(); afterNodeInsertion(evict); return null;&#125; 扩容机制扩容(resize)就是重新计算容量，向HashMap对象里不停的添加元素，而HashMap对象内部的数组无法装载更多的元素时，对象就需要扩大数组的长度，以便能装入更多的元素。当然Java里的数组是无法自动扩容的，方法是使用一个新的数组代替已有的容量小的数组，就像我们用一个小桶装水，如果想装更多的水，就得换大水桶。 我们分析下resize的源码，鉴于JDK1.8融入了红黑树，较复杂，为了便于理解我们仍然使用JDK1.7的代码，好理解一些，本质上区别不大，具体区别后文再说。 12345678910111213void resize(int newCapacity) &#123; //传入新的容量 Entry[] oldTable = table; //引用扩容前的Entry数组 int oldCapacity = oldTable.length; if (oldCapacity == MAXIMUM_CAPACITY) &#123; //扩容前的数组大小如果已经达到最大(2^30)了 threshold = Integer.MAX_VALUE; //修改阈值为int的最大值(2^31-1)，这样以后就不会扩容了 return; &#125; Entry[] newTable = new Entry[newCapacity]; //初始化一个新的Entry数组 transfer(newTable); //！！将数据转移到新的Entry数组里 table = newTable; //HashMap的table属性引用新的Entry数组 threshold = (int)(newCapacity * loadFactor);//修改阈值&#125; 这里就是使用一个容量更大的数组来代替已有的容量小的数组，transfer()方法将原有Entry数组的元素拷贝到新的Entry数组里。 1234567891011121314151617void transfer(Entry[] newTable) &#123; Entry[] src = table; //src引用了旧的Entry数组 int newCapacity = newTable.length; for (int j = 0; j &lt; src.length; j++) &#123; //遍历旧的Entry数组 Entry&lt;K,V&gt; e = src[j]; //取得旧Entry数组的每个元素 if (e != null) &#123; src[j] = null;//释放旧Entry数组的对象引用（for循环后，旧的Entry数组不再引用任何对象） do &#123; Entry&lt;K,V&gt; next = e.next; int i = indexFor(e.hash, newCapacity); //！！重新计算每个元素在数组中的位置 e.next = newTable[i]; //标记[1] newTable[i] = e; //将元素放在数组上 e = next; //访问下一个Entry链上的元素 &#125; while (e != null); &#125; &#125;&#125; 下面举个例子说明下扩容过程。假设了我们的hash算法就是简单的用key mod 一下表的大小（也就是数组的长度）。其中的哈希桶数组table的size=2， 所以key = 3、7、5，put顺序依次为 5、7、3。在mod 2以后都冲突在table[1]这里了。这里假设负载因子 loadFactor=1，即当键值对的实际大小size 大于 table的实际大小时进行扩容。接下来的三个步骤是哈希桶数组 resize成4，然后所有的Node重新rehash的过程。 Map中各实现类的总结Java为数据结构中的映射定义了一个接口java.util.Map，此接口主要有四个常用的实现类，分别是HashMap、Hashtable、LinkedHashMap和TreeMap，类继承关系如下图所示： 下面针对各个实现类的特点做一些说明： (1) HashMap：它根据键的hashCode值存储数据，大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。 HashMap最多只允许一条记录的键为null，允许多条记录的值为null。HashMap非线程安全，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。如果需要满足线程安全，可以用 Collections的synchronizedMap方法使HashMap具有线程安全的能力，或者使用ConcurrentHashMap。 (2) Hashtable：Hashtable是遗留类，很多映射的常用功能与HashMap类似，不同的是它承自Dictionary类，并且是线程安全的，任一时间只有一个线程能写Hashtable，并发性不如ConcurrentHashMap，因为ConcurrentHashMap引入了分段锁。Hashtable不建议在新代码中使用，不需要线程安全的场合可以用HashMap替换，需要线程安全的场合可以用ConcurrentHashMap替换。 (3) LinkedHashMap：LinkedHashMap是HashMap的一个子类，保存了记录的插入顺序，在用Iterator遍历LinkedHashMap时，先得到的记录肯定是先插入的，也可以在构造时带参数，按照访问次序排序。 (4) TreeMap：TreeMap实现SortedMap接口，能够把它保存的记录根据键排序，默认是按键值的升序排序，也可以指定排序的比较器，当用Iterator遍历TreeMap时，得到的记录是排过序的。如果使用排序的映射，建议使用TreeMap。在使用TreeMap时，key必须实现Comparable接口或者在构造TreeMap传入自定义的Comparator，否则会在运行时抛出java.lang.ClassCastException类型的异常。 对于上述四种Map类型的类，要求映射中的key是不可变对象。不可变对象是该对象在创建后它的哈希值不会被改变。如果对象的哈希值发生变化，Map对象很可能就定位不到映射的位置了。 通过上面的比较，我们知道了HashMap是Java的Map家族中一个普通成员，鉴于它可以满足大多数场景的使用条件，所以是使用频度最高的一个。下文我们主要结合源码，从存储结构、常用方法分析、扩容以及安全性等方面深入讲解HashMap的工作原理。 小结(1) 扩容是一个特别耗性能的操作，所以当程序员在使用HashMap的时候，估算map的大小，初始化的时候给一个大致的数值，避免map进行频繁的扩容。 (2) 负载因子是可以修改的，也可以大于1，但是建议不要轻易修改，除非情况非常特殊。 (3) JDK1.8引入红黑树大程度优化了HashMap的性能。 (4) 还没升级JDK1.8的，现在开始升级吧。HashMap的性能提升仅仅是JDK1.8的冰山一角。 转载地址:查看原文]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[堆(heap)和栈(stack)有什么区别?]]></title>
+    <url>%2F2017%2F11%2F20%2F20171122%2F</url>
+    <content type="text"><![CDATA[简单的可以理解为： heap：是由malloc之类函数分配的空间所在地。地址是由低向高增长的。 stack：是自动分配变量，以及函数调用的时候所使用的一些空间。地址是由高向低减少的。 一个由c/C++编译的程序占用的内存分为以下几个部分1、栈区（stack）— 由编译器自动分配释放 ，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。2、堆区（heap） — 一般由程序员分配释放， 若程序员不释放，程序结束时可能由OS回收 。注意它与数据结构中的堆是两回事，分配方式倒是类似于链表。3、全局区（静态区）（static）—，全局变量和静态变量的存储是放在一块的，初始化的全局变量和静态变量在一块区域， 未初始化的全局变量和未初始化的静态变量在相邻的另一块区域。 - 程序结束后有系统释放4、文字常量区 —常量字符串就是放在这里的。 程序结束后由系统释放5、程序代码区—存放函数体的二进制代码。]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[原子操作的实现原理]]></title>
+    <url>%2F2017%2F11%2F17%2F20171117%2F</url>
+    <content type="text"><![CDATA[原子(atomic)本意是”不能被进一步分割的最小粒子”,而原子操作(atomic operation)意为”不可被中断的一个或一系列操作”. 处理器如何实现原子操作(1) 使用总线锁保证原子性 如果多个处理器同时对共享变量进行读写操作,那么共享变量就会被多个处理器同时进行操作,这样读写操作就不是原子的,操作完之后共享变量的值会和期望的不一致. 所谓总线锁就是使用处理器提供的一个LOCK#信号,当一个处理器在总线上输出次信号时,其他处理器的请求将被阻塞住,那么该处理器可以独占共享内存. (2) 使用缓存锁保证原子性 所谓”缓存锁”是内存区域如果被缓存在处理器的缓存中,并且在Lock操作期间被锁定,那么当它执行锁操作回写到内存时,处理器不在总线上声言LOCK#信号,而是修改内部的内存地址,并允许它的缓存一致性机制来保证原子性,因为缓存一致性机制会阻止同时修改由两个以上处理器缓存的内存区域数据,当其他处理器回写已被锁定的缓存行的数据时,会使缓存行无效.]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>面试</tag>
+        <tag>jvm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[用栈实现队列]]></title>
+    <url>%2F2017%2F11%2F14%2F20171114%2F</url>
+    <content type="text"><![CDATA[问题描述 使用两个栈实现一个队列，实现pop方法和push方法，存储元素为int数据 思路 使用stackA做数据存储，使用stackB做临时数据中转。pop时，将stackA的数据转到stackB中，然后pop一个出来。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283package main.generic;import java.util.Stack;/** * @author: kevin * @date: 2017/11/14 * @description: 栈实现自定义队列 * * 用两个栈模拟一个队列 * A为插入栈--模拟入队列，B为弹出栈--模拟出队列 * (1)入队列，即入栈A * (2)出队列，B栈为空，则A栈元素全部出栈并入栈B，再从B出栈 * B栈不为空，从B出栈 */public class StatckToQueue &#123; private Stack stackA = new Stack(); private Stack stackB = new Stack(); //元素入队列--压入A栈 public void push(int value)&#123; stackA.push(value); &#125; //元素出队列--从B栈弹出 public int pop()&#123; //如果弹出栈B为空，则把A栈中的元素全部压入B栈 if (stackB.empty())&#123; while (!stackA.isEmpty())&#123; stackB.push(stackA.pop()); &#125; &#125; //B栈中元素出栈 return (int) stackB.pop(); &#125; //判断队列是否为空 private boolean isEmplty() &#123; if(stackA.empty() &amp;&amp; stackB.empty())&#123; return true; &#125;else&#123; return false; &#125; &#125; public static void main(String[] args) &#123; StatckToQueue Q = new StatckToQueue(); //元素入队列 System.out.print("元素入队列："); for(int i = 0; i &lt; 3; i++) &#123; Q.push(i); System.out.print(i +" "); &#125; System.out.println(); //元素出队列 System.out.print("元素出队列："); for(int i = 0; i &lt; 3; i++) &#123; int val = Q.pop(); System.out.print(val +" "); &#125; System.out.println(); &#125; 打印结果: 元素入队列：0 1 2 元素出队列：0 1 2 &#125;]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[volatile的实现原理]]></title>
+    <url>%2F2017%2F11%2F13%2Fvolatile%2F</url>
+    <content type="text"><![CDATA[将volatile修饰的java代码转换成汇编代码，进行写操作的时候会多出以lock前缀的汇编代码。lock前缀的指令在多核处理器下会引发两点： 将当前处理器缓存行的数据写回到系统内存。 这个写回内存的操作会使在其他CPU里缓存了该内存地址的数据无效。 volatile的两条实现原则： Lock前缀指令会引起处理器缓存回写到内存。 一个处理器的缓存回写到内存会导致其他处理器的缓存无效。 锁的状态：锁的级别从低到高依次是：无锁状态 -&gt; 偏向锁状态 -&gt; 轻量级锁状态 -&gt; 重量级锁状态 这几个状态随着竞争情况逐渐升级,锁可以升级但不能降级,意味着偏向锁升级成轻量级锁后不能降级偏向锁,]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>面试</tag>
+        <tag>jvm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[双亲委派模型]]></title>
+    <url>%2F2017%2F11%2F03%2Fclassloader%2F</url>
+    <content type="text"><![CDATA[双亲委派模型是java类加载器所使用的模型. 双亲委派模型的工作过程：如果一个类加载器收到了类加载器的请求.它首先不会自己去尝试加载这个类.而是把这个请求委派给父加载器去完成.每个层次的类加载器都是如此. 因此所有的加载请求最终都会传送到Bootstrap类加载器(启动类加载器)中.只有父类加载反馈自己无法加载这个请求(它的搜索范围中没有找到所需的类)时.子加载器才会尝试自己去加载. 双亲委派模型执行流程 双亲委派模型的好处 java类随着它的加载器一起具备了一种带有优先级的层次关系. 例如类java.lang.Object,它存放在rt.jart之中.无论哪一个类加载器都要加载这个类.最终都是双亲委派模型最顶端的Bootstrap类加载器去加载.因此Object类在程序的各种类加载器环境中都是同一个类.相反.如果没有使用双亲委派模型.由各个类加载器自行去加载的话.如果用户编写了一个称为“java.lang.Object”的类.并存放在程序的ClassPath中.那系统中将会出现多个不同的Object类.java类型体系中最基础的行为也就无法保证.应用程序也将会一片混乱. 双亲委派的代码实现(在ClassLoader类中的loadClass中)12345678910111213141516171819202122232425262728293031323334353637protected Class&lt;?&gt; loadClass(String name, boolean resolve) throws ClassNotFoundException &#123; synchronized (getClassLoadingLock(name)) &#123; // First, check if the class has already been loaded Class&lt;?&gt; c = findLoadedClass(name); if (c == null) &#123; long t0 = System.nanoTime(); try &#123; if (parent != null) &#123; c = parent.loadClass(name, false); &#125; else &#123; c = findBootstrapClassOrNull(name); &#125; &#125; catch (ClassNotFoundException e) &#123; // ClassNotFoundException thrown if class not found // from the non-null parent class loader &#125; if (c == null) &#123; // If still not found, then invoke findClass in order // to find the class. long t1 = System.nanoTime(); c = findClass(name); // this is the defining class loader; record the stats sun.misc.PerfCounter.getParentDelegationTime().addTime(t1 - t0); sun.misc.PerfCounter.getFindClassTime().addElapsedTimeFrom(t1); sun.misc.PerfCounter.getFindClasses().increment(); &#125; &#125; if (resolve) &#123; resolveClass(c); &#125; return c; &#125; &#125; 逻辑：先检查是否已经被加载过.若没有加载则调用父加载器的loadClass()方法.若父加载器为空则默认使用Bootstrap类加载器作为父加载器.若父加载失败.抛出ClassNotFoundException异常后再调用自己的findClass()方法进行加载]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Eureka]]></title>
+    <url>%2F2017%2F11%2F01%2Feureka%2F</url>
+    <content type="text"><![CDATA[Eureka 是什么?Eureka是一个基于REST(表述性状态传递)的服务,主要用在AWS云定位服务中,目的是负载均衡和中间层故障转移服务.我们称之为Eureka服务. Eureka也配备了一个基于JAVA的客户端组件,Eureka客户端, 这使得服务的交互更加容易.这个客户端同样内置了一个负载均衡器,可以进行基本的循环负载均衡.在Netflix上,一个更为复杂的Eureka提供加权负载均衡基于多种因素如流量,资源使用错误条件等,以提供更高的弹性.]]></content>
+      <categories>
+        <category>springcloud</category>
+      </categories>
+      <tags>
+        <tag>springcloud</tag>
+        <tag>REST服务</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JAVA架构图谱]]></title>
+    <url>%2F2017%2F08%2F31%2Fjava-architecture-diagram%2F</url>
+    <content type="text"><![CDATA[史上最全的JAVA架构图谱]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[chrome-plugins]]></title>
+    <url>%2F2017%2F08%2F30%2Fchrome-plugins%2F</url>
+    <content type="text"><![CDATA[推荐一些平时好用的Chrome插件。 uBlock Origin浏览网页的时候广告屏蔽插件是必备的，相比知名度比较高的AdBlock而言，其实uBlock对于广告屏蔽效果要更加好，同时也可以很方便的进行个性化自定义。 Awesome ScreenShotAwesome ScreenShot是一个非常强大的截图插件，支持滚动截图，甚至还可以截图Chrome之外的其他应用，截图之后的对于图片的编辑也是非常的好用，并且也支持录制屏幕。Awesome ScreenShot Pocket在电脑上看到好的文章，想一键同步到手机上方便在碎片化的时间进行浏览？那么Pocket是一个很好的选择，在移动端的导出格式也是非常值得称赞。 划词翻译对于经常要浏览英文文档的童鞋来说，遇到不熟悉的单词跳转到另外一个软件或者网页中去重新查单词的过程往往整个思路都会被打断，使用了划词翻译当选中一个单词之后，会跳出一个可选的翻译按钮，同时也支持在特定的网页禁止使用这个插件。 QR Code Extension有时候遇见一些好的内容想分享到朋友圈让更多的朋友受益，一般我们都是在收藏里输入这个链接保存后再在微信中打开这个网页然后才能分享到朋友圈，整个过程非常麻烦到了最后我们分享的欲望都没有了:P，使用QR Code Extension可以直接在PC端生成对应的二维码，微信扫描之后直接打开网页一键分享。 Momentum颜控必备，受够了Chrome单调的新标签页的朋友可以试一试Momentum插件，对于互联网行业的从业者来说，每天在浏览器下的时间比较长，Momentum也支持Todo列表，可以列出一天的代办事项。当然如果你是一个Vimer，这些东西我们从来都不需要:P，不过这应该符合大多数用户的需求。 EvernoteEvernote是一个非常优秀的笔记管理工具，这在一定程度上得益于它在很多应用中优秀的第三方扩展插件，而且搜索功能也是非常的强大，唯一的遗憾就是官方发布的版本不支持markdown形式的笔记记录，这也可能与大多数用户的使用习惯相关。 使用Evernote在Chrome下提供的插件，你可以一键将当前正在浏览的文章或者文档很快捷的保存到Evernote中。同时Evernote的插件也支持对当前正在浏览的文章开启阅读模式，过滤掉除文章之外的信息，专注于阅读。 One-Click Extensions ManagerChrome下如果同时开多个插件是非常消耗资源的，而跳转到二级菜单下面去管理插件太过麻烦，使用One-Click Extensions Manager可以直接很好的管理当前安装的所有插件。 One Tab有时候我们在浏览器中打开了很多的标签页，但是有时候当关闭电脑我们平常可能会需要对这些网页一个一个的收藏这些标签页，下次登录的时候需要一个一个打开，这显然是非常低效的，使用One Tab可以很好的解决这个问题。当我们要登出电脑的时候，点击one tab可以自动保存当前打开的所有网页，当我们下次登录的时候one tab可以帮我们恢复我们上次保存的网页。 TampermonkeyTampermonkey上面提供了很多有趣的脚本，比如在web端使用无限速的百度云，免分享密码下载各大网盘的文件，直接下载Youtube上的视频，导出Instangram上的图片。这是官网的地址，大家可以根据自己的需求到上面去找，如果你懂一点前端开发也可以很轻松的定制一些自己的小脚本。 Download PlusChrome默认的下载按钮是一个二级按钮使用起来很不方便，可以通过安装Download Plus来解决这个痛点，一键管理所有下载的文件。 Last Password不想在多个网站之间使用一个密码，同时又担心密码太多太复杂了又记不住，试一试Last Password插件吧便捷又安全。 VimiumVimium是装逼必备的，全键盘无鼠标的在浏览器中浏览网页，如果你是程序员的话也可以很好的定制相关的规则快捷键，至少装了Vimium之后Chrome自带的快捷键我就基本就没怎么用过。 New Tong Wen TangNew Tong Wen Tang可以自动将网页中的繁体字转换为简体字，比如有时候阅读一些维基百科上的文档的时候，繁体文档的资料相比简体要多很多。 Octotree这是一个为程序员提供的GitHub插件，在GitHub上浏览项目的时候，通过Octotree可以自动为我们生成项目的目录树。]]></content>
+      <categories>
+        <category>plugins</category>
+      </categories>
+      <tags>
+        <tag>chrome</tag>
+        <tag>plugin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SonarQube 代码质量管理平台的搭建]]></title>
+    <url>%2F2017%2F06%2F15%2FSonarQube%2F</url>
+    <content type="text"><![CDATA[背景： 由于公司项目用的是自己的内部框架，没有引入spring，例如获取数据库的session等操作，都是需要手动操作的，操作多了难免会造成session的未关闭等问题。上周就是因为session的为关闭导致应用运行一段时间后，莫名的不再接受任何请求和处理，也没有任何的异常信息，就像卡住一样。因此排查问题浪费了很多时间，最后检查代码才发现有一处因为数据库的session未关闭的原因造成的。其实如果用到了代码检查工具，这些细节问题是完全可以避免的。 这里推荐使用开源的SonarQube质量管理平台工具 下面是搭建步骤：1、准备环境 jdk1.8 mysql5.6+ 2、 安装mysql并创建数据库sonar1234567891011# mysql -u root -p# mysql&gt; CREATE DATABASE sonar CHARACTER SET utf8 COLLATE utf8_general_ci;# mysql&gt; CREATE USER &apos;sonar&apos; IDENTIFIED BY &apos;sonar&apos;;# mysql&gt; GRANT ALL ON sonar.* TO &apos;sonar&apos;@&apos;%&apos; IDENTIFIED BY &apos;sonar&apos;;# mysql&gt; GRANT ALL ON sonar.* TO &apos;sonar&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;sonar&apos;;# mysql&gt; FLUSH PRIVILEGES; 3、 下载安装包服务端工具：sonarqube:http://www.sonarqube.org/downloads/ 客户端工具sonar-runner:http://repo1.maven.org/maven2/org/codehaus/sonar/runner/sonar-runner-dist/2.3/sonar-runner-dist-2.4.zip 4、 安装SonarQube 第一步： 将下载的SonarQube解压安装到/usr/local 目录下。具体步骤如下： 12345# wget -c http://downloads.sonarsource.com/sonarqube/sonarqube-5.1.1.zip# unzip sonarqube-5.1.1.zip# mv sonarqube-5.1.1 /usr/local/ 第二步： 配置环境变量 123456789vim + /etc/profile`添加SONAR_HOME=/usr/local/sonarqube-5.1.1 export SONAR_HOME保存退出并使配置生效source /etc/profile 第三步： 修改配置文件sonar.properties 123456789# vim /usr/local/sonarqube-5.1.1/conf/sonar.properties打开后，找到sonar.host.url=http://192.168.1.168:9000sonar.jdbc.username=rootsonar.jdbc.password=123456sonar.jdbc.url=jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;useConfigs=maxPerformancesonar.web.host=0.0.0.0sonar.web.context=/sonar.web.port=9000 第四步： 修改配置文件wrapper.conf wrapper.java.command=/usr/local/sonar/jdk/bin/java 注意：把wrapper.conf中的wrapper.java.command修改成jdk1.8路径否则会找系统自带jdk版本的命令执行，启动的时候可能报错 , bin后面还需要加上/java 第五步： 启动服务 # /usr/local/sonarqube-5.1.1/bin/linux-x86-64/sonar.sh start &nbsp;&nbsp;另外，启动/停止/重启命令如下： 12345678910111213# ./sonar.sh start 启动服务 # ./sonar.sh stop 停止服务 # ./sonar.sh restart 重启服务查看启动日志:# tail -f /usr/local/sonarqube-5.6.6/logs/sonar.log关闭命令:# ./sonar.sh stop登录：http://localhost:9000默认密码:admin/admin 第六步： 访问SonarQube Web管理界面。如果能够看到这个界面证明SonarQube安装成功啦。 注：我这里访问的地址是：http://192.168.1.168:9000 5、 安装SonarQube Runner 第一步：将下载的http://repo1.maven.org/maven2/org/codehaus/sonar/runner/sonar-runner-dist/2.4/sonar-runner-dist-2.4.zip解压后放到/usr/local目录下。具体步骤如下： 123# wget -c http://repo1.maven.org/maven2/org/codehaus/sonar/runner/#sonar-runner-dist/2.4/sonar-runner-dist-2.4.zip# unzip sonar-runner-dist-2.4.zip# mv sonar-runner-2.4/ /usr/local/ 第二步：配置环境变量 123456789# vim + /etc/profile添加SONAR_RUNNER_HOME=/usr/local/sonar-runner-2.4/PATH=.:$SONAR_RUNNER_HOME/bin export SONAR_RUNNER_HOME保存并退出 # source /etc/profile 第三步：配置sonar-runner.properties 12345678910# vim /usr/local/sonar-runner-2.4/conf/sonar-runner.properties找到sonar.host.url=http://192.168.1.168sonar.jdbc.url=jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;amp;characterEncoding=utf8sonar.jdbc.username=sonarsonar.jdbc.password=sonarsonar.login=adminsonar.password=admin将前面的#去掉 第四步：运行sonar-runner分析源代码 Sonar官方已经提供了非常全的代码样例便于新手入门用。 下载地址：https://github.com/SonarSource/sonar-examples/archive/master.zip 下载后使用unzip解压。进入java执行sonar-runner命令即可。操作命令如下： 1234# wget -c https://github.com/SonarSource/sonar-examples/archive/master.zip# unzip master.zip# cd sonar-examples-master/projects/languages/java/maven/# sonar-runner 如果能够看到下面的输出信息，证明你的SonarQube Runner安装并配置正确啦。 123456INFO: ------------------------------------------------------------------------INFO: EXECUTION SUCCESSINFO: ------------------------------------------------------------------------Total time: 2:59.167sFinal Memory: 17M/204MINFO: ------------------------------------------------------------------------ 第五步：看看SonarQube的Web界面，是否已经可以看到分析的结果啦。 6、扫描项目 (1) maven环境 (推荐方式，比较方便，扫描完了自动上传结果至sonar服务器中) Maven仓库中就有SonarQube Scanner工具的插件，只要在$M2_HOME/conf/setting.xml文件中添加如下配置 1234567891011121314151617181920212223&lt;pluginGroups&gt; &lt;pluginGroup&gt;org.sonarsource.scanner.maven&lt;/pluginGroup&gt;&lt;/pluginGroups&gt;&lt;profile&gt; &lt;id&gt;sonar&lt;/id&gt;&lt;activation&gt; &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;&lt;/activation&gt;&lt;properties&gt; &lt;sonar.host.url&gt;http://192.168.1.168:9000/sonarqube&lt;/sonar.host.url&gt;&lt;/properties&gt;&lt;/profile&gt; 配置完成后，在项目中，执行mvn sonar:sonar，SonarQube Scanner会自动扫描，根据pom.xml文件得出项目相关信息，不需要自定义sonar-project.properties。扫描完成后就会上传只Sonarqube服务器中。稍后，登陆服务器中就可以看到分析结果了。 (2) 手动扫描 1234567891011121314151617181920212223242526272829303132333435打开要进行代码分析的项目根目录，新建sonar-project.properties文件sonar.projectKey=my:task# this is the name displayed in the SonarQube UIsonar.projectName=My tasksonar.projectVersion=1.0sonar.projectDescription= task 定时任务调度# Path is relative to the sonar-project.properties file. Replace &quot;\&quot; by &quot;/&quot; on Windows.# Since SonarQube 4.2, this property is optional if sonar.modules is set.# If not set, SonarQube starts looking for source code from the directory containing# the sonar-project.properties file.#sources是源文件所在的目录sonar.sources=master/src,slave/srcsonar.binaries=WebRoot/WEB-INF/classes# Encoding of the source code. Default is default system encodingsonar.language=javasonar.my.property=valuesonar.sourceEncoding=UTF-8在项目跟目录执行 输入命令：sonar-runner 7、SonarQube默认是没有安装中文语言包的。如何安装语言包呢？进入SonarQube插件目录，下载语言包即可。步骤如下12# cd /usr/local/sonarqube-5.1.1/extensions/plugins# wget -c http://repo1.maven.org/maven2/org/codehaus/sonar-plugins/l10n/sonar-l10n-zh-plugin/1.8/sonar-l10n-zh-plugin-1.8.jar 这是中文语言包的源码地址：https://github.com/SonarCommunity/sonar-l10n-zh]]></content>
+      <categories>
+        <category>SonarQube</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>SonarQube</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[springboot-storm-integration]]></title>
+    <url>%2F2017%2F06%2F01%2Fspring-storm-integration%2F</url>
+    <content type="text"><![CDATA[最近在搭建storm与springboot框架的集成，由于本身对storm分布式框架的不熟悉，加上网上能搜到的spring与storm集成的案例也比较少，这一路走来真的是各种坎坷啊，所以也在此总结一下遇到的一些问题，同时也希望能帮到有需要的朋友。 在搭建框架之前，有必要先熟悉一下storm的topology在提交过程中，初始化了什么，实例化了哪些类？ (1) 首先简单说一下，提交topology的流程： 1、首先定义好topology的Config，实例化DrpcSpout、以及Bolt之间的拓扑结构 2、提交Topology之前确认storm的各种服务都启动了，包括zk、nimbus、supervisor、logviewer、ui 3、提交Topology实例给nimbus，这时候调用TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentConfiguration()方法，declareOutputFields()方法配置Spout和Bolt实例的输出，getComponentConfiguration()方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。 4、Worker Node上运行的thread，从nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields()和getComponentConfiguration()不会再运行。 4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare()方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple 5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute()方法 6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup()方法 （2）storm与springboot的集成 1、定义springboot的主入口，也就是Application的启动类 123456@Configuration@EnableAutoConfiguration@ComponentScan(basePackages=&quot;com.demo&quot;)public class Main extends ApplicationObjectSupport &#123;&#125; 2、由于storm的每个bolt都相当于独立的应用，正好每个bolt提供了一个prepare方法，这个prepare方法是在topology提交的时候调用的，这个时候可以把加载spring的过程，放在此处，从而也保证了每个bolt都能获取到Spring的ApplicationContext，有了ApplicationContext，后面的一切都好说了，springboot的任何功能的可以正常使用。废话不说直接贴代码： 123456public void prepare(Map stormConf, TopologyContext context) &#123; super.prepare(stormConf, context); logger.info(&quot;Main start...&quot;); new SpringApplicationBuilder(Main.class).web(false).run(new String[]&#123;&#125;); logger.info(&quot;Main end...&quot;);&#125; 3、获取ApplicationContext前，还需要实现ApplicationContextAware接口，注意一定要加上@Component，spring才会去加载当前类 1234567891011121314151617181920212223242526272829303132@Componentpublic class BeanUtils implements ApplicationContextAware&#123; private static ApplicationContext applicationContext = null; @Override public void setApplicationContext(ApplicationContext arg0) throws BeansException &#123; if (BeanUtils.applicationContext == null) &#123; BeanUtils.applicationContext = arg0; &#125; &#125; // 获取applicationContext public static ApplicationContext getApplicationContext() &#123; return applicationContext; &#125; // 通过name获取 Bean. public static Object getBean(String name) &#123; return getApplicationContext().getBean(name); &#125; // 通过class获取Bean. public static &lt;T&gt; T getBean(Class&lt;T&gt; clazz) &#123; return getApplicationContext().getBean(clazz); &#125; // 通过name,以及Clazz返回指定的Bean public static &lt;T&gt; T getBean(String name, Class&lt;T&gt; clazz) &#123; return getApplicationContext().getBean(name, clazz); &#125;&#125; 4、通过ApplicationContext获取Service实现类,注意Service一定要加上@Service(name=”demoService”)，不加别名的话，会获取不到，你可以试一下。(DemoService) applicationContext.getBean(&quot;demoService&quot;); 到此简单的整合就完成了，重点是每个bolt都需要独立的ApplicationContext，才能获取beans，切入点也就是bolt的prepare()方法中。]]></content>
+      <categories>
+        <category>storm</category>
+      </categories>
+      <tags>
+        <tag>storm</tag>
+        <tag>spring</tag>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Topology的初始化流程]]></title>
+    <url>%2F2017%2F05%2F31%2Fstorm-life-cycle%2F</url>
+    <content type="text"><![CDATA[1、 首先配置好topology，并定义好Spout实例和Bolt实例 2、 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentConfiguration()方法，declareOutputFields()方法配置Spout和Bolt实例的输出，getComponentConfiguration()方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。 3、在Worker Node上运行的thread，从Nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields()和getComponentConfiguration()不会再运行。 4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare()方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple 5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute()方法 6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup()方法 不过如果是强制关闭，这个cleanup()方法有可能不会被调用到]]></content>
+      <categories>
+        <category>storm</category>
+      </categories>
+      <tags>
+        <tag>storm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[storm 启动相关命令]]></title>
+    <url>%2F2017%2F05%2F31%2Fstart-storm-command%2F</url>
+    <content type="text"><![CDATA[在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动1.查看zk的状态：./zkServer.sh status 2.如果zk没有开启，将nimbus和supervisor的zk开启./zkServer.sh start 3.启动nimbus（切换到storm的bin目录下）nohup ./storm nimbus &amp; 4.启动supervisornohup ./storm supervisor &amp; 4.启动storm UInohup ./storm ui &amp; 在浏览器中输入ip:8080/index.html进入storm UI界面（注意端口不一定是8080，注意配置）]]></content>
+      <categories>
+        <category>storm</category>
+      </categories>
+      <tags>
+        <tag>storm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F04%2F20%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+</search>
