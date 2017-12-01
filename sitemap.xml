@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/08/30/chrome-plugins/</loc>
+    
+    <lastmod>2017-12-01T14:13:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/08/31/java-architecture-diagram/</loc>
     
     <lastmod>2017-11-29T10:02:04.000Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://yoursite.com/2017/11/03/classloader/</loc>
     
     <lastmod>2017-11-29T09:58:16.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/30/chrome-plugins/</loc>
-    
-    <lastmod>2017-11-29T09:57:59.000Z</lastmod>
     
   </url>
   

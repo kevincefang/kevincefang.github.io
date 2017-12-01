@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/08/30/chrome-plugins/</loc>
+    <lastmod>2017-12-01T14:13:34.000Z</lastmod>
+    <data>
+        <display>
+        <title>chrome-plugins</title>
+        <pubTime>2017-08-30T02:09:36.000Z</pubTime>
+        
+        <tag>chrome</tag>
+         
+        <tag>plugin</tag>
+         
+         
+           
+             
+              <breadCrumb title="plugins" url="http://yoursite.com/categories/plugins/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/08/31/java-architecture-diagram/</loc>
     <lastmod>2017-11-29T10:02:04.000Z</lastmod>
     <data>
@@ -81,28 +103,6 @@
            
              
               <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/08/30/chrome-plugins/</loc>
-    <lastmod>2017-11-29T09:57:59.000Z</lastmod>
-    <data>
-        <display>
-        <title>chrome-plugins</title>
-        <pubTime>2017-08-30T02:09:36.000Z</pubTime>
-        
-        <tag>chrome</tag>
-         
-        <tag>plugin</tag>
-         
-         
-           
-             
-              <breadCrumb title="plugins" url="http://yoursite.com/categories/plugins/"/>
           
         </display>
     </data>
