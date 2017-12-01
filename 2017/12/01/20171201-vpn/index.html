@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="storm,spring,springboot," />
+  <meta name="keywords" content="vpn," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="最近在搭建storm与springboot框架的集成，由于本身对storm分布式框架的不熟悉，加上网上能搜到的spring与storm集成的案例也比较少，这一路走来真的是各种坎坷啊，所以也在此总结一下遇到的一些问题，同时也希望能帮到有需要的朋友。  在搭建框架之前，有必要先熟悉一下storm的topology在提交过程">
-<meta name="keywords" content="storm,spring,springboot">
+<meta name="description" content="由于平常查询资料经常需要翻墙google之类的网站,之前一直买的第三方的VPN账号,但是经常遇到不稳定或者访问比较慢的问题.后来实在是无法忍受了,决定搭建一个属于自己的VPN.具体的步骤总结一下,也希望能帮到需要的朋友.  选择服务器首先需要购买服务器,购买前我也看了好几家的云服务器,价钱都差不多,最低配置的价格都是5">
+<meta name="keywords" content="vpn">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springboot-storm-integration">
-<meta property="og:url" content="http://yoursite.com/2017/06/01/spring-storm-integration/index.html">
+<meta property="og:title" content="VPN的搭建">
+<meta property="og:url" content="http://yoursite.com/2017/12/01/20171201-vpn/index.html">
 <meta property="og:site_name" content="Haoer Blog">
-<meta property="og:description" content="最近在搭建storm与springboot框架的集成，由于本身对storm分布式框架的不熟悉，加上网上能搜到的spring与storm集成的案例也比较少，这一路走来真的是各种坎坷啊，所以也在此总结一下遇到的一些问题，同时也希望能帮到有需要的朋友。  在搭建框架之前，有必要先熟悉一下storm的topology在提交过程中，初始化了什么，实例化了哪些类？ (1) 首先简单说一下，提交topolog">
+<meta property="og:description" content="由于平常查询资料经常需要翻墙google之类的网站,之前一直买的第三方的VPN账号,但是经常遇到不稳定或者访问比较慢的问题.后来实在是无法忍受了,决定搭建一个属于自己的VPN.具体的步骤总结一下,也希望能帮到需要的朋友.  选择服务器首先需要购买服务器,购买前我也看了好几家的云服务器,价钱都差不多,最低配置的价格都是5$  亚马逊的LigntSail, 需要绑定信用卡,扣了我12块钱预付费,收到">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-06-01T07:16:07.000Z">
+<meta property="og:updated_time" content="2017-12-01T16:04:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="springboot-storm-integration">
-<meta name="twitter:description" content="最近在搭建storm与springboot框架的集成，由于本身对storm分布式框架的不熟悉，加上网上能搜到的spring与storm集成的案例也比较少，这一路走来真的是各种坎坷啊，所以也在此总结一下遇到的一些问题，同时也希望能帮到有需要的朋友。  在搭建框架之前，有必要先熟悉一下storm的topology在提交过程中，初始化了什么，实例化了哪些类？ (1) 首先简单说一下，提交topolog">
+<meta name="twitter:title" content="VPN的搭建">
+<meta name="twitter:description" content="由于平常查询资料经常需要翻墙google之类的网站,之前一直买的第三方的VPN账号,但是经常遇到不稳定或者访问比较慢的问题.后来实在是无法忍受了,决定搭建一个属于自己的VPN.具体的步骤总结一下,也希望能帮到需要的朋友.  选择服务器首先需要购买服务器,购买前我也看了好几家的云服务器,价钱都差不多,最低配置的价格都是5$  亚马逊的LigntSail, 需要绑定信用卡,扣了我12块钱预付费,收到">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/01/spring-storm-integration/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/01/20171201-vpn/"/>
 
 
 
 
 
-  <title> springboot-storm-integration | Haoer Blog </title>
+  <title> VPN的搭建 | Haoer Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -331,7 +331,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/01/spring-storm-integration/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/20171201-vpn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kevin">
@@ -352,7 +352,7 @@
             
             
               
-                springboot-storm-integration
+                VPN的搭建
               
             
           </h2>
@@ -367,8 +367,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T13:38:31+08:00">
-                Jun 1 2017
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T22:30:10+08:00">
+                Dec 1 2017
               </time>
             
 
@@ -390,8 +390,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/storm/" itemprop="url" rel="index">
-                    <span itemprop="name">storm</span>
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
                   </a>
                 </span>
 
@@ -431,34 +431,29 @@
 
       
         <blockquote>
-<p>最近在搭建storm与springboot框架的集成，由于本身对storm分布式框架的不熟悉，加上网上能搜到的spring与storm集成的案例也比较少，这一路走来真的是各种坎坷啊，所以也在此总结一下遇到的一些问题，同时也希望能帮到有需要的朋友。</p>
+<p>由于平常查询资料经常需要翻墙google之类的网站,之前一直买的第三方的VPN账号,但是经常遇到不稳定或者访问比较慢的问题.后来实在是无法忍受了,决定搭建一个属于自己的VPN.具体的步骤总结一下,也希望能帮到需要的朋友.</p>
 </blockquote>
-<pre><code>在搭建框架之前，有必要先熟悉一下storm的topology在提交过程中，初始化了什么，实例化了哪些类？
-</code></pre><h5 id="1-首先简单说一下，提交topology的流程："><a href="#1-首先简单说一下，提交topology的流程：" class="headerlink" title="(1) 首先简单说一下，提交topology的流程："></a>(1) 首先简单说一下，提交topology的流程：</h5><blockquote>
-<p>1、首先定义好topology的Config，实例化DrpcSpout、以及Bolt之间的拓扑结构</p>
-<p>2、提交Topology之前确认storm的各种服务都启动了，包括zk、nimbus、supervisor、logviewer、ui </p>
-<p>3、提交Topology实例给nimbus，这时候调用TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentConfiguration()方法，declareOutputFields()方法配置Spout和Bolt实例的输出，getComponentConfiguration()方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。</p>
-<p>4、Worker Node上运行的thread，从nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields()和getComponentConfiguration()不会再运行。</p>
-<p>4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare()方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple</p>
-<p>5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute()方法</p>
-<p>6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup()方法</p>
-</blockquote>
-<h5 id="（2）storm与springboot的集成"><a href="#（2）storm与springboot的集成" class="headerlink" title="（2）storm与springboot的集成"></a>（2）storm与springboot的集成</h5><blockquote>
-<p>1、定义springboot的主入口，也就是Application的启动类</p>
-</blockquote>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@EnableAutoConfiguration</span><br><span class="line">@ComponentScan(basePackages=&quot;com.demo&quot;)</span><br><span class="line">public class Main extends ApplicationObjectSupport &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>2、由于storm的每个bolt都相当于独立的应用，正好每个bolt提供了一个prepare方法，这个prepare方法是在topology提交的时候调用的，这个时候可以把加载spring的过程，放在此处，从而也保证了每个bolt都能获取到Spring的ApplicationContext，有了ApplicationContext，后面的一切都好说了，springboot的任何功能的可以正常使用。废话不说直接贴代码：</p>
-</blockquote>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void prepare(Map stormConf, TopologyContext context) &#123;</span><br><span class="line">   super.prepare(stormConf, context);</span><br><span class="line">   logger.info(&quot;Main start...&quot;);</span><br><span class="line">   new SpringApplicationBuilder(Main.class).web(false).run(new String[]&#123;&#125;);</span><br><span class="line">   logger.info(&quot;Main end...&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>3、获取ApplicationContext前，还需要实现ApplicationContextAware接口，注意一定要加上@Component，spring才会去加载当前类</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class BeanUtils implements ApplicationContextAware&#123;</span><br><span class="line"></span><br><span class="line">    private static ApplicationContext applicationContext = null;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setApplicationContext(ApplicationContext arg0) throws BeansException &#123;</span><br><span class="line">         if (BeanUtils.applicationContext == null) &#123;</span><br><span class="line">             BeanUtils.applicationContext = arg0;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     // 获取applicationContext</span><br><span class="line">     public static ApplicationContext getApplicationContext() &#123;</span><br><span class="line">         return applicationContext;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">    // 通过name获取 Bean.</span><br><span class="line">     public static Object getBean(String name) &#123;</span><br><span class="line">         return getApplicationContext().getBean(name);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     // 通过class获取Bean.</span><br><span class="line">     public static &lt;T&gt; T getBean(Class&lt;T&gt; clazz) &#123;</span><br><span class="line">         return getApplicationContext().getBean(clazz);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     // 通过name,以及Clazz返回指定的Bean</span><br><span class="line">    public static &lt;T&gt; T getBean(String name, Class&lt;T&gt; clazz) &#123;</span><br><span class="line">         return getApplicationContext().getBean(name, clazz);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>4、通过ApplicationContext获取Service实现类,注意Service一定要加上@Service(name=”demoService”)，不加别名的话，会获取不到，你可以试一下。<br><code>(DemoService) applicationContext.getBean(&quot;demoService&quot;);</code></p>
-</blockquote>
-<p><strong>到此简单的整合就完成了，重点是每个bolt都需要独立的ApplicationContext，才能获取beans，切入点也就是bolt的prepare()方法中。</strong> </p>
+<h4 id="选择服务器"><a href="#选择服务器" class="headerlink" title="选择服务器"></a>选择服务器</h4><p>首先需要购买服务器,购买前我也看了好几家的云服务器,价钱都差不多,最低配置的价格都是5$</p>
+<ul>
+<li>亚马逊的<a href="https://amazonlightsail.com/" target="_blank" rel="noopener">LigntSail</a>, 需要绑定信用卡,扣了我12块钱预付费,收到短信才知道直接偷偷扣钱了(真心无语),随后主机也弄好了,ssh秘钥也生成了,但是就是本地ssh不能访问服务器,换了其他的地区和操作系统,仍然不能访问,索性放弃了,估计是QWS的bug</li>
+<li><a href="https://www.vultr.com/" target="_blank" rel="noopener">vultr</a> 这个好评也挺多的,但是要绑定信用卡,随后放弃了</li>
+<li><a href="https://www.digitalocean.com/" target="_blank" rel="noopener">digitalocean</a> 这个还不错,也是我的最终选择,可以支持信用卡和<a href="https://www.paypal.com" target="_blank" rel="noopener">PayPal</a>支付,既然可以不用绑定信用卡当然选择用PayPal支付,随后注册了一个PayPal账户,绑定一下银行卡,就可以直接支付服务器的费用了.我选择的是新加坡的服务器,也建议选择这个区域的,网速还可以.</li>
+</ul>
+<h4 id="安装Shadowsocks服务端"><a href="#安装Shadowsocks服务端" class="headerlink" title="安装Shadowsocks服务端"></a>安装Shadowsocks服务端</h4><p>使用root用户登录你的服务器,运行一下命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</span><br><span class="line">chmod +x shadowsocksR.sh</span><br><span class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</span><br></pre></td></tr></table></figure>
+<p><strong>安装完成后，脚本提示如下：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Congratulations, ShadowsocksR server install completed!</span><br><span class="line">Your Server IP        :your_server_ip</span><br><span class="line">Your Server Port      :your_server_port</span><br><span class="line">Your Password         :your_password</span><br><span class="line">Your Protocol         :your_protocol</span><br><span class="line">Your obfs             :your_obfs</span><br><span class="line">Your Encryption Method:your_encryption_method</span><br><span class="line"></span><br><span class="line">Welcome to visit:https://shadowsocks.be/9.html</span><br><span class="line">Enjoy it!</span><br></pre></td></tr></table></figure>
+<p><strong>默认配置：</strong><br>服务器端口：自己设定（如不设定，默认为 8989）<br>密码：自己设定（如不设定，默认为 teddysun.com）<br>加密方式：自己设定（如不设定，默认为 aes-256-cfb）<br>协议（Protocol）：自己设定（如不设定，默认为 origin）<br>混淆（obfs）：自己设定（如不设定，默认为 plain）</p>
+<p><strong>卸载方法：</strong><br>使用 root 用户登录，运行命令：<code>./shadowsocksR.sh uninstall</code></p>
+<p>安装完成后即已后台启动 ShadowsocksR ，运行：<code>/etc/init.d/shadowsocks status</code><br>可以查看 ShadowsocksR 进程是否已经启动。<br>本脚本安装完成后，已将 ShadowsocksR 自动加入开机自启动。</p>
+<p><strong>使用命令：</strong><br>启动：<code>/etc/init.d/shadowsocks start</code><br>停止：<code>/etc/init.d/shadowsocks stop</code><br>重启：<code>/etc/init.d/shadowsocks restart</code><br>状态：<code>/etc/init.d/shadowsocks status</code></p>
+<p>配置文件路径：<code>/etc/shadowsocks.json</code><br>日志文件路径：<code>/var/log/shadowsocks.log</code><br>代码安装目录：<code>/usr/local/shadowsocks</code></p>
+<h4 id="客户端安装"><a href="#客户端安装" class="headerlink" title="客户端安装"></a>客户端安装</h4><p>服务端安装完之后,安装客户端进行连接</p>
+<p><a href="https://github.com/iMeiji/shadowsocks_install/releases/tag/0.13" target="_blank" rel="noopener">https://github.com/iMeiji/shadowsocks_install/releases/tag/0.13</a></p>
+<p>连接成功就可以翻墙了,很简单的.</p>
+<p><strong>注意事项：</strong><br>本脚本没有对防火墙（IPv4 是 iptables，IPv6 是 ip6tables）进行任何设置。<br>因此，在安装完毕，如果你发现连接不上，可以尝试更改防火墙设置或关闭防火墙。</p>
+<p><strong>参考连接</strong>:</p>
+<p><a href="https://github.com/iMeiji/shadowsocks_install/wiki/shadowsocksR-%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85" target="_blank" rel="noopener">https://github.com/iMeiji/shadowsocks_install/wiki/shadowsocksR-%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85</a></p>
 
       
     </div>
@@ -509,11 +504,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/storm/" rel="tag"># storm</a>
-          
-            <a href="/tags/spring/" rel="tag"># spring</a>
-          
-            <a href="/tags/springboot/" rel="tag"># springboot</a>
+            <a href="/tags/vpn/" rel="tag"># vpn</a>
           
         </div>
       
@@ -526,8 +517,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/31/storm-life-cycle/" rel="next" title="Topology的初始化流程">
-                <i class="fa fa-chevron-left"></i> Topology的初始化流程
+              <a href="/2017/11/29/git-operators/" rel="next" title="Git常用命令">
+                <i class="fa fa-chevron-left"></i> Git常用命令
               </a>
             
           </div>
@@ -535,10 +526,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/15/SonarQube/" rel="prev" title="SonarQube 代码质量管理平台的搭建">
-                SonarQube 代码质量管理平台的搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -757,7 +744,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首先简单说一下，提交topology的流程："><span class="nav-number">1.</span> <span class="nav-text">(1) 首先简单说一下，提交topology的流程：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（2）storm与springboot的集成"><span class="nav-number">2.</span> <span class="nav-text">（2）storm与springboot的集成</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择服务器"><span class="nav-number">1.</span> <span class="nav-text">选择服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Shadowsocks服务端"><span class="nav-number">2.</span> <span class="nav-text">安装Shadowsocks服务端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端安装"><span class="nav-number">3.</span> <span class="nav-text">客户端安装</span></a></li></ol></div>
             
 
           </div>
@@ -935,9 +922,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/06/01/spring-storm-integration/';
-          this.page.identifier = '2017/06/01/spring-storm-integration/';
-          this.page.title = 'springboot-storm-integration';
+          this.page.url = 'http://yoursite.com/2017/12/01/20171201-vpn/';
+          this.page.identifier = '2017/12/01/20171201-vpn/';
+          this.page.title = 'VPN的搭建';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://fhaoer.disqus.com/embed.js';
