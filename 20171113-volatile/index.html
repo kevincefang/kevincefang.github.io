@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java,面试,jvm," />
+  <meta name="keywords" content="java,jvm,面试," />
 
 
 
@@ -95,14 +95,14 @@
 
 
 <meta name="description" content="将volatile修饰的java代码转换成汇编代码，进行写操作的时候会多出以lock前缀的汇编代码。lock前缀的指令在多核处理器下会引发两点： 将当前处理器缓存行的数据写回到系统内存。 这个写回内存的操作会使在其他CPU里缓存了该内存地址的数据无效。  volatile的两条实现原则： Lock前缀指令会引起处理器缓">
-<meta name="keywords" content="java,面试,jvm">
+<meta name="keywords" content="java,jvm,面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="volatile的实现原理">
-<meta property="og:url" content="http://yoursite.com/volatile/index.html">
+<meta property="og:url" content="http://yoursite.com/20171113-volatile/index.html">
 <meta property="og:site_name" content="Haoer Blog">
 <meta property="og:description" content="将volatile修饰的java代码转换成汇编代码，进行写操作的时候会多出以lock前缀的汇编代码。lock前缀的指令在多核处理器下会引发两点： 将当前处理器缓存行的数据写回到系统内存。 这个写回内存的操作会使在其他CPU里缓存了该内存地址的数据无效。  volatile的两条实现原则： Lock前缀指令会引起处理器缓存回写到内存。 一个处理器的缓存回写到内存会导致其他处理器的缓存无效。  锁的状">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-17T08:12:27.000Z">
+<meta property="og:updated_time" content="2017-12-02T04:36:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="volatile的实现原理">
 <meta name="twitter:description" content="将volatile修饰的java代码转换成汇编代码，进行写操作的时候会多出以lock前缀的汇编代码。lock前缀的指令在多核处理器下会引发两点： 将当前处理器缓存行的数据写回到系统内存。 这个写回内存的操作会使在其他CPU里缓存了该内存地址的数据无效。  volatile的两条实现原则： Lock前缀指令会引起处理器缓存回写到内存。 一个处理器的缓存回写到内存会导致其他处理器的缓存无效。  锁的状">
@@ -133,7 +133,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/volatile/"/>
+  <link rel="canonical" href="http://yoursite.com/20171113-volatile/"/>
 
 
 
@@ -331,7 +331,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/volatile/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20171113-volatile/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kevin">
@@ -494,9 +494,9 @@
           
             <a href="/tags/java/" rel="tag"># java</a>
           
-            <a href="/tags/面试/" rel="tag"># 面试</a>
-          
             <a href="/tags/jvm/" rel="tag"># jvm</a>
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
           
         </div>
       
@@ -509,7 +509,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/classloader/" rel="next" title="双亲委派模型">
+              <a href="/20171103-classloader/" rel="next" title="双亲委派模型">
                 <i class="fa fa-chevron-left"></i> 双亲委派模型
               </a>
             
@@ -606,7 +606,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -628,7 +628,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -918,8 +918,8 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/volatile/';
-          this.page.identifier = 'volatile/';
+          this.page.url = 'http://yoursite.com/20171113-volatile/';
+          this.page.identifier = '20171113-volatile/';
           this.page.title = 'volatile的实现原理';
         };
         var d = document, s = d.createElement('script');

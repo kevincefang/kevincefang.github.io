@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="storm," />
+  <meta name="keywords" content="git," />
 
 
 
@@ -94,18 +94,22 @@
 
 
 
-<meta name="description" content="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动1.查看zk的状态：./zkServer.sh status 2.如果zk没有开启，将nimbus和supervisor的zk开启./zkServer.sh start 3.启动nimbus（切换到storm的bin目录下）noh">
-<meta name="keywords" content="storm">
+<meta name="description" content="理解这些指令，觉得最重要的是理解Git的内部原理，比如Git的分布式版本控制，分清楚工作区、暂存区、版本库，还有就是理解Git跟踪并管理的是修改，而非文件。   第一步是要获得一个GIT仓库有两种获得GIT仓库的方法，一是在需要用GIT管理的项目的根目录执行： 1git init 执行后可以看到，仅仅在项目目录多出了一">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="storm 启动相关命令">
-<meta property="og:url" content="http://yoursite.com/start-storm-command/index.html">
+<meta property="og:title" content="Git常用命令">
+<meta property="og:url" content="http://yoursite.com/20171129-git-operators/index.html">
 <meta property="og:site_name" content="Haoer Blog">
-<meta property="og:description" content="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动1.查看zk的状态：./zkServer.sh status 2.如果zk没有开启，将nimbus和supervisor的zk开启./zkServer.sh start 3.启动nimbus（切换到storm的bin目录下）nohup ./storm nimbus &amp;amp; 4.启动supervisorno">
+<meta property="og:description" content="理解这些指令，觉得最重要的是理解Git的内部原理，比如Git的分布式版本控制，分清楚工作区、暂存区、版本库，还有就是理解Git跟踪并管理的是修改，而非文件。   第一步是要获得一个GIT仓库有两种获得GIT仓库的方法，一是在需要用GIT管理的项目的根目录执行： 1git init 执行后可以看到，仅仅在项目目录多出了一个.git目录，关于版本等的所有信息都在这个目录里面。　　另一种方式是克隆远程">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-05-31T09:11:54.000Z">
+<meta property="og:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20171129/1.jpg">
+<meta property="og:image" content="http://p066mj5r9.bkt.clouddn.com/static//images/20171129/2.jpg">
+<meta property="og:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20171129/3.png">
+<meta property="og:updated_time" content="2017-12-02T04:35:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="storm 启动相关命令">
-<meta name="twitter:description" content="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动1.查看zk的状态：./zkServer.sh status 2.如果zk没有开启，将nimbus和supervisor的zk开启./zkServer.sh start 3.启动nimbus（切换到storm的bin目录下）nohup ./storm nimbus &amp;amp; 4.启动supervisorno">
+<meta name="twitter:title" content="Git常用命令">
+<meta name="twitter:description" content="理解这些指令，觉得最重要的是理解Git的内部原理，比如Git的分布式版本控制，分清楚工作区、暂存区、版本库，还有就是理解Git跟踪并管理的是修改，而非文件。   第一步是要获得一个GIT仓库有两种获得GIT仓库的方法，一是在需要用GIT管理的项目的根目录执行： 1git init 执行后可以看到，仅仅在项目目录多出了一个.git目录，关于版本等的所有信息都在这个目录里面。　　另一种方式是克隆远程">
+<meta name="twitter:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20171129/1.jpg">
 
 
 
@@ -133,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/start-storm-command/"/>
+  <link rel="canonical" href="http://yoursite.com/20171129-git-operators/"/>
 
 
 
 
 
-  <title> storm 启动相关命令 | Haoer Blog </title>
+  <title> Git常用命令 | Haoer Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -331,7 +335,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/start-storm-command/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20171129-git-operators/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kevin">
@@ -352,7 +356,7 @@
             
             
               
-                storm 启动相关命令
+                Git常用命令
               
             
           </h2>
@@ -367,8 +371,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T00:00:00+08:00">
-                May 31 2017
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T18:30:10+08:00">
+                Nov 29 2017
               </time>
             
 
@@ -390,8 +394,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/storm/" itemprop="url" rel="index">
-                    <span itemprop="name">storm</span>
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
                   </a>
                 </span>
 
@@ -430,13 +434,31 @@
       
 
       
-        <h5 id="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动"><a href="#在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动" class="headerlink" title="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动"></a>在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动</h5><h6 id="1-查看zk的状态："><a href="#1-查看zk的状态：" class="headerlink" title="1.查看zk的状态："></a>1.查看zk的状态：</h6><p><code>./zkServer.sh status</code></p>
-<h5 id="2-如果zk没有开启，将nimbus和supervisor的zk开启"><a href="#2-如果zk没有开启，将nimbus和supervisor的zk开启" class="headerlink" title="2.如果zk没有开启，将nimbus和supervisor的zk开启"></a>2.如果zk没有开启，将nimbus和supervisor的zk开启</h5><p><code>./zkServer.sh start</code></p>
-<h5 id="3-启动nimbus（切换到storm的bin目录下）"><a href="#3-启动nimbus（切换到storm的bin目录下）" class="headerlink" title="3.启动nimbus（切换到storm的bin目录下）"></a>3.启动nimbus（切换到storm的bin目录下）</h5><p><code>nohup ./storm nimbus &amp;</code></p>
-<h5 id="4-启动supervisor"><a href="#4-启动supervisor" class="headerlink" title="4.启动supervisor"></a>4.启动supervisor</h5><p><code>nohup ./storm supervisor  &amp;</code></p>
-<h5 id="4-启动storm-UI"><a href="#4-启动storm-UI" class="headerlink" title="4.启动storm UI"></a>4.启动storm UI</h5><p><code>nohup ./storm ui &amp;</code>    </p>
-<pre><code>在浏览器中输入ip:8080/index.html进入storm UI界面（注意端口不一定是8080，注意配置）
-</code></pre>
+        <blockquote>
+<p>理解这些指令，觉得最重要的是理解Git的内部原理，比如Git的分布式版本控制，分清楚工作区、暂存区、版本库，还有就是理解Git跟踪并管理的是修改，而非文件。</p>
+</blockquote>
+<p><img src="http://p066mj5r9.bkt.clouddn.com/static/images/20171129/1.jpg" alt="classloader"></p>
+<h2 id="第一步是要获得一个GIT仓库"><a href="#第一步是要获得一个GIT仓库" class="headerlink" title="第一步是要获得一个GIT仓库"></a>第一步是要获得一个GIT仓库</h2><p>有两种获得GIT仓库的方法，一是在需要用GIT管理的项目的根目录执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>执行后可以看到，仅仅在项目目录多出了一个.git目录，关于版本等的所有信息都在这个目录里面。<br>　　另一种方式是克隆远程目录，由于是将远程服务器上的仓库完全镜像一份至本地，而不是取某一个特定版本，所以用clone而不是checkout：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;url&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;Your Name&quot;</span><br><span class="line">$ git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure>
+<p>ssh -v git@github.com //检验下Git安装是否正确，<br>显示hi github用户名！You’ve successfully authenticated 说明Git安装正确</p>
+<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><p>git tracked的是修改，而不是文件</p>
+<img title="1" alt="1" class="class1 class2" src="http://p066mj5r9.bkt.clouddn.com/static//images/20171129/2.jpg">
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>将“当前修改”移动到暂存区(stage)</span><br><span class="line"><span class="meta">$</span> git add somfile.txt</span><br><span class="line"><span class="meta">#</span>将暂存区修改提交</span><br><span class="line"><span class="meta">$</span> git commit -m "Add somfile.txt."</span><br></pre></td></tr></table></figure>
+<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git status</span><br><span class="line"><span class="meta">$</span> git diff</span><br></pre></td></tr></table></figure>
+<h2 id="回退"><a href="#回退" class="headerlink" title="回退"></a>回退</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 放弃工作区修改</span><br><span class="line"><span class="meta">$</span> git checkout -- file.name</span><br><span class="line"><span class="meta">$</span> git checkout -- .</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 取消commit(比如需要重写commit信息)</span><br><span class="line"><span class="meta">$</span> git reset --soft HEAD</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 取消commit、add(重新提交代码和commit)</span><br><span class="line"><span class="meta">$</span> git reset HEAD</span><br><span class="line"><span class="meta">$</span> git reset --mixed HEAD</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 取消commit、add、工作区修改(需要完全重置)</span><br><span class="line"><span class="meta">$</span> git reset --hard HEAD</span><br></pre></td></tr></table></figure>
+<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git reflog</span><br><span class="line"><span class="meta">$</span> git log</span><br></pre></td></tr></table></figure>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rm file.name</span><br><span class="line"><span class="meta">$</span> git rm file.name</span><br><span class="line"><span class="meta">$</span> git commit -m "Del"</span><br></pre></td></tr></table></figure>
+<h2 id="Git-远程分支管理"><a href="#Git-远程分支管理" class="headerlink" title="Git 远程分支管理"></a>Git 远程分支管理</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">git pull                         # 抓取远程仓库所有分支更新并合并到本地</span><br><span class="line">git pull --no-ff                 # 抓取远程仓库所有分支更新并合并到本地，不要快进合并</span><br><span class="line">git fetch origin                 # 抓取远程仓库更新</span><br><span class="line">git merge origin/master          # 将远程主分支合并到本地当前分支</span><br><span class="line">git checkout --track origin/branch     # 跟踪某个远程分支创建相应的本地分支</span><br><span class="line">git checkout -b &lt;local_branch&gt; origin/&lt;remote_branch&gt;  # 基于远程分支创建本地分支，功能同上</span><br><span class="line"> </span><br><span class="line">git push                         # push所有分支</span><br><span class="line">git push origin master           # 将本地主分支推到远程主分支</span><br><span class="line"><span class="meta">#</span> 第一次推送，-u(--set-upstream)指定默认上游</span><br><span class="line">git push -u origin master        # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)</span><br><span class="line">git push origin &lt;local_branch&gt;   # 创建远程分支， origin是远程仓库名</span><br><span class="line">git push origin &lt;local_branch&gt;:&lt;remote_branch&gt;  # 创建远程分支</span><br><span class="line">git push origin :&lt;remote_branch&gt;  #先删除本地分支(git branch -d &lt;branch&gt;)，然后再push删除远程分支</span><br></pre></td></tr></table></figure>
+<h2 id="Git-远程仓库管理"><a href="#Git-远程仓库管理" class="headerlink" title="Git 远程仓库管理"></a>Git 远程仓库管理</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote -v                    # 查看远程服务器地址和仓库名称</span><br><span class="line">git remote show origin           # 查看远程服务器仓库状态</span><br><span class="line">git remote add origin git@github.com:whuhacker/Unblock-Youku-Firefox.git         # 添加远程仓库地址</span><br><span class="line">git remote set-url origin git@github.com:whuhacker/Unblock-Youku-Firefox.git # 设置远程仓库地址(用于修改远程仓库地址)</span><br><span class="line">git remote rm &lt;repository&gt;       # 删除远程仓库</span><br></pre></td></tr></table></figure>
+<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git clone https://github.com/Yikun/yikun.github.com.git path</span><br><span class="line"><span class="meta">$</span> git clone git@github.com:Yikun/yikun.github.com.git path</span><br></pre></td></tr></table></figure>
+<h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><p><img src="http://p066mj5r9.bkt.clouddn.com/static/images/20171129/3.png" alt="classloader"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看当前分支</span><br><span class="line"><span class="meta">$</span> git branch</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 创建分支</span><br><span class="line"><span class="meta">$</span> git branch dev</span><br><span class="line"><span class="meta">#</span> 切换分支</span><br><span class="line"><span class="meta">$</span> git checkout dev</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 创建并checkout分支</span><br><span class="line"><span class="meta">$</span> git checkout -b dev</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 合并分支</span><br><span class="line"><span class="meta">$</span> git merge dev</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 删除分支</span><br><span class="line"><span class="meta">$</span> git branch -d dev</span><br></pre></td></tr></table></figure>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git tag 0.1.1</span><br><span class="line"><span class="meta">$</span> git push origin --tags</span><br></pre></td></tr></table></figure>
+<p>目前使用git主要流程就是先在本地clone一个git仓库，然后设置一下看git是否连接成功，接着git remote add origin git@github.com:michaelliao/learngit.git，添加要连接的远程仓库地址，进行push（将本地主分支推到远程主分支）还是pull（抓取远程仓库所有分支更新并合并到本地）操作即可。</p>
+
       
     </div>
 
@@ -486,7 +508,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/storm/" rel="tag"># storm</a>
+            <a href="/tags/git/" rel="tag"># git</a>
           
         </div>
       
@@ -499,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/20171127-HashMap/" rel="next" title="HashMap实现原理分析">
+                <i class="fa fa-chevron-left"></i> HashMap实现原理分析
               </a>
             
           </div>
@@ -509,8 +531,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/storm-life-cycle/" rel="prev" title="Topology的初始化流程">
-                Topology的初始化流程 <i class="fa fa-chevron-right"></i>
+              <a href="/20171129-zuoxi/" rel="prev" title="良好的个人作息时间表">
+                良好的个人作息时间表 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -596,7 +618,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -618,7 +640,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -730,7 +752,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动"><span class="nav-number">1.</span> <span class="nav-text">在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-查看zk的状态："><span class="nav-number">1.1.</span> <span class="nav-text">1.查看zk的状态：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-如果zk没有开启，将nimbus和supervisor的zk开启"><span class="nav-number">2.</span> <span class="nav-text">2.如果zk没有开启，将nimbus和supervisor的zk开启</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-启动nimbus（切换到storm的bin目录下）"><span class="nav-number">3.</span> <span class="nav-text">3.启动nimbus（切换到storm的bin目录下）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-启动supervisor"><span class="nav-number">4.</span> <span class="nav-text">4.启动supervisor</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-启动storm-UI"><span class="nav-number">5.</span> <span class="nav-text">4.启动storm UI</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步是要获得一个GIT仓库"><span class="nav-number">1.</span> <span class="nav-text">第一步是要获得一个GIT仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置"><span class="nav-number">2.</span> <span class="nav-text">设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交"><span class="nav-number">3.</span> <span class="nav-text">提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态"><span class="nav-number">4.</span> <span class="nav-text">状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回退"><span class="nav-number">5.</span> <span class="nav-text">回退</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#记录"><span class="nav-number">6.</span> <span class="nav-text">记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除"><span class="nav-number">7.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-远程分支管理"><span class="nav-number">8.</span> <span class="nav-text">Git 远程分支管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-远程仓库管理"><span class="nav-number">9.</span> <span class="nav-text">Git 远程仓库管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆"><span class="nav-number">10.</span> <span class="nav-text">克隆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支操作"><span class="nav-number">11.</span> <span class="nav-text">分支操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签"><span class="nav-number">12.</span> <span class="nav-text">标签</span></a></li></ol></div>
             
 
           </div>
@@ -908,9 +930,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/start-storm-command/';
-          this.page.identifier = 'start-storm-command/';
-          this.page.title = 'storm 启动相关命令';
+          this.page.url = 'http://yoursite.com/20171129-git-operators/';
+          this.page.identifier = '20171129-git-operators/';
+          this.page.title = 'Git常用命令';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://fhaoer.disqus.com/embed.js';

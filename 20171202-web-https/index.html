@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="storm," />
+  <meta name="keywords" content="https,blog," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="1、 首先配置好topology，并定义好Spout实例和Bolt实例 2、 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt">
-<meta name="keywords" content="storm">
+<meta name="description" content="前言 每个网站都应该用 HTTPS，就算是全静态站点也同样如此，运营商劫持严重干扰访问者的体验 有几项技术可以提高 HTTPS 的性能，包括 Strict Transport Security，TLS False Start 和 HTTP/2 ，这些技术让 HTTPS 速度不慢，某些情况下会甚至更快 HTTPS 针对个">
+<meta name="keywords" content="https,blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Topology的初始化流程">
-<meta property="og:url" content="http://yoursite.com/storm-life-cycle/index.html">
+<meta property="og:title" content="使用Let&#39;s Encrypt给网站加HTTPS">
+<meta property="og:url" content="http://yoursite.com/20171202-web-https/index.html">
 <meta property="og:site_name" content="Haoer Blog">
-<meta property="og:description" content="1、 首先配置好topology，并定义好Spout实例和Bolt实例 2、 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponen">
+<meta property="og:description" content="前言 每个网站都应该用 HTTPS，就算是全静态站点也同样如此，运营商劫持严重干扰访问者的体验 有几项技术可以提高 HTTPS 的性能，包括 Strict Transport Security，TLS False Start 和 HTTP/2 ，这些技术让 HTTPS 速度不慢，某些情况下会甚至更快 HTTPS 针对个人单个（或者几个）域名的使用来说，已经是免费的 配置和维护 HTTPS 异常简单">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-06T05:56:20.000Z">
+<meta property="og:updated_time" content="2017-12-02T05:34:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Topology的初始化流程">
-<meta name="twitter:description" content="1、 首先配置好topology，并定义好Spout实例和Bolt实例 2、 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponen">
+<meta name="twitter:title" content="使用Let&#39;s Encrypt给网站加HTTPS">
+<meta name="twitter:description" content="前言 每个网站都应该用 HTTPS，就算是全静态站点也同样如此，运营商劫持严重干扰访问者的体验 有几项技术可以提高 HTTPS 的性能，包括 Strict Transport Security，TLS False Start 和 HTTP/2 ，这些技术让 HTTPS 速度不慢，某些情况下会甚至更快 HTTPS 针对个人单个（或者几个）域名的使用来说，已经是免费的 配置和维护 HTTPS 异常简单">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/storm-life-cycle/"/>
+  <link rel="canonical" href="http://yoursite.com/20171202-web-https/"/>
 
 
 
 
 
-  <title> Topology的初始化流程 | Haoer Blog </title>
+  <title> 使用Let's Encrypt给网站加HTTPS | Haoer Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -331,7 +331,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/storm-life-cycle/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20171202-web-https/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kevin">
@@ -352,7 +352,7 @@
             
             
               
-                Topology的初始化流程
+                使用Let's Encrypt给网站加HTTPS
               
             
           </h2>
@@ -367,8 +367,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T17:30:10+08:00">
-                May 31 2017
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-02T12:30:10+08:00">
+                Dec 2 2017
               </time>
             
 
@@ -390,8 +390,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/storm/" itemprop="url" rel="index">
-                    <span itemprop="name">storm</span>
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
                   </a>
                 </span>
 
@@ -430,16 +430,77 @@
       
 
       
-        <blockquote>
-<p>1、 首先配置好topology，并定义好Spout实例和Bolt实例</p>
-<p>2、 在提交Topology实例给Nimbus的过程中，会调TopologyBuilder实例的createTopology()方法，以获取定义的Topology实例。在运行createTopology()方法的过程中，会去调用Spout和Bolt实例上的declareOutputFields()方法和getComponentConfiguration()方法，declareOutputFields()方法配置Spout和Bolt实例的输出，getComponentConfiguration()方法输出特定于Spout和Bolt实例的配置参数值对。Storm会将以上过程中得到的实例，输出配置和配置参数值对等数据序列化，然后传递给Nimbus。</p>
-<p>3、在Worker Node上运行的thread，从Nimbus上复制序列化后得到的字节码文件，从中反序列化得到Spout和Bolt实例，实例的输出配置和实例的配置参数值对等数据，在thread中Spout和Bolt实例的declareOutputFields()和getComponentConfiguration()不会再运行。</p>
-<p>4、在thread中，反序列化得到一个Bolt实例后，它会先运行Bolt实例的prepare()方法，在这个方法调用中，需要传入一个OutputCollector实例，后面使用该OutputCollector实例输出Tuple</p>
-<p>5、接下来在该thread中按照配置数量建立task集合，然后在每个task中就会循环调用thread所持有Bolt实例的execute()方法</p>
-<p>6、在关闭一个thread时，thread所持有的Bolt实例会调用cleanup()方法</p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><ol>
+<li>每个网站都应该用 HTTPS，就算是全静态站点也同样如此，运营商劫持严重干扰访问者的体验</li>
+<li>有几项技术可以提高 HTTPS 的性能，包括 <em>Strict Transport Security</em>，<em>TLS False Start</em> 和 <em>HTTP/2</em> ，这些技术让 HTTPS 速度不慢，某些情况下会甚至更快</li>
+<li>HTTPS 针对个人单个（或者几个）域名的使用来说，已经是免费的</li>
+<li>配置和维护 HTTPS 异常简单，<em>Let’s Encrypt</em> 这个项目通过自动化把事情简单化了</li>
+</ol>
+<blockquote>
+<p>推荐使用 <em>Let’s Encrypt</em>。<em>StartSSL</em> 的免费证书有效期是1年，1年后需要手动更换。配置过程还挺麻烦的。更推荐 <em>Let’s Encrypt</em>，虽然有效期只有3个月，但可以用 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a> 自动续期，完全不受影响。而且 <em>Let’s Encrypt</em> 因为有了 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a> 这样的自动化工具，配置管理起来非常容易。</p>
 </blockquote>
-<pre><code>不过如果是强制关闭，这个cleanup()方法有可能不会被调用到
-</code></pre>
+<h4 id="生成Let’s-Encrypt证书"><a href="#生成Let’s-Encrypt证书" class="headerlink" title="生成Let’s Encrypt证书"></a>生成Let’s Encrypt证书</h4><p><em>Let’s Encrypt</em> 证书生成不需要手动进行，官方推荐 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a> 这套自动化工具来实现。3步轻松搞定：</p>
+<ol>
+<li>下载安装 certbot (Let’s Encrypt项目的自动化工具)</li>
+<li>创建配置文件</li>
+<li>执行证书自动化生成命令</li>
+</ol>
+<p>下面的教程运行在 Ubuntu 16.04 上，其他操作系统也大同小异。你可以在 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a> 网站上，选择你的 Web Server 和 操作系统，就能看到对应的安装和配置教程。</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h5><h5 id="1-安装Certbot"><a href="#1-安装Certbot" class="headerlink" title="1. 安装Certbot"></a>1. 安装Certbot</h5><blockquote>
+<p>首先第一步使用Let’s Encrypt获取一个SSL证书,并在服务器上安装Certbot软件</p>
+<p>由于Cerbot开发者包含了Unbutu最新版本的repository,因此我们可以使用它的repository替代Ubuntu的.</p>
+</blockquote>
+<p>(1) add the repository</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:certbot/certbot</span><br></pre></td></tr></table></figure>
+<p>(2) pick up the new repository’s package information</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>(3) And finally, install Certbot’s Nginx package with <code>apt-get</code>.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-certbot-nginx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Certbot现在已经安装好了,但是为了在Nginx上配置SSL,我们还需要验证一些Nginx的配置信息</p>
+</blockquote>
+<h5 id="2-配置Nginx"><a href="#2-配置Nginx" class="headerlink" title="2. 配置Nginx"></a>2. 配置Nginx</h5><blockquote>
+<p>certbot能够在Nginx上自动配置SSL证书,但是它需要能找到正确的server模块在你的配置中.检查你的server_name配置是否是你要配置证书的域名</p>
+</blockquote>
+<p>如果你没有Nginx的安装经验,建议你直接修改Nginx的默认配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/nginx/sites-available/default</span><br></pre></td></tr></table></figure>
+<p>找到server<em>name这一行,然后替换’</em>‘换成你的域名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server_name example.com www.example.com;</span><br></pre></td></tr></table></figure>
+<p>保存后,可以验证你的配置是否正确</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
+<p>验证没有错误的话,重新加载Nginx的配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reload nginx</span><br></pre></td></tr></table></figure>
+<h5 id="3-打开防火墙允许Https通过"><a href="#3-打开防火墙允许Https通过" class="headerlink" title="3. 打开防火墙允许Https通过"></a>3. 打开防火墙允许Https通过</h5><p>查看防火墙当前的配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure>
+<p>如果你的配置像下面的话,意思是只允许HTTP服务通过</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">Status: active</span><br><span class="line"></span><br><span class="line">To                         Action      From</span><br><span class="line">--                         ------      ----</span><br><span class="line">OpenSSH                    ALLOW       Anywhere                  </span><br><span class="line">Nginx HTTP                 ALLOW       Anywhere                  </span><br><span class="line">OpenSSH (v6)               ALLOW       Anywhere (v6)             </span><br><span class="line">Nginx HTTP (v6)            ALLOW       Anywhere (v6)</span><br></pre></td></tr></table></figure>
+<p>添加HTTPS服务通过</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 'Nginx Full'</span><br><span class="line">sudo ufw delete allow 'Nginx HTTP'</span><br></pre></td></tr></table></figure>
+<p>检查一下配置信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">Status: active</span><br><span class="line"></span><br><span class="line">To                         Action      From</span><br><span class="line">--                         ------      ----</span><br><span class="line">OpenSSH                    ALLOW       Anywhere</span><br><span class="line">Nginx Full                 ALLOW       Anywhere</span><br><span class="line">OpenSSH (v6)               ALLOW       Anywhere (v6)</span><br><span class="line">Nginx Full (v6)            ALLOW       Anywhere (v6)</span><br></pre></td></tr></table></figure>
+<p>下面准备运行Certbot,然后拉取我们的证书</p>
+<h5 id="4-获取SSL证书"><a href="#4-获取SSL证书" class="headerlink" title="4. 获取SSL证书"></a>4. 获取SSL证书</h5><blockquote>
+<p>certbot通过多种插件提供了多种方式获取SSL证书. 这个Nginx 插件可以帮助我们重新配置Nginx和重新加载配置</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx -d example.com -d www.example.com</span><br></pre></td></tr></table></figure>
+<p>使用—nginx 插件运行certbot ,使用-d 指定生成证书的域名</p>
+<p>接下来会看到</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">1: No redirect - Make no further changes to the webserver configuration.</span><br><span class="line">2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for</span><br><span class="line">new sites, or if you're confident your site works on HTTPS. You can undo this</span><br><span class="line">change by editing your web server's configuration.</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">Select the appropriate number [1-2] then [enter] (press 'c' to cancel):</span><br></pre></td></tr></table></figure>
+<p>输入’2’配置所有的请求都走HTTPS服务.</p>
+<h5 id="5-验证Certbot自动更新证书"><a href="#5-验证Certbot自动更新证书" class="headerlink" title="5. 验证Certbot自动更新证书"></a>5. 验证Certbot自动更新证书</h5><blockquote>
+<p>Let’s Encrypt’s 的证书默认有效时间是9天,使用cerbot可以自动2-3天更新一次证书</p>
+</blockquote>
+<p>为了测试更新的进度,你可以运行cerbot命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot renew --dry-run</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 只要是没报错,设置就是成功了.如果cerbot后面更新证书或者加载Nginx配置失败了, Let’s Encrypt  会发送邮件通知你,警告你的证书已经过期了.</p>
+</blockquote>
+<p>至此所有的配置都完成了,你可以访问你的域名,是不是变成了Https服务了.哈哈 写了这么有点累了,希望文章能对你有帮助.</p>
+<p>参考文献:</p>
+<p> <a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04</a></p>
+<p><a href="https://certbot.eff.org/docs/" target="_blank" rel="noopener">https://certbot.eff.org/docs/</a></p>
+
       
     </div>
 
@@ -489,7 +550,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/storm/" rel="tag"># storm</a>
+            <a href="/tags/https/" rel="tag"># https</a>
+          
+            <a href="/tags/blog/" rel="tag"># blog</a>
           
         </div>
       
@@ -502,8 +565,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/start-storm-command/" rel="next" title="storm 启动相关命令">
-                <i class="fa fa-chevron-left"></i> storm 启动相关命令
+              <a href="/20171201-vpn/" rel="next" title="VPN的搭建">
+                <i class="fa fa-chevron-left"></i> VPN的搭建
               </a>
             
           </div>
@@ -511,10 +574,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/spring-storm-integration/" rel="prev" title="springboot-storm-integration">
-                springboot-storm-integration <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -574,8 +633,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpeg"
@@ -590,7 +658,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -612,7 +680,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -714,6 +782,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成Let’s-Encrypt证书"><span class="nav-number">2.</span> <span class="nav-text">生成Let’s Encrypt证书</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-安装Certbot"><span class="nav-number">2.2.</span> <span class="nav-text">1. 安装Certbot</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-配置Nginx"><span class="nav-number">2.3.</span> <span class="nav-text">2. 配置Nginx</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-打开防火墙允许Https通过"><span class="nav-number">2.4.</span> <span class="nav-text">3. 打开防火墙允许Https通过</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-获取SSL证书"><span class="nav-number">2.5.</span> <span class="nav-text">4. 获取SSL证书</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-验证Certbot自动更新证书"><span class="nav-number">2.6.</span> <span class="nav-text">5. 验证Certbot自动更新证书</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -886,9 +970,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/storm-life-cycle/';
-          this.page.identifier = 'storm-life-cycle/';
-          this.page.title = 'Topology的初始化流程';
+          this.page.url = 'http://yoursite.com/20171202-web-https/';
+          this.page.identifier = '20171202-web-https/';
+          this.page.title = '使用Let\'s Encrypt给网站加HTTPS';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://fhaoer.disqus.com/embed.js';
