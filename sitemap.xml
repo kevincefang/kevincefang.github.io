@@ -2,56 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2017/12/01/20171201-vpn/</loc>
+    <loc>http://yoursite.com/20171122-heap-stack/</loc>
+    
+    <lastmod>2017-12-02T03:24:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/20171114-stack/</loc>
+    
+    <lastmod>2017-12-02T03:23:46.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/20171117-atomic/</loc>
+    
+    <lastmod>2017-12-02T03:23:35.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/20171201-vpn/</loc>
     
     <lastmod>2017-12-01T16:04:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/08/30/chrome-plugins/</loc>
+    <loc>http://yoursite.com/chrome-plugins/</loc>
     
     <lastmod>2017-12-01T14:57:29.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/08/31/java-architecture-diagram/</loc>
+    <loc>http://yoursite.com/java-architecture-diagram/</loc>
     
     <lastmod>2017-11-29T10:02:04.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/27/HashMap/</loc>
+    <loc>http://yoursite.com/HashMap/</loc>
     
     <lastmod>2017-11-29T10:00:55.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/29/git-operators/</loc>
+    <loc>http://yoursite.com/git-operators/</loc>
     
     <lastmod>2017-11-29T10:00:07.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/03/classloader/</loc>
+    <loc>http://yoursite.com/classloader/</loc>
     
     <lastmod>2017-11-29T09:58:16.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/29/zuoxi/</loc>
+    <loc>http://yoursite.com/zuoxi/</loc>
     
     <lastmod>2017-11-29T07:08:39.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/29/synchronized/</loc>
+    <loc>http://yoursite.com/synchronized/</loc>
     
     <lastmod>2017-11-29T02:26:27.000Z</lastmod>
     
@@ -65,56 +86,35 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/20/20171122/</loc>
-    
-    <lastmod>2017-11-22T01:31:45.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/11/17/20171117/</loc>
-    
-    <lastmod>2017-11-17T09:57:34.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/11/13/volatile/</loc>
+    <loc>http://yoursite.com/volatile/</loc>
     
     <lastmod>2017-11-17T08:12:27.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/14/20171114/</loc>
-    
-    <lastmod>2017-11-14T07:47:35.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/05/31/storm-life-cycle/</loc>
+    <loc>http://yoursite.com/storm-life-cycle/</loc>
     
     <lastmod>2017-11-06T05:56:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/11/01/eureka/</loc>
+    <loc>http://yoursite.com/eureka/</loc>
     
     <lastmod>2017-11-06T05:42:30.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/04/20/hello-world/</loc>
+    <loc>http://yoursite.com/hello-world/</loc>
     
     <lastmod>2017-11-03T10:09:18.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/06/15/SonarQube/</loc>
+    <loc>http://yoursite.com/SonarQube/</loc>
     
     <lastmod>2017-07-31T08:01:28.000Z</lastmod>
     
@@ -128,14 +128,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/06/01/spring-storm-integration/</loc>
+    <loc>http://yoursite.com/spring-storm-integration/</loc>
     
     <lastmod>2017-06-01T07:16:07.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/05/31/start-storm-command/</loc>
+    <loc>http://yoursite.com/start-storm-command/</loc>
     
     <lastmod>2017-05-31T09:11:54.000Z</lastmod>
     
