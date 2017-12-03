@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Haoer Blog">
 <meta property="og:description" content="前言 每个网站都应该用 HTTPS，就算是全静态站点也同样如此，运营商劫持严重干扰访问者的体验 有几项技术可以提高 HTTPS 的性能，包括 Strict Transport Security，TLS False Start 和 HTTP/2 ，这些技术让 HTTPS 速度不慢，某些情况下会甚至更快 HTTPS 针对个人单个（或者几个）域名的使用来说，已经是免费的 配置和维护 HTTPS 异常简单">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-02T05:34:17.000Z">
+<meta property="og:updated_time" content="2017-12-03T04:29:18.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Let&#39;s Encrypt给网站加HTTPS">
 <meta name="twitter:description" content="前言 每个网站都应该用 HTTPS，就算是全静态站点也同样如此，运营商劫持严重干扰访问者的体验 有几项技术可以提高 HTTPS 的性能，包括 Strict Transport Security，TLS False Start 和 HTTP/2 ，这些技术让 HTTPS 速度不慢，某些情况下会甚至更快 HTTPS 针对个人单个（或者几个）域名的使用来说，已经是免费的 配置和维护 HTTPS 异常简单">
@@ -439,14 +439,14 @@
 <blockquote>
 <p>推荐使用 <em>Let’s Encrypt</em>。<em>StartSSL</em> 的免费证书有效期是1年，1年后需要手动更换。配置过程还挺麻烦的。更推荐 <em>Let’s Encrypt</em>，虽然有效期只有3个月，但可以用 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a> 自动续期，完全不受影响。而且 <em>Let’s Encrypt</em> 因为有了 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a> 这样的自动化工具，配置管理起来非常容易。</p>
 </blockquote>
-<h4 id="生成Let’s-Encrypt证书"><a href="#生成Let’s-Encrypt证书" class="headerlink" title="生成Let’s Encrypt证书"></a>生成Let’s Encrypt证书</h4><p><em>Let’s Encrypt</em> 证书生成不需要手动进行，官方推荐 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a> 这套自动化工具来实现。3步轻松搞定：</p>
+<h4 id="Let’s-Encrypt证书"><a href="#Let’s-Encrypt证书" class="headerlink" title="Let’s Encrypt证书"></a>Let’s Encrypt证书</h4><p><em>Let’s Encrypt</em> 证书生成不需要手动进行，官方推荐 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a> 这套自动化工具来实现。3步轻松搞定：</p>
 <ol>
 <li>下载安装 certbot (Let’s Encrypt项目的自动化工具)</li>
 <li>创建配置文件</li>
 <li>执行证书自动化生成命令</li>
 </ol>
 <p>下面的教程运行在 Ubuntu 16.04 上，其他操作系统也大同小异。你可以在 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a> 网站上，选择你的 Web Server 和 操作系统，就能看到对应的安装和配置教程。</p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h5><h5 id="1-安装Certbot"><a href="#1-安装Certbot" class="headerlink" title="1. 安装Certbot"></a>1. 安装Certbot</h5><blockquote>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><h5 id="1-安装Certbot"><a href="#1-安装Certbot" class="headerlink" title="1. 安装Certbot"></a>1. 安装Certbot</h5><blockquote>
 <p>首先第一步使用Let’s Encrypt获取一个SSL证书,并在服务器上安装Certbot软件</p>
 <p>由于Cerbot开发者包含了Unbutu最新版本的repository,因此我们可以使用它的repository替代Ubuntu的.</p>
 </blockquote>
@@ -496,7 +496,8 @@
 <blockquote>
 <p> 只要是没报错,设置就是成功了.如果cerbot后面更新证书或者加载Nginx配置失败了, Let’s Encrypt  会发送邮件通知你,警告你的证书已经过期了.</p>
 </blockquote>
-<p>至此所有的配置都完成了,你可以访问你的域名,是不是变成了Https服务了.哈哈 写了这么有点累了,希望文章能对你有帮助.</p>
+<p>至此所有的配置都完成了,你可以访问你的域名,是不是变成了Https服务了.</p>
+<p>哈哈 写得有点累了,希望文章能对你有帮助.</p>
 <p>参考文献:</p>
 <p> <a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04</a></p>
 <p><a href="https://certbot.eff.org/docs/" target="_blank" rel="noopener">https://certbot.eff.org/docs/</a></p>
@@ -792,7 +793,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成Let’s-Encrypt证书"><span class="nav-number">2.</span> <span class="nav-text">生成Let’s Encrypt证书</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-安装Certbot"><span class="nav-number">2.2.</span> <span class="nav-text">1. 安装Certbot</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-配置Nginx"><span class="nav-number">2.3.</span> <span class="nav-text">2. 配置Nginx</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-打开防火墙允许Https通过"><span class="nav-number">2.4.</span> <span class="nav-text">3. 打开防火墙允许Https通过</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-获取SSL证书"><span class="nav-number">2.5.</span> <span class="nav-text">4. 获取SSL证书</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-验证Certbot自动更新证书"><span class="nav-number">2.6.</span> <span class="nav-text">5. 验证Certbot自动更新证书</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Let’s-Encrypt证书"><span class="nav-number">2.</span> <span class="nav-text">Let’s Encrypt证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-安装Certbot"><span class="nav-number">3.1.</span> <span class="nav-text">1. 安装Certbot</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-配置Nginx"><span class="nav-number">3.2.</span> <span class="nav-text">2. 配置Nginx</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-打开防火墙允许Https通过"><span class="nav-number">3.3.</span> <span class="nav-text">3. 打开防火墙允许Https通过</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-获取SSL证书"><span class="nav-number">3.4.</span> <span class="nav-text">4. 获取SSL证书</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-验证Certbot自动更新证书"><span class="nav-number">3.5.</span> <span class="nav-text">5. 验证Certbot自动更新证书</span></a></li></ol></li></ol></div>
             
 
           </div>
