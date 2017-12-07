@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/20171201-vpn/</loc>
+    
+    <lastmod>2017-12-07T01:35:03.589Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/20171202-web-https/</loc>
     
     <lastmod>2017-12-03T04:29:18.863Z</lastmod>
@@ -117,13 +124,6 @@
     <loc>http://yoursite.com/20171117-atomic/</loc>
     
     <lastmod>2017-12-02T03:23:35.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/20171201-vpn/</loc>
-    
-    <lastmod>2017-12-01T16:04:02.000Z</lastmod>
     
   </url>
   

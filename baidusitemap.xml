@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/20171201-vpn/</loc>
+    <lastmod>2017-12-07T01:35:03.589Z</lastmod>
+    <data>
+        <display>
+        <title>使用Shadowsocks搭建私有VPN</title>
+        <pubTime>2017-12-01T14:30:10.000Z</pubTime>
+        
+        <tag>vpn</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/20171202-web-https/</loc>
     <lastmod>2017-12-03T04:29:18.863Z</lastmod>
     <data>
@@ -371,26 +391,6 @@
            
              
               <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/20171201-vpn/</loc>
-    <lastmod>2017-12-01T16:04:02.000Z</lastmod>
-    <data>
-        <display>
-        <title>VPN的搭建</title>
-        <pubTime>2017-12-01T14:30:10.000Z</pubTime>
-        
-        <tag>vpn</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
