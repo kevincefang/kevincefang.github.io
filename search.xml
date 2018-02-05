@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JVM笔记整理]]></title>
+    <url>%2F20180120-jvm%2F</url>
+    <content type="text"><![CDATA[谈到JVM大家可能会想到JVM调优.最近在学习JVM之类的知识,整理了一些相关的笔记. 1.为什么要调优?说到调优其实不是每个系统都需要调优,其实在默认情况下,JVM默认的参数已经是最优的了,大部分的应用无需再修改任何的JVM参数,对于有钱的公司一般最有效和最方便的方法就是加机器,加机器,还是加机器.只有当加机器还是无法解决问题时,这时候就可以考虑JVM调优了. 2. 如何知道性能需要提升调优当然需要知道是哪里出了问题,现在有很多的开源的监控工具可以协助我们找出问题根源,例如:点评的CAT,还有Pinpoint(一个分布式事务跟踪系统的平台),都很好用的. 当问题出现了,一般从四个方面来分析: cpu memory io network 关于cpu,可以使用top命令,观察导致cpu标高进程或者线程,然后再配合jstack工具找出具体的元婴 1234top (找到cpu高的线程PID)jstack pid &gt; a.txt (输出到文件中)printf &quot;%x \n&quot; pid (转换16进制为10进度)在a.txt文件中找到16进制PID对应的10进制的线程ID,对应的执行线程.锁定问题的根源. 查看机器的IO可以使用命令iostat观察 3. JDK自带的监控工具jmap -heap pid 堆使用情况 jstat -gcutil pid 1000 jstack 线程pid jvisualvm jconsole JDK官方文档: https://docs.oracle.com/javase/8/docs/technotes/tools/windows/toc.html 4. JVM参数 -X 开头的参数都是非标准的参数（不是所有的JVM都实现了） java -X可查看JVM参数的含义 常用参数: starting12345678-Xms :设置Java堆栈的初始化大小(starting)-Xmx :设置最大的java堆大小(max)-Xmn :设置Young区大小(new)-Xss :设置java线程堆栈大小-XX:PermSize and MaxPermSize :设置持久带的大小-XX:NewRatio :设置年轻代和老年代的比值-XX:NewSize :设置年轻代的大小-XX:SurvivorRation=n :设置年轻代中E去与俩个S去的比值 //-XX:SurvivorRatio=8 对象分配eden 8:1:1 官方文档: http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html 5. GC日志 输出日志 -verbose:gc :记录GC运行以及运行时间,一般用来查看GC是否有瓶颈 -XX:+PrintGCDetails :记录GC运行时的详细数据信息，包括新生占用的内存大小及消耗时间 -XX:-PrintGCTimeStamps :打印收集的时间戳 -XX:+UseParallelGC :使用并行垃圾收集器 -XX:-UseConcMarkSweepGC :使用并发标志扫描收集器 -XX:-UseSerialGC :使用串行垃圾收集器 -Xloggc:/data/gc/gc.log :设置GC记录的文件 日志文件控制 -XX:-UseGCLogFileRotation //启用GC日志文件的自动转储 -XX:GCLogFileSize=8K //控制GC日志文件的大小 YoungGC对照图 FullGC对照图]]></content>
+      <categories>
+        <category>jvm</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>jvm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[使用Let's Encrypt给网站加HTTPS]]></title>
     <url>%2F20171202-web-https%2F</url>
     <content type="text"><![CDATA[前言 每个网站都应该用 HTTPS，就算是全静态站点也同样如此，运营商劫持严重干扰访问者的体验 有几项技术可以提高 HTTPS 的性能，包括 Strict Transport Security，TLS False Start 和 HTTP/2 ，这些技术让 HTTPS 速度不慢，某些情况下会甚至更快 HTTPS 针对个人单个（或者几个）域名的使用来说，已经是免费的 配置和维护 HTTPS 异常简单，Let’s Encrypt 这个项目通过自动化把事情简单化了 推荐使用 Let’s Encrypt。StartSSL 的免费证书有效期是1年，1年后需要手动更换。配置过程还挺麻烦的。更推荐 Let’s Encrypt，虽然有效期只有3个月，但可以用 certbot 自动续期，完全不受影响。而且 Let’s Encrypt 因为有了 certbot 这样的自动化工具，配置管理起来非常容易。 Let’s Encrypt证书Let’s Encrypt 证书生成不需要手动进行，官方推荐 certbot 这套自动化工具来实现。3步轻松搞定： 下载安装 certbot (Let’s Encrypt项目的自动化工具) 创建配置文件 执行证书自动化生成命令 下面的教程运行在 Ubuntu 16.04 上，其他操作系统也大同小异。你可以在 certbot 网站上，选择你的 Web Server 和 操作系统，就能看到对应的安装和配置教程。 安装1. 安装Certbot 首先第一步使用Let’s Encrypt获取一个SSL证书,并在服务器上安装Certbot软件 由于Cerbot开发者包含了Unbutu最新版本的repository,因此我们可以使用它的repository替代Ubuntu的. (1) add the repository 1sudo add-apt-repository ppa:certbot/certbot (2) pick up the new repository’s package information 1sudo apt-get update (3) And finally, install Certbot’s Nginx package with apt-get. 1sudo apt-get install python-certbot-nginx Certbot现在已经安装好了,但是为了在Nginx上配置SSL,我们还需要验证一些Nginx的配置信息 2. 配置Nginx certbot能够在Nginx上自动配置SSL证书,但是它需要能找到正确的server模块在你的配置中.检查你的server_name配置是否是你要配置证书的域名 如果你没有Nginx的安装经验,建议你直接修改Nginx的默认配置 1sudo vim /etc/nginx/sites-available/default 找到servername这一行,然后替换’‘换成你的域名 1server_name example.com www.example.com; 保存后,可以验证你的配置是否正确 1sudo nginx -t 验证没有错误的话,重新加载Nginx的配置 1sudo systemctl reload nginx 3. 打开防火墙允许Https通过查看防火墙当前的配置 1sudo ufw status 如果你的配置像下面的话,意思是只允许HTTP服务通过 123456789OutputStatus: activeTo Action From-- ------ ----OpenSSH ALLOW Anywhere Nginx HTTP ALLOW Anywhere OpenSSH (v6) ALLOW Anywhere (v6) Nginx HTTP (v6) ALLOW Anywhere (v6) 添加HTTPS服务通过 12sudo ufw allow 'Nginx Full'sudo ufw delete allow 'Nginx HTTP' 检查一下配置信息 1sudo ufw status 123456789OutputStatus: activeTo Action From-- ------ ----OpenSSH ALLOW AnywhereNginx Full ALLOW AnywhereOpenSSH (v6) ALLOW Anywhere (v6)Nginx Full (v6) ALLOW Anywhere (v6) 下面准备运行Certbot,然后拉取我们的证书 4. 获取SSL证书 certbot通过多种插件提供了多种方式获取SSL证书. 这个Nginx 插件可以帮助我们重新配置Nginx和重新加载配置 1sudo certbot --nginx -d example.com -d www.example.com 使用—nginx 插件运行certbot ,使用-d 指定生成证书的域名 接下来会看到 123456789OutputPlease choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.-------------------------------------------------------------------------------1: No redirect - Make no further changes to the webserver configuration.2: Redirect - Make all requests redirect to secure HTTPS access. Choose this fornew sites, or if you're confident your site works on HTTPS. You can undo thischange by editing your web server's configuration.-------------------------------------------------------------------------------Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 输入’2’配置所有的请求都走HTTPS服务. 5. 验证Certbot自动更新证书 Let’s Encrypt’s 的证书默认有效时间是9天,使用cerbot可以自动2-3天更新一次证书 为了测试更新的进度,你可以运行cerbot命令: 1sudo certbot renew --dry-run 只要是没报错,设置就是成功了.如果cerbot后面更新证书或者加载Nginx配置失败了, Let’s Encrypt 会发送邮件通知你,警告你的证书已经过期了. 至此所有的配置都完成了,你可以访问你的域名,是不是变成了Https服务了. 哈哈 写得有点累了,希望文章能对你有帮助. 参考文献: https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04 https://certbot.eff.org/docs/]]></content>
@@ -24,17 +36,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Git常用命令]]></title>
-    <url>%2F20171129-git-operators%2F</url>
-    <content type="text"><![CDATA[理解这些指令，觉得最重要的是理解Git的内部原理，比如Git的分布式版本控制，分清楚工作区、暂存区、版本库，还有就是理解Git跟踪并管理的是修改，而非文件。 第一步是要获得一个GIT仓库有两种获得GIT仓库的方法，一是在需要用GIT管理的项目的根目录执行： 1git init 执行后可以看到，仅仅在项目目录多出了一个.git目录，关于版本等的所有信息都在这个目录里面。 另一种方式是克隆远程目录，由于是将远程服务器上的仓库完全镜像一份至本地，而不是取某一个特定版本，所以用clone而不是checkout： 1git clone &lt;url&gt; 设置12$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot; ssh -v git@github.com //检验下Git安装是否正确，显示hi github用户名！You’ve successfully authenticated 说明Git安装正确 提交git tracked的是修改，而不是文件 1234#将“当前修改”移动到暂存区(stage)$ git add somfile.txt#将暂存区修改提交$ git commit -m "Add somfile.txt." 状态12$ git status$ git diff 回退12345678910111213# 放弃工作区修改$ git checkout -- file.name$ git checkout -- .# 取消commit(比如需要重写commit信息)$ git reset --soft HEAD# 取消commit、add(重新提交代码和commit)$ git reset HEAD$ git reset --mixed HEAD# 取消commit、add、工作区修改(需要完全重置)$ git reset --hard HEAD 记录12$ git reflog$ git log 删除123$ rm file.name$ git rm file.name$ git commit -m "Del" Git 远程分支管理1234567891011121314git pull # 抓取远程仓库所有分支更新并合并到本地git pull --no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并git fetch origin # 抓取远程仓库更新git merge origin/master # 将远程主分支合并到本地当前分支git checkout --track origin/branch # 跟踪某个远程分支创建相应的本地分支git checkout -b &lt;local_branch&gt; origin/&lt;remote_branch&gt; # 基于远程分支创建本地分支，功能同上 git push # push所有分支git push origin master # 将本地主分支推到远程主分支# 第一次推送，-u(--set-upstream)指定默认上游git push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)git push origin &lt;local_branch&gt; # 创建远程分支， origin是远程仓库名git push origin &lt;local_branch&gt;:&lt;remote_branch&gt; # 创建远程分支git push origin :&lt;remote_branch&gt; #先删除本地分支(git branch -d &lt;branch&gt;)，然后再push删除远程分支 Git 远程仓库管理12345git remote -v # 查看远程服务器地址和仓库名称git remote show origin # 查看远程服务器仓库状态git remote add origin git@github.com:whuhacker/Unblock-Youku-Firefox.git # 添加远程仓库地址git remote set-url origin git@github.com:whuhacker/Unblock-Youku-Firefox.git # 设置远程仓库地址(用于修改远程仓库地址)git remote rm &lt;repository&gt; # 删除远程仓库 克隆12$ git clone https://github.com/Yikun/yikun.github.com.git path$ git clone git@github.com:Yikun/yikun.github.com.git path 分支操作 12345678910111213141516# 查看当前分支$ git branch# 创建分支$ git branch dev# 切换分支$ git checkout dev# 创建并checkout分支$ git checkout -b dev# 合并分支$ git merge dev# 删除分支$ git branch -d dev 标签12$ git tag 0.1.1$ git push origin --tags 目前使用git主要流程就是先在本地clone一个git仓库，然后设置一下看git是否连接成功，接着git remote add origin git@github.com:michaelliao/learngit.git，添加要连接的远程仓库地址，进行push（将本地主分支推到远程主分支）还是pull（抓取远程仓库所有分支更新并合并到本地）操作即可。]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[良好的个人作息时间表]]></title>
     <url>%2F20171129-zuoxi%2F</url>
     <content type="text"><![CDATA[5:00-5:10 新的一天就此开始，请笑对每一天。关爱自己和身边的人。缓慢的起床穿衣服(尽量不要快速起床，容易对心脏等器官造成较大的冲击）。英国威斯敏斯特大学的研究人员发现，那些在早上5:22―7:21 分起床的人，其血液中有一种能引起心脏病的物质含量较高，因此，在7:21之后或者5点之前起床对身体健康更加有益。 打开台灯。“一醒来，就将灯打开，这样将会重新调整体内的生物钟，调整睡眠和醒来模式。”拉夫堡大学睡眠研究中心教授吉姆·霍恩说。喝一杯水。水是身体内成千上万化学反应得以进行的必需物质。早上喝一杯清水，可以补充晚上的缺水状态。 5:10-5:40 在早饭之前刷牙。“在早饭之前刷牙 可以防止牙齿的腐蚀，因为刷牙之后，可以在牙齿外面涂上一层含氟的保护层。要么，就等早饭之后半小时再刷牙。”英国牙齿协会健康和安全研究人员戈登·沃特金斯说。 5:40-7:00 吃点饼干喝点水，整理仪容仪表去健身房听听音乐，跑跑步。等待6点左右的日出。然后到一楼看看书 7:00-7:30 吃早饭。“早饭必须吃，因为它可以帮助你维持血糖水平的稳定。”伦敦大学国王学院营养师凯文·威尔伦说。早饭可以吃燕麦粥等，这类食物具有较低的血糖指数。同时这个时间段也是小肠吸收营养的最佳时段。 7:30-8:00 整理仪表，上班打卡。喝杯水，看看今日头条。 8:00-10:00 避免运动。来自布鲁奈尔大学的研究人员发现，在早晨进行锻炼的运动员更容易感染疾病，因为免疫系统在这个时间的功能最弱。步行上班。马萨诸塞州大学医学院的研究人员发现，每天走路的人，比那些久坐不运动的人患感冒病的几率低25%。然后开始一天中最困难的工作或者学习一下（因为这段时间是学习的一个比较好的时间）。纽约睡眠中心的研究人员发现，大部分人在每天醒来的一两个小时内头脑最清醒。 10:00-11:00 让眼睛离开屏幕休息一下。如果你使用电脑工作，那么每工作一小时，就让眼睛休息3分钟。 11:00-12:00 吃点水果。这是一种解决身体血糖下降的好方法。吃一个橙子或一些红色水果，这样做能同时补充体内的铁含量和维生素C含量。 12:00-12:30 在面包上加一些豆类蔬菜。你需要一顿可口的午餐，并且能够缓慢地释放能量。“烘烤的豆类食品富含纤维素，番茄酱可以当作是蔬菜的一部分。”维伦博士说。 12:30-13:00 午休一小会儿。雅典的一所大学研究发现，那些每天中午午休30分钟或更长时间，每周至少午休3次的人，因心脏病死亡的几率会下降37%。 13:00-16:00 起床清醒一下，开始下午的工作。 16:00-17:00 喝杯酸奶。这样做可以稳定血糖水平。在每天三餐之间喝些酸牛奶，有利于心脏健康。 17:00-17:30 晚餐少吃点。晚饭吃太多，会引起血糖升高，并增加消化系统的负担，影响睡眠。晚饭应该多吃蔬菜，少吃富含卡路里和蛋白质的食物。吃饭时要细嚼慢咽。 17:30-18:00 根据体内的生物钟，这个时间是运动的最佳时间，舍菲尔德大学运动学医生瑞沃·尼克说。 18:00-20:30 建议的学习时间。 20:30-21:00 洗脸刷牙并洗个热水澡。“体温的适当降低有助于放松和睡眠。”拉夫堡大学睡眠研究中心吉姆·霍恩教授说。 21:00-21:30 上床睡觉。如果你早上5点起床，现在入睡可以保证你享受7.5个小时充足的睡眠。而且这个时间段是免疫系统(淋巴)排毒时间，此段时间应安静或听音乐准备入睡。 21:30-23:00 如果您按照这份[作息时间表]作息的话，建议您尽快入睡。 23:00-5:00 当浏览器自动带你来到这段，相信时间已经不早了。切记不可超过12点睡觉，因为那样即使休息够8小时，那也无济于事，一般还是会觉得身体不舒服或者难受。而且最总要的是据说这也是引发心脏病的一个重要原因。但现实生活中多少会有些不如意的事情，也没必要完全遵守 [作息时间表]，只要持之以恒，尽量培养起自己的作息习惯就好。23:00-1:00 肝的排毒，需在熟睡中进行。0:00-4:00 脊椎造血时段，必须熟睡，不宜熬夜。1:00-3:00 胆的排毒，亦同。3:00-5:00 肺的排毒。此即为何咳嗽的人在这段时间咳得最剧烈，因排毒动作已走到肺；不应用止咳药，以免抑制废积物的排除。关于吃早餐。疗病者最好早吃，在6点半前，养生者在7点半前，不吃早餐者应改变习惯，即使拖到9、10点吃都比不吃好。 转载地址]]></content>
@@ -55,8 +56,19 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>jvm</tag>
         <tag>面试</tag>
+        <tag>jvm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Git常用命令]]></title>
+    <url>%2F20171129-git-operators%2F</url>
+    <content type="text"><![CDATA[理解这些指令，觉得最重要的是理解Git的内部原理，比如Git的分布式版本控制，分清楚工作区、暂存区、版本库，还有就是理解Git跟踪并管理的是修改，而非文件。 第一步是要获得一个GIT仓库有两种获得GIT仓库的方法，一是在需要用GIT管理的项目的根目录执行： 1git init 执行后可以看到，仅仅在项目目录多出了一个.git目录，关于版本等的所有信息都在这个目录里面。 另一种方式是克隆远程目录，由于是将远程服务器上的仓库完全镜像一份至本地，而不是取某一个特定版本，所以用clone而不是checkout： 1git clone &lt;url&gt; 设置12$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot; ssh -v git@github.com //检验下Git安装是否正确，显示hi github用户名！You’ve successfully authenticated 说明Git安装正确 提交git tracked的是修改，而不是文件 1234#将“当前修改”移动到暂存区(stage)$ git add somfile.txt#将暂存区修改提交$ git commit -m "Add somfile.txt." 状态12$ git status$ git diff 回退12345678910111213# 放弃工作区修改$ git checkout -- file.name$ git checkout -- .# 取消commit(比如需要重写commit信息)$ git reset --soft HEAD# 取消commit、add(重新提交代码和commit)$ git reset HEAD$ git reset --mixed HEAD# 取消commit、add、工作区修改(需要完全重置)$ git reset --hard HEAD 记录12$ git reflog$ git log 删除123$ rm file.name$ git rm file.name$ git commit -m "Del" Git 远程分支管理1234567891011121314git pull # 抓取远程仓库所有分支更新并合并到本地git pull --no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并git fetch origin # 抓取远程仓库更新git merge origin/master # 将远程主分支合并到本地当前分支git checkout --track origin/branch # 跟踪某个远程分支创建相应的本地分支git checkout -b &lt;local_branch&gt; origin/&lt;remote_branch&gt; # 基于远程分支创建本地分支，功能同上 git push # push所有分支git push origin master # 将本地主分支推到远程主分支# 第一次推送，-u(--set-upstream)指定默认上游git push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)git push origin &lt;local_branch&gt; # 创建远程分支， origin是远程仓库名git push origin &lt;local_branch&gt;:&lt;remote_branch&gt; # 创建远程分支git push origin :&lt;remote_branch&gt; #先删除本地分支(git branch -d &lt;branch&gt;)，然后再push删除远程分支 Git 远程仓库管理12345git remote -v # 查看远程服务器地址和仓库名称git remote show origin # 查看远程服务器仓库状态git remote add origin git@github.com:whuhacker/Unblock-Youku-Firefox.git # 添加远程仓库地址git remote set-url origin git@github.com:whuhacker/Unblock-Youku-Firefox.git # 设置远程仓库地址(用于修改远程仓库地址)git remote rm &lt;repository&gt; # 删除远程仓库 克隆12$ git clone https://github.com/Yikun/yikun.github.com.git path$ git clone git@github.com:Yikun/yikun.github.com.git path 分支操作 12345678910111213141516# 查看当前分支$ git branch# 创建分支$ git branch dev# 切换分支$ git checkout dev# 创建并checkout分支$ git checkout -b dev# 合并分支$ git merge dev# 删除分支$ git branch -d dev 标签12$ git tag 0.1.1$ git push origin --tags 目前使用git主要流程就是先在本地clone一个git仓库，然后设置一下看git是否连接成功，接着git remote add origin git@github.com:michaelliao/learngit.git，添加要连接的远程仓库地址，进行push（将本地主分支推到远程主分支）还是pull（抓取远程仓库所有分支更新并合并到本地）操作即可。]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -92,8 +104,8 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>jvm</tag>
         <tag>面试</tag>
+        <tag>jvm</tag>
       </tags>
   </entry>
   <entry>
@@ -117,8 +129,8 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>jvm</tag>
         <tag>面试</tag>
+        <tag>jvm</tag>
       </tags>
   </entry>
   <entry>
