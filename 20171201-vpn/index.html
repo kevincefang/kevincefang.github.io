@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Haoer Blog">
 <meta property="og:description" content="由于平常查询资料经常需要翻墙google之类的网站,之前一直买的第三方的VPN账号,但是经常遇到不稳定或者访问比较慢的问题.后来实在是无法忍受了,决定搭建一个属于自己的VPN.具体的步骤总结一下,也希望能帮到需要的朋友.  选择服务器首先需要购买服务器,购买前我也看了好几家的云服务器,价钱都差不多,最低配置的价格都是5$  亚马逊的LigntSail, 需要绑定信用卡,扣了我12块钱预付费,收到">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-07T01:35:03.589Z">
+<meta property="og:updated_time" content="2018-02-05T10:38:58.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Shadowsocks搭建私有VPN">
 <meta name="twitter:description" content="由于平常查询资料经常需要翻墙google之类的网站,之前一直买的第三方的VPN账号,但是经常遇到不稳定或者访问比较慢的问题.后来实在是无法忍受了,决定搭建一个属于自己的VPN.具体的步骤总结一下,也希望能帮到需要的朋友.  选择服务器首先需要购买服务器,购买前我也看了好几家的云服务器,价钱都差不多,最低配置的价格都是5$  亚马逊的LigntSail, 需要绑定信用卡,扣了我12块钱预付费,收到">
@@ -436,9 +436,9 @@
 </blockquote>
 <h4 id="选择服务器"><a href="#选择服务器" class="headerlink" title="选择服务器"></a>选择服务器</h4><p>首先需要购买服务器,购买前我也看了好几家的云服务器,价钱都差不多,最低配置的价格都是5$</p>
 <ul>
-<li>亚马逊的<a href="https://amazonlightsail.com/" target="_blank" rel="noopener">LigntSail</a>, 需要绑定信用卡,扣了我12块钱预付费,收到短信才知道直接偷偷扣钱了(真心无语),随后主机也弄好了,ssh秘钥也生成了,但是就是本地ssh不能访问服务器,换了其他的地区和操作系统,仍然不能访问,索性放弃了,估计是QWS的bug</li>
-<li><a href="https://www.vultr.com/" target="_blank" rel="noopener">vultr</a> 这个好评也挺多的,但是要绑定信用卡,随后放弃了</li>
-<li><a href="https://www.digitalocean.com/" target="_blank" rel="noopener">digitalocean</a> 这个还不错,也是我的最终选择,可以支持信用卡和<a href="https://www.paypal.com" target="_blank" rel="noopener">PayPal</a>支付,既然可以不用绑定信用卡当然选择用PayPal支付,随后注册了一个PayPal账户,绑定一下银行卡,就可以直接支付服务器的费用了.我选择的是新加坡的服务器,也建议选择这个区域的,网速还可以.</li>
+<li>亚马逊的<a href="https://amazonlightsail.com/" target="_blank" rel="noopener">LigntSail</a>, 需要绑定信用卡,扣了我12块钱预付费,收到短信才知道直接偷偷扣钱了(真心无语),随后主机也弄好了,ssh秘钥也生成了,但是就是本地ssh不能访问服务器,换了其他的地区和操作系统,仍然不能访问,索性放弃了,估计是QWS的bug…</li>
+<li><a href="https://www.digitalocean.com/" target="_blank" rel="noopener">digitalocean</a> 可以支持信用卡和<a href="https://www.paypal.com" target="_blank" rel="noopener">PayPal</a>支付,既然可以不用绑定信用卡当然选择用PayPal支付,随后注册了一个PayPal账户,绑定一下银行卡,就可以直接支付服务器的费用了.</li>
+<li><a href="https://www.vultr.com/" target="_blank" rel="noopener">vultr</a> 这个是我最终的选择,重要一点是可以支持支付宝付款,很方便,机房也挺多的,我选的是日本的服务器,也建议选择这个区域的,网速还可以.</li>
 </ul>
 <h4 id="安装Shadowsocks服务端"><a href="#安装Shadowsocks服务端" class="headerlink" title="安装Shadowsocks服务端"></a>安装Shadowsocks服务端</h4><p>使用root用户登录你的服务器,运行一下命令:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</span><br><span class="line">chmod +x shadowsocksR.sh</span><br><span class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</span><br></pre></td></tr></table></figure>
@@ -518,8 +518,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/20171129-zuoxi/" rel="next" title="良好的个人作息时间表">
-                <i class="fa fa-chevron-left"></i> 良好的个人作息时间表
+              <a href="/20171129-git-operators/" rel="next" title="Git常用命令">
+                <i class="fa fa-chevron-left"></i> Git常用命令
               </a>
             
           </div>
