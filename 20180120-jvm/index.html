@@ -104,7 +104,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20180205/YoungGC-log.jpg">
 <meta property="og:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20180205/FullGC-log.jpg">
-<meta property="og:updated_time" content="2018-03-05T06:51:11.768Z">
+<meta property="og:updated_time" content="2018-03-05T07:37:34.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM笔记整理">
 <meta name="twitter:description" content="谈到JVM大家可能会想到JVM调优.最近在学习JVM之类的知识,整理了一些相关的笔记.  1.为什么要调优?说到调优其实不是每个系统都需要调优,其实在默认情况下,JVM默认的参数已经是最优的了,大部分的应用无需再修改任何的JVM参数,对于有钱的公司一般最有效和最方便的方法就是加机器,加机器,还是加机器.只有当加机器还是无法解决问题时,这时候就可以考虑JVM调优了. 2. 如何知道性能需要提升调优">
@@ -449,7 +449,7 @@
 <li>network</li>
 </ul>
 <p>关于cpu,可以使用top命令,观察导致cpu标高进程或者线程,然后再配合jstack工具找出具体的元婴</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">top (找到cpu高的线程PID)</span><br><span class="line">jstack pid &gt; a.txt (输出到文件中)</span><br><span class="line">printf &quot;%x \n&quot; pid (转换10进制为16进度)</span><br><span class="line">在a.txt文件中找到上面转换10进制后的16进制的线程ID,对应的执行线程.锁定问题的根源.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">top (找到cpu高的线程PID) 或者 使用 top -p 16326 -H 找到java进程包含的线程ID (16326 可以通过jps命令查到java进程的ID)</span><br><span class="line">jstack pid &gt; a.txt (输出到文件中)</span><br><span class="line">printf &quot;%x \n&quot; pid (转换10进制为16进度)</span><br><span class="line">在a.txt文件中找到上面转换10进制后的16进制的线程ID,对应的执行线程.锁定问题的根源.</span><br></pre></td></tr></table></figure>
 <p>查看机器的IO可以使用命令<code>iostat</code>观察</p>
 <h5 id="3-JDK自带的监控工具"><a href="#3-JDK自带的监控工具" class="headerlink" title="3. JDK自带的监控工具"></a>3. JDK自带的监控工具</h5><pre><code>jmap -heap pid 堆使用情况
 jstat  -gcutil pid 1000
