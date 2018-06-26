@@ -94,19 +94,19 @@
 
 
 
-<meta name="description" content="centos更换内核安装serverspeeder锐速, 加速后的访问速度提高很多.   CentO S7.3的内核3.10.0-514.16.1.el7.x86_64暂不支持安装锐速，故更换为3.10.0-229.1.2.el7.x86_64  basic1rpm -ivh http://soft.91yun.org">
+<meta name="description" content="centos更换内核安装serverspeeder锐速, 加速后的访问速度提高很多.   CentO S7.3的内核3.10.0-514.16.1.el7.x86_64暂不支持安装锐速，故更换为3.10.0-229.1.2.el7.x86_64  1rpm -ivh http://soft.91yun.org/ISO/">
 <meta name="keywords" content="vpn,centos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS7.3更换内核安装锐速破解版">
 <meta property="og:url" content="http://fhaoer.com/20180626-Centos-install-serverspeeder/index.html">
 <meta property="og:site_name" content="Haoer Blog">
-<meta property="og:description" content="centos更换内核安装serverspeeder锐速, 加速后的访问速度提高很多.   CentO S7.3的内核3.10.0-514.16.1.el7.x86_64暂不支持安装锐速，故更换为3.10.0-229.1.2.el7.x86_64  basic1rpm -ivh http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-3.10.0-">
+<meta property="og:description" content="centos更换内核安装serverspeeder锐速, 加速后的访问速度提高很多.   CentO S7.3的内核3.10.0-514.16.1.el7.x86_64暂不支持安装锐速，故更换为3.10.0-229.1.2.el7.x86_64  1rpm -ivh http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-3.10.0-229.1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20180626/1.png">
-<meta property="og:updated_time" content="2018-06-26T06:23:27.461Z">
+<meta property="og:updated_time" content="2018-06-26T06:30:11.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS7.3更换内核安装锐速破解版">
-<meta name="twitter:description" content="centos更换内核安装serverspeeder锐速, 加速后的访问速度提高很多.   CentO S7.3的内核3.10.0-514.16.1.el7.x86_64暂不支持安装锐速，故更换为3.10.0-229.1.2.el7.x86_64  basic1rpm -ivh http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-3.10.0-">
+<meta name="twitter:description" content="centos更换内核安装serverspeeder锐速, 加速后的访问速度提高很多.   CentO S7.3的内核3.10.0-514.16.1.el7.x86_64暂不支持安装锐速，故更换为3.10.0-229.1.2.el7.x86_64  1rpm -ivh http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-3.10.0-229.1">
 <meta name="twitter:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20180626/1.png">
 
 
@@ -439,11 +439,11 @@
 <ol>
 <li>CentO S7.3的内核3.10.0-514.16.1.el7.x86_64暂不支持安装锐速，故更换为3.10.0-229.1.2.el7.x86_64</li>
 </ol>
-<figure class="highlight plain"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm --force</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm --force</span><br></pre></td></tr></table></figure>
 <ol>
 <li>查看内核是否安装成功</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm  -qa | grep kernel</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm  -qa | grep kernel</span><br></pre></td></tr></table></figure>
 <ol>
 <li>如果显示里面有这个内核就对了。</li>
 </ol>
@@ -451,18 +451,18 @@
 <ol>
 <li>重启，查看内核是否更换成功</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br><span class="line">uname -r</span><br></pre></td></tr></table></figure>
 <ol>
 <li>更换完内核后开始安装锐速破解版</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh &amp;&amp; bash serverspeeder.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh &amp;&amp; bash serverspeeder.sh</span><br></pre></td></tr></table></figure>
 <p>查看状态</p>
-<figure class="highlight plain"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service serverSpeeder status</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service serverSpeeder status</span><br></pre></td></tr></table></figure>
 <p>查看实时信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service serverSpeeder stats</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service serverSpeeder stats</span><br></pre></td></tr></table></figure>
 <p>锐速服务是开机启动的，所以不用进行设置</p>
 <p>锐速破解版卸载方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.sh uninstall -f</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.sh uninstall -f</span><br></pre></td></tr></table></figure>
       
     </div>
 
