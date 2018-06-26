@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://fhaoer.com/20171203-vps/</loc>
+    <loc>http://fhaoer.com/20171203-select-vpn/</loc>
     
-    <lastmod>2018-06-26T07:57:52.517Z</lastmod>
+    <lastmod>2018-06-26T08:15:48.270Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://fhaoer.com/20171202-select-vpn/</loc>
+    <loc>http://fhaoer.com/20171202-vpn/</loc>
     
-    <lastmod>2018-06-26T07:55:51.885Z</lastmod>
+    <lastmod>2018-06-26T08:15:37.822Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fhaoer.com/20171201-vps/</loc>
+    
+    <lastmod>2018-06-26T08:15:18.789Z</lastmod>
     
   </url>
   
@@ -33,13 +40,6 @@
     <loc>http://fhaoer.com/20180120-jvm/</loc>
     
     <lastmod>2018-06-26T05:56:48.103Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://fhaoer.com/20171201-vpn/</loc>
-    
-    <lastmod>2018-06-26T03:50:03.245Z</lastmod>
     
   </url>
   

@@ -36,20 +36,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[搭建自己专属的vpn——选择一个vps]]></title>
-    <url>%2F20171203-vps%2F</url>
-    <content type="text"><![CDATA[前言作为一名技术人员，经常需要访问一些墙外的网站，你懂的。本来想直接购买个vpn，但又怕不太安全。看到网上有很多自己搭建vpn的教程，于是自己折腾了一下，终于成功搭建，随便与大家分享一些经验。 选择一个vps搭建vpn的第一步是，你必须有一台公网能访问的vps，而且该vps要在墙外，简单来说就是你必须要有一台能访问墙外的电脑。如何选择一个适合自己的vps呢？我自己认为主要有价格、稳定性和带宽等方面的因素，当然易操作性、良好的售后服务等也比较重要。 国外常见的vps有Linode、Vultr、SugarHosts、bandwagonhost等。 看了网上的一些评测，如《Vultr超高性价比VPS评测使用教程》，以及Vultr每月$2.5的费用，觉得可以入手，因为网上购买一个vpn也差不多这个费用。 注册账号首先，登陆Vultr官网，点击Create Account注册即可，之前官方搞活动，暑假注册使用免费送$20，现在好像没有什么优惠了，期待下次还有活动。现在最新优惠是每月$2.5的实例，不过经常没货。 注册并不会收费，只有创建了实例才会收费，如果觉得不好用可以直接删除自己创建的实例，这样就不会收费了。注意，如果实例关机但没有把实例删除，还是会收费的，毕竟该实例占用了公网IP和硬盘空间。 可喜的是，现在vultr已经支持支付宝付款了。 选择机房如何选择一个好的机房，当然是自己测过才放心。这里推荐使用PingInfoView来测试。以下是vultr的机房： 列表如下，贴到PingInfoView上即可。 123456789101112131415sgp-ping.vultr.comhnd-jp-ping.vultr.comsyd-au-ping.vultr.comfra-de-ping.vultr.comams-nl-ping.vultr.comlon-gb-ping.vultr.compar-fr-ping.vultr.comwa-us-ping.vultr.comsjo-ca-us-ping.vultr.comlax-ca-us-ping.vultr.comil-us-ping.vultr.comnj-us-ping.vultr.comtx-us-ping.vultr.comga-us-ping.vultr.comfl-us-ping.vultr.com linux/mac用户可以使用我写的脚本vultr_test来测试。 以下是我的测试结果：选择的原则是，ping值最小，丢包率最小。比如我的测试结果中，较不错的是sjo、wa和lax，都是美国机房。 部署实例点击Servers，然后点右边的+号依次选择自己测试比较好的机房，选择操作系统版本，选择方案（$2.5的低配方案搭vpn已经够用，另外还可以自己搭个博客什么的），然后部署就搞定了。 如果vps使用linux操作系统，可以使用ssh的客户端登录，比如SecureCRT，这里就不再详细说明。 转载地址: http://blog.noahsun.top/2018/04/07/%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E4%B8%93%E5%B1%9E%E7%9A%84vpn%E2%80%94%E2%80%94%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AAvps/]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>vpn</tag>
-        <tag>vps</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[搭建自己专属的vpn——Centos搭建vpn的几种办法]]></title>
-    <url>%2F20171202-select-vpn%2F</url>
+    <url>%2F20171203-select-vpn%2F</url>
     <content type="text"><![CDATA[###方法一：搭建shadowsocks+serverspeeder（特别推荐） ####shadowsocks服务端安装 参考官方Shadowsocks使用说明： CentOS: 12yum install python-setuptools &amp;&amp; easy_install pip pip install shadowsocks Debian / Ubuntu: 12apt-get install python-pip pip install shadowsocks 配置参考Configuration via Config File 修改配置文件/etc/shadowsocks.json，如果没有则新建。内容如下： 12345678910&#123; &quot;server&quot;:&quot;0.0.0.0&quot;, &quot;server_port&quot;:8388, &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;:&quot;mypassword&quot;, &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false &#125; 或（多个SS账号） 123456789101112&#123; &quot;server&quot;:&quot;0.0.0.0&quot;, &quot;port_password&quot;:&#123; &quot;8381&quot;:&quot;xxxxxxx&quot;, &quot;8382&quot;:&quot;xxxxxxx&quot;, &quot;8383&quot;:&quot;xxxxxxx&quot;, &quot;8384&quot;:&quot;xxxxxxx&quot; &#125;, &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false &#125; 配置说明： 字段 说明 server ss服务监听地址 server_port ss服务监听端口 local_address 本地的监听地址 local_port 本地的监听端口 password 密码 timeout 超时时间，单位秒 method 加密方法，默认是aes-256-cfb fast_open 使用TCP_FASTOPEN, true / false workers workers数，只支持Unix/Linux系统 启动：前台启动 1ssserver -c /etc/shadowsocks.json 后台启动与停止 12ssserver -c /etc/shadowsocks.json -d start ssserver -c /etc/shadowsocks.json -d stop 如需开机启动修改/etc/rc.local，加入以下内容 1ssserver -c /etc/shadowsocks.json -d start 日志shadowsocks的日志保存在 /var/log/shadowsocks.log shadowsocks客户端安装下载地址： 1234567891011121314151617Windows https://github.com/shadowsocks/shadowsocks-windows/releases Mac OS X https://github.com/shadowsocks/ShadowsocksX-NG/releases Linux https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation https://github.com/shadowsocks/shadowsocks-qt5/releases IOS https://itunes.apple.com/app/apple-store/id1070901416?pt=2305194&amp;ct=shadowsocks.org&amp;mt=8 https://github.com/shadowsocks/shadowsocks-iOS/releasesAndroid https://play.google.com/store/apps/details?id=com.github.shadowsocks https://github.com/shadowsocks/shadowsocks-android/releases serverspeeder加速安装注意：serverspeeder加速是可选的，如果你使用vpn测速发现很慢，可以安装试试。 加速前 加速后 下行速度瞬间提升，是不是觉得有点小激动？一键安装serverspeeder注：参考serverspeeder锐速一键破解安装版 1wget -N --no-check-certificate https://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh &amp;&amp; bash serverspeeder.sh 如果报内核不支持，可以更换系统内核 1234567891011下载内核安装包 wget http://ftp.scientificlinux.org/linux/scientific/6.6/x86_64/updates/security/kernel-2.6.32-504.3.3.el6.x86_64.rpm 更换内核 rpm -ivh kernel-2.6.32-504.3.3.el6.x86_64.rpm --force 重启 reboot 查看内核版本是否替换成功 cat /proc/version 如果系统内核已更新，再次执行一键安装serverspeeder方法即可。至此serverspeeder安装完毕，快去试试速度是不提升了。 卸载serverspeeder的方法 1chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.sh uninstall -f 方法二：搭建l2tp vpn（推荐）参考DearTanker’s Blog的一键安装方法： 123wget --no-check-certificate https://raw.githubusercontent.com/teddysun/across/master/l2tp.sh chmod +x l2tp.sh ./l2tp.sh 基本上，按交互式命令的提示按回车或者自定义自己的选择即可，然后再次验证ipsec（L2TP）并重启相关服务，否则提示服务器无响应 123service ipsec restart service xl2tpd restart ipsec verify 如果需要修改或者增加账号密码，可以修改/etc/ppp/chap-secrets 1账户 l2tpd 密码 * 测试成功使用的客户端有，win7+win10自带vpn客户端，andriod自带vpn客户端。 测试成功使用的网络环境有，电信+联通宽带，移动4g无法连接成功，如果哪位朋友在移动网络下有成功的经验，麻烦分享一下。 不使用vpn时，使用speedtest的测速结果： 下面是成功连接vpn后，使用speedtest的测速结果，虽然不是非常快，但基本够用。 方法三：搭建openvpn（不建议）vultr面板提供一键安装openvpn的办法，方法是在新建一个vps实例时选择默认安装一个应用程序： 具体安装办法参考官方的一键安装openvpn说明。openvpn是使用操作系统的登录账号登录的，所以搭建完openvpn后，你可以参考linux新建用户的办法新建一个用户及修改用户密码，然后使用opevpn提供的客户端或者网页（一般情况下是 https://your_vps_ip:943/ ）登录即可。 之所以不建议使用openvpn，原因是测速发现比较慢，下载带宽不到1M，而且openvpn貌似不支持移动端登录。 方法四：搭建pptpd vpn（不建议）注：之所以不建议使用pptpd，一方面是pptpd经常被墙，二是容易出问题。 安装1yum install ppp iptables pptpd 配置编辑/etc/pptpd.conf，搜索localip，去掉下面字段前面的#，然后保存退出 12localip 192.168.0.1 remoteip 192.168.0.234-238,192.168.0.245 注意，pptpd默认支持最大100个连接，每个remoteip分配一个连接，如果remoteip数不够100个，那么默认连接数就会变成remoteip数。如果默认连接数不够的话，就会出现自动断开的情况，比如手机上的vpn连上了，PC端的vpn就会断开。 编辑options.pptpd，搜索ms-dns，去掉搜索到的两行ms-dns前面的#，并修改为下面的字段 12ms-dns 8.8.8.8 ms-dns 8.8.4.4 编辑/etc/ppp/chap-secrets设置VPN的帐号密码，注意，用户名与密码是区分大小写的 1用户名 pptpd 密码 * 编辑/etc/sysctl.conf，修改内核参数，在末尾添加下面的代码，使内核支持转发 1net.ipv4.ip_forward=1 运行下面的命令使内核修改生效 1sysctl -p 添加下面的iptables转发规则（直接在SSH运行下面命令即可） 1iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o eth0 -j MASQUERADE 添加转发规则后重启就会失效，Centos 6系统可以使用service iptables save保存配置，而Centos7则可以修改/etc/rc.d/rc.local保存上面的命令，这样开机会自动执行上面的命令。 启动用下面的命令使pptpd开机自动启动 1chkconfig pptpd on 启动pptpd 1service pptpd start 使用使用你的vpn客户端连接即可，如果配置没问题的话，就可以连接成功。测试成功连接的vpn客户端有，win7+win10自带vpn客户端，andriod自带vpn客户端。但只在宽带网络上连接成功，4g网络连接不成功。 排错如果你的vpn连接不成功，有可能是iptable防火墙的问题，你可以使用下面命令 123iptables -A INPUT -p tcp --dport 1723 -j ACCEPT 或者 iptables -F 然后在你的其他电脑使用telnet your_ip 1723测试是否连通。 如果你遇到访问网站偶尔连接上又断的问题，可能是MTU太大导致，可以 1234执行 iptables -I FORWARD -p tcp --syn -i ppp+ -j TCPMSS --set-mss 1356 或者修改/etc/ppp/options.pptpd，在文件最后添加 mtu 1356 更多问题，可以打开pptpd的debug日志，根据debug日志的输出上网搜索一步步解决修改/etc/ppp/options.pptpd取消下面的注释 123debug dump logfile /var/log/pptpd.log（没有则手工修改） 转载地址: http://blog.noahsun.top/2018/04/07/%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E4%B8%93%E5%B1%9E%E7%9A%84vpn%E2%80%94%E2%80%94Centos%E6%90%AD%E5%BB%BAvpn%E7%9A%84%E5%87%A0%E7%A7%8D%E5%8A%9E%E6%B3%95/]]></content>
       <categories>
         <category>工具</category>
@@ -60,7 +48,7 @@
   </entry>
   <entry>
     <title><![CDATA[自己动手搭建免费的VPN服务器]]></title>
-    <url>%2F20171201-vpn%2F</url>
+    <url>%2F20171202-vpn%2F</url>
     <content type="text"><![CDATA[由于平常查询资料经常需要翻墙google之类的网站,之前一直买的第三方的VPN账号,但是经常遇到不稳定或者访问比较慢的问题.后来实在是无法忍受了,决定搭建一个属于自己的VPN.具体的步骤总结一下,也希望能帮到需要的朋友. 选择服务器首先需要购买服务器,购买前我也看了好几家的云服务器,价钱都差不多,最低配置的价格都是5$ 亚马逊的LigntSail, 需要绑定信用卡,扣了我12块钱预付费,收到短信才知道直接偷偷扣钱了(真心无语),随后主机也弄好了,ssh秘钥也生成了,但是就是本地ssh不能访问服务器,换了其他的地区和操作系统,仍然不能访问,索性放弃了,估计是QWS的bug… digitalocean 可以支持信用卡和PayPal支付,既然可以不用绑定信用卡当然选择用PayPal支付,随后注册了一个PayPal账户,绑定一下银行卡,就可以直接支付服务器的费用了. vultr 这个是我最终的选择,重要一点是可以支持支付宝付款,很方便,机房也挺多的,我选的是日本的服务器,也建议选择这个区域的,网速还可以. 安装Shadowsocks服务端使用root用户登录你的服务器,运行一下命令: 123wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.shchmod +x shadowsocksR.sh./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log 安装完成后，脚本提示如下： 12345678910Congratulations, ShadowsocksR server install completed!Your Server IP :your_server_ipYour Server Port :your_server_portYour Password :your_passwordYour Protocol :your_protocolYour obfs :your_obfsYour Encryption Method:your_encryption_methodWelcome to visit:https://shadowsocks.be/9.htmlEnjoy it! 默认配置：服务器端口：自己设定（如不设定，默认为 8989）密码：自己设定（如不设定，默认为 teddysun.com）加密方式：自己设定（如不设定，默认为 aes-256-cfb）协议（Protocol）：自己设定（如不设定，默认为 origin）混淆（obfs）：自己设定（如不设定，默认为 plain） 卸载方法：使用 root 用户登录，运行命令：./shadowsocksR.sh uninstall 安装完成后即已后台启动 ShadowsocksR ，运行：/etc/init.d/shadowsocks status可以查看 ShadowsocksR 进程是否已经启动。本脚本安装完成后，已将 ShadowsocksR 自动加入开机自启动。 使用命令：启动：/etc/init.d/shadowsocks start停止：/etc/init.d/shadowsocks stop重启：/etc/init.d/shadowsocks restart状态：/etc/init.d/shadowsocks status 配置文件路径：/etc/shadowsocks.json日志文件路径：/var/log/shadowsocks.log代码安装目录：/usr/local/shadowsocks 客户端安装服务端安装完之后,安装客户端进行连接 https://github.com/iMeiji/shadowsocks_install/releases/tag/0.13 连接成功就可以翻墙了,很简单的. 注意事项：本脚本没有对防火墙（IPv4 是 iptables，IPv6 是 ip6tables）进行任何设置。因此，在安装完毕，如果你发现连接不上，可以尝试更改防火墙设置或关闭防火墙。 参考连接: https://github.com/iMeiji/shadowsocks_install/wiki/shadowsocksR-%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85]]></content>
       <categories>
         <category>工具</category>
@@ -70,15 +58,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[良好的个人作息时间表]]></title>
-    <url>%2F20171129-zuoxi%2F</url>
-    <content type="text"><![CDATA[5:00-5:10 新的一天就此开始，请笑对每一天。关爱自己和身边的人。缓慢的起床穿衣服(尽量不要快速起床，容易对心脏等器官造成较大的冲击）。英国威斯敏斯特大学的研究人员发现，那些在早上5:22―7:21 分起床的人，其血液中有一种能引起心脏病的物质含量较高，因此，在7:21之后或者5点之前起床对身体健康更加有益。 打开台灯。“一醒来，就将灯打开，这样将会重新调整体内的生物钟，调整睡眠和醒来模式。”拉夫堡大学睡眠研究中心教授吉姆·霍恩说。喝一杯水。水是身体内成千上万化学反应得以进行的必需物质。早上喝一杯清水，可以补充晚上的缺水状态。 5:10-5:40 在早饭之前刷牙。“在早饭之前刷牙 可以防止牙齿的腐蚀，因为刷牙之后，可以在牙齿外面涂上一层含氟的保护层。要么，就等早饭之后半小时再刷牙。”英国牙齿协会健康和安全研究人员戈登·沃特金斯说。 5:40-7:00 吃点饼干喝点水，整理仪容仪表去健身房听听音乐，跑跑步。等待6点左右的日出。然后到一楼看看书 7:00-7:30 吃早饭。“早饭必须吃，因为它可以帮助你维持血糖水平的稳定。”伦敦大学国王学院营养师凯文·威尔伦说。早饭可以吃燕麦粥等，这类食物具有较低的血糖指数。同时这个时间段也是小肠吸收营养的最佳时段。 7:30-8:00 整理仪表，上班打卡。喝杯水，看看今日头条。 8:00-10:00 避免运动。来自布鲁奈尔大学的研究人员发现，在早晨进行锻炼的运动员更容易感染疾病，因为免疫系统在这个时间的功能最弱。步行上班。马萨诸塞州大学医学院的研究人员发现，每天走路的人，比那些久坐不运动的人患感冒病的几率低25%。然后开始一天中最困难的工作或者学习一下（因为这段时间是学习的一个比较好的时间）。纽约睡眠中心的研究人员发现，大部分人在每天醒来的一两个小时内头脑最清醒。 10:00-11:00 让眼睛离开屏幕休息一下。如果你使用电脑工作，那么每工作一小时，就让眼睛休息3分钟。 11:00-12:00 吃点水果。这是一种解决身体血糖下降的好方法。吃一个橙子或一些红色水果，这样做能同时补充体内的铁含量和维生素C含量。 12:00-12:30 在面包上加一些豆类蔬菜。你需要一顿可口的午餐，并且能够缓慢地释放能量。“烘烤的豆类食品富含纤维素，番茄酱可以当作是蔬菜的一部分。”维伦博士说。 12:30-13:00 午休一小会儿。雅典的一所大学研究发现，那些每天中午午休30分钟或更长时间，每周至少午休3次的人，因心脏病死亡的几率会下降37%。 13:00-16:00 起床清醒一下，开始下午的工作。 16:00-17:00 喝杯酸奶。这样做可以稳定血糖水平。在每天三餐之间喝些酸牛奶，有利于心脏健康。 17:00-17:30 晚餐少吃点。晚饭吃太多，会引起血糖升高，并增加消化系统的负担，影响睡眠。晚饭应该多吃蔬菜，少吃富含卡路里和蛋白质的食物。吃饭时要细嚼慢咽。 17:30-18:00 根据体内的生物钟，这个时间是运动的最佳时间，舍菲尔德大学运动学医生瑞沃·尼克说。 18:00-20:30 建议的学习时间。 20:30-21:00 洗脸刷牙并洗个热水澡。“体温的适当降低有助于放松和睡眠。”拉夫堡大学睡眠研究中心吉姆·霍恩教授说。 21:00-21:30 上床睡觉。如果你早上5点起床，现在入睡可以保证你享受7.5个小时充足的睡眠。而且这个时间段是免疫系统(淋巴)排毒时间，此段时间应安静或听音乐准备入睡。 21:30-23:00 如果您按照这份[作息时间表]作息的话，建议您尽快入睡。 23:00-5:00 当浏览器自动带你来到这段，相信时间已经不早了。切记不可超过12点睡觉，因为那样即使休息够8小时，那也无济于事，一般还是会觉得身体不舒服或者难受。而且最总要的是据说这也是引发心脏病的一个重要原因。但现实生活中多少会有些不如意的事情，也没必要完全遵守 [作息时间表]，只要持之以恒，尽量培养起自己的作息习惯就好。23:00-1:00 肝的排毒，需在熟睡中进行。0:00-4:00 脊椎造血时段，必须熟睡，不宜熬夜。1:00-3:00 胆的排毒，亦同。3:00-5:00 肺的排毒。此即为何咳嗽的人在这段时间咳得最剧烈，因排毒动作已走到肺；不应用止咳药，以免抑制废积物的排除。关于吃早餐。疗病者最好早吃，在6点半前，养生者在7点半前，不吃早餐者应改变习惯，即使拖到9、10点吃都比不吃好。 转载地址]]></content>
+    <title><![CDATA[搭建自己专属的vpn——选择一个vps]]></title>
+    <url>%2F20171201-vps%2F</url>
+    <content type="text"><![CDATA[前言作为一名技术人员，经常需要访问一些墙外的网站，你懂的。本来想直接购买个vpn，但又怕不太安全。看到网上有很多自己搭建vpn的教程，于是自己折腾了一下，终于成功搭建，随便与大家分享一些经验。 选择一个vps搭建vpn的第一步是，你必须有一台公网能访问的vps，而且该vps要在墙外，简单来说就是你必须要有一台能访问墙外的电脑。如何选择一个适合自己的vps呢？我自己认为主要有价格、稳定性和带宽等方面的因素，当然易操作性、良好的售后服务等也比较重要。 国外常见的vps有Linode、Vultr、SugarHosts、bandwagonhost等。 看了网上的一些评测，如《Vultr超高性价比VPS评测使用教程》，以及Vultr每月$2.5的费用，觉得可以入手，因为网上购买一个vpn也差不多这个费用。 注册账号首先，登陆Vultr官网，点击Create Account注册即可，之前官方搞活动，暑假注册使用免费送$20，现在好像没有什么优惠了，期待下次还有活动。现在最新优惠是每月$2.5的实例，不过经常没货。 注册并不会收费，只有创建了实例才会收费，如果觉得不好用可以直接删除自己创建的实例，这样就不会收费了。注意，如果实例关机但没有把实例删除，还是会收费的，毕竟该实例占用了公网IP和硬盘空间。 可喜的是，现在vultr已经支持支付宝付款了。 选择机房如何选择一个好的机房，当然是自己测过才放心。这里推荐使用PingInfoView来测试。以下是vultr的机房： 列表如下，贴到PingInfoView上即可。 123456789101112131415sgp-ping.vultr.comhnd-jp-ping.vultr.comsyd-au-ping.vultr.comfra-de-ping.vultr.comams-nl-ping.vultr.comlon-gb-ping.vultr.compar-fr-ping.vultr.comwa-us-ping.vultr.comsjo-ca-us-ping.vultr.comlax-ca-us-ping.vultr.comil-us-ping.vultr.comnj-us-ping.vultr.comtx-us-ping.vultr.comga-us-ping.vultr.comfl-us-ping.vultr.com linux/mac用户可以使用我写的脚本vultr_test来测试。 以下是我的测试结果：选择的原则是，ping值最小，丢包率最小。比如我的测试结果中，较不错的是sjo、wa和lax，都是美国机房。 部署实例点击Servers，然后点右边的+号依次选择自己测试比较好的机房，选择操作系统版本，选择方案（$2.5的低配方案搭vpn已经够用，另外还可以自己搭个博客什么的），然后部署就搞定了。 如果vps使用linux操作系统，可以使用ssh的客户端登录，比如SecureCRT，这里就不再详细说明。 转载地址: http://blog.noahsun.top/2018/04/07/%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E4%B8%93%E5%B1%9E%E7%9A%84vpn%E2%80%94%E2%80%94%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AAvps/]]></content>
       <categories>
-        <category>慢生活</category>
+        <category>工具</category>
       </categories>
       <tags>
-        <tag>慢生活</tag>
-        <tag>作息时间</tag>
+        <tag>vps</tag>
+        <tag>vpn</tag>
       </tags>
   </entry>
   <entry>
@@ -103,6 +91,18 @@
       </categories>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[良好的个人作息时间表]]></title>
+    <url>%2F20171129-zuoxi%2F</url>
+    <content type="text"><![CDATA[5:00-5:10 新的一天就此开始，请笑对每一天。关爱自己和身边的人。缓慢的起床穿衣服(尽量不要快速起床，容易对心脏等器官造成较大的冲击）。英国威斯敏斯特大学的研究人员发现，那些在早上5:22―7:21 分起床的人，其血液中有一种能引起心脏病的物质含量较高，因此，在7:21之后或者5点之前起床对身体健康更加有益。 打开台灯。“一醒来，就将灯打开，这样将会重新调整体内的生物钟，调整睡眠和醒来模式。”拉夫堡大学睡眠研究中心教授吉姆·霍恩说。喝一杯水。水是身体内成千上万化学反应得以进行的必需物质。早上喝一杯清水，可以补充晚上的缺水状态。 5:10-5:40 在早饭之前刷牙。“在早饭之前刷牙 可以防止牙齿的腐蚀，因为刷牙之后，可以在牙齿外面涂上一层含氟的保护层。要么，就等早饭之后半小时再刷牙。”英国牙齿协会健康和安全研究人员戈登·沃特金斯说。 5:40-7:00 吃点饼干喝点水，整理仪容仪表去健身房听听音乐，跑跑步。等待6点左右的日出。然后到一楼看看书 7:00-7:30 吃早饭。“早饭必须吃，因为它可以帮助你维持血糖水平的稳定。”伦敦大学国王学院营养师凯文·威尔伦说。早饭可以吃燕麦粥等，这类食物具有较低的血糖指数。同时这个时间段也是小肠吸收营养的最佳时段。 7:30-8:00 整理仪表，上班打卡。喝杯水，看看今日头条。 8:00-10:00 避免运动。来自布鲁奈尔大学的研究人员发现，在早晨进行锻炼的运动员更容易感染疾病，因为免疫系统在这个时间的功能最弱。步行上班。马萨诸塞州大学医学院的研究人员发现，每天走路的人，比那些久坐不运动的人患感冒病的几率低25%。然后开始一天中最困难的工作或者学习一下（因为这段时间是学习的一个比较好的时间）。纽约睡眠中心的研究人员发现，大部分人在每天醒来的一两个小时内头脑最清醒。 10:00-11:00 让眼睛离开屏幕休息一下。如果你使用电脑工作，那么每工作一小时，就让眼睛休息3分钟。 11:00-12:00 吃点水果。这是一种解决身体血糖下降的好方法。吃一个橙子或一些红色水果，这样做能同时补充体内的铁含量和维生素C含量。 12:00-12:30 在面包上加一些豆类蔬菜。你需要一顿可口的午餐，并且能够缓慢地释放能量。“烘烤的豆类食品富含纤维素，番茄酱可以当作是蔬菜的一部分。”维伦博士说。 12:30-13:00 午休一小会儿。雅典的一所大学研究发现，那些每天中午午休30分钟或更长时间，每周至少午休3次的人，因心脏病死亡的几率会下降37%。 13:00-16:00 起床清醒一下，开始下午的工作。 16:00-17:00 喝杯酸奶。这样做可以稳定血糖水平。在每天三餐之间喝些酸牛奶，有利于心脏健康。 17:00-17:30 晚餐少吃点。晚饭吃太多，会引起血糖升高，并增加消化系统的负担，影响睡眠。晚饭应该多吃蔬菜，少吃富含卡路里和蛋白质的食物。吃饭时要细嚼慢咽。 17:30-18:00 根据体内的生物钟，这个时间是运动的最佳时间，舍菲尔德大学运动学医生瑞沃·尼克说。 18:00-20:30 建议的学习时间。 20:30-21:00 洗脸刷牙并洗个热水澡。“体温的适当降低有助于放松和睡眠。”拉夫堡大学睡眠研究中心吉姆·霍恩教授说。 21:00-21:30 上床睡觉。如果你早上5点起床，现在入睡可以保证你享受7.5个小时充足的睡眠。而且这个时间段是免疫系统(淋巴)排毒时间，此段时间应安静或听音乐准备入睡。 21:30-23:00 如果您按照这份[作息时间表]作息的话，建议您尽快入睡。 23:00-5:00 当浏览器自动带你来到这段，相信时间已经不早了。切记不可超过12点睡觉，因为那样即使休息够8小时，那也无济于事，一般还是会觉得身体不舒服或者难受。而且最总要的是据说这也是引发心脏病的一个重要原因。但现实生活中多少会有些不如意的事情，也没必要完全遵守 [作息时间表]，只要持之以恒，尽量培养起自己的作息习惯就好。23:00-1:00 肝的排毒，需在熟睡中进行。0:00-4:00 脊椎造血时段，必须熟睡，不宜熬夜。1:00-3:00 胆的排毒，亦同。3:00-5:00 肺的排毒。此即为何咳嗽的人在这段时间咳得最剧烈，因排毒动作已走到肺；不应用止咳药，以免抑制废积物的排除。关于吃早餐。疗病者最好早吃，在6点半前，养生者在7点半前，不吃早餐者应改变习惯，即使拖到9、10点吃都比不吃好。 转载地址]]></content>
+      <categories>
+        <category>慢生活</category>
+      </categories>
+      <tags>
+        <tag>慢生活</tag>
+        <tag>作息时间</tag>
       </tags>
   </entry>
   <entry>
@@ -234,8 +234,8 @@
         <category>SonarQube</category>
       </categories>
       <tags>
-        <tag>SonarQube</tag>
         <tag>java</tag>
+        <tag>SonarQube</tag>
       </tags>
   </entry>
   <entry>

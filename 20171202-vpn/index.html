@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="vpn,vps," />
+  <meta name="keywords" content="vpn," />
 
 
 
@@ -94,22 +94,18 @@
 
 
 
-<meta name="description" content="前言作为一名技术人员，经常需要访问一些墙外的网站，你懂的。本来想直接购买个vpn，但又怕不太安全。看到网上有很多自己搭建vpn的教程，于是自己折腾了一下，终于成功搭建，随便与大家分享一些经验。 选择一个vps搭建vpn的第一步是，你必须有一台公网能访问的vps，而且该vps要在墙外，简单来说就是你必须要有一台能访问墙外">
-<meta name="keywords" content="vpn,vps">
+<meta name="description" content="由于平常查询资料经常需要翻墙google之类的网站,之前一直买的第三方的VPN账号,但是经常遇到不稳定或者访问比较慢的问题.后来实在是无法忍受了,决定搭建一个属于自己的VPN.具体的步骤总结一下,也希望能帮到需要的朋友.  选择服务器首先需要购买服务器,购买前我也看了好几家的云服务器,价钱都差不多,最低配置的价格都是5">
+<meta name="keywords" content="vpn">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建自己专属的vpn——选择一个vps">
-<meta property="og:url" content="http://fhaoer.com/20171203-vps/index.html">
+<meta property="og:title" content="自己动手搭建免费的VPN服务器">
+<meta property="og:url" content="http://fhaoer.com/20171202-vpn/index.html">
 <meta property="og:site_name" content="Haoer Blog">
-<meta property="og:description" content="前言作为一名技术人员，经常需要访问一些墙外的网站，你懂的。本来想直接购买个vpn，但又怕不太安全。看到网上有很多自己搭建vpn的教程，于是自己折腾了一下，终于成功搭建，随便与大家分享一些经验。 选择一个vps搭建vpn的第一步是，你必须有一台公网能访问的vps，而且该vps要在墙外，简单来说就是你必须要有一台能访问墙外的电脑。如何选择一个适合自己的vps呢？我自己认为主要有价格、稳定性和带宽等方面">
+<meta property="og:description" content="由于平常查询资料经常需要翻墙google之类的网站,之前一直买的第三方的VPN账号,但是经常遇到不稳定或者访问比较慢的问题.后来实在是无法忍受了,决定搭建一个属于自己的VPN.具体的步骤总结一下,也希望能帮到需要的朋友.  选择服务器首先需要购买服务器,购买前我也看了好几家的云服务器,价钱都差不多,最低配置的价格都是5$  亚马逊的LigntSail, 需要绑定信用卡,扣了我12块钱预付费,收到">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ou7ri10jn.bkt.clouddn.com/vps/vultr_area.jpeg">
-<meta property="og:image" content="http://ou7ri10jn.bkt.clouddn.com/vps/my_ping_test.png">
-<meta property="og:image" content="http://ou7ri10jn.bkt.clouddn.com/vps/new_vultr_instance.png">
-<meta property="og:updated_time" content="2018-06-26T07:57:52.517Z">
+<meta property="og:updated_time" content="2018-06-26T08:15:37.822Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建自己专属的vpn——选择一个vps">
-<meta name="twitter:description" content="前言作为一名技术人员，经常需要访问一些墙外的网站，你懂的。本来想直接购买个vpn，但又怕不太安全。看到网上有很多自己搭建vpn的教程，于是自己折腾了一下，终于成功搭建，随便与大家分享一些经验。 选择一个vps搭建vpn的第一步是，你必须有一台公网能访问的vps，而且该vps要在墙外，简单来说就是你必须要有一台能访问墙外的电脑。如何选择一个适合自己的vps呢？我自己认为主要有价格、稳定性和带宽等方面">
-<meta name="twitter:image" content="http://ou7ri10jn.bkt.clouddn.com/vps/vultr_area.jpeg">
+<meta name="twitter:title" content="自己动手搭建免费的VPN服务器">
+<meta name="twitter:description" content="由于平常查询资料经常需要翻墙google之类的网站,之前一直买的第三方的VPN账号,但是经常遇到不稳定或者访问比较慢的问题.后来实在是无法忍受了,决定搭建一个属于自己的VPN.具体的步骤总结一下,也希望能帮到需要的朋友.  选择服务器首先需要购买服务器,购买前我也看了好几家的云服务器,价钱都差不多,最低配置的价格都是5$  亚马逊的LigntSail, 需要绑定信用卡,扣了我12块钱预付费,收到">
 
 
 
@@ -137,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://fhaoer.com/20171203-vps/"/>
+  <link rel="canonical" href="http://fhaoer.com/20171202-vpn/"/>
 
 
 
 
 
-  <title> 搭建自己专属的vpn——选择一个vps | Haoer Blog </title>
+  <title> 自己动手搭建免费的VPN服务器 | Haoer Blog </title>
   <meta name="baidu-site-verification" content="zNdCOPSVXp" />
 </head>
 
@@ -336,7 +332,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://fhaoer.com/20171203-vps/">
+    <link itemprop="mainEntityOfPage" href="http://fhaoer.com/20171202-vpn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kevin">
@@ -357,7 +353,7 @@
             
             
               
-                搭建自己专属的vpn——选择一个vps
+                自己动手搭建免费的VPN服务器
               
             
           </h2>
@@ -372,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-03T12:30:10+08:00">
-                Dec 3 2017
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-02T22:30:10+08:00">
+                Dec 2 2017
               </time>
             
 
@@ -435,23 +431,30 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>作为一名技术人员，经常需要访问一些墙外的网站，你懂的。本来想直接购买个vpn，但又怕不太安全。看到网上有很多自己搭建vpn的教程，于是自己折腾了一下，终于成功搭建，随便与大家分享一些经验。</p>
-<h1 id="选择一个vps"><a href="#选择一个vps" class="headerlink" title="选择一个vps"></a>选择一个vps</h1><p>搭建vpn的第一步是，你必须有一台公网能访问的vps，而且该vps要在墙外，简单来说就是你必须要有一台能访问墙外的电脑。如何选择一个适合自己的vps呢？我自己认为主要有价格、稳定性和带宽等方面的因素，当然易操作性、良好的售后服务等也比较重要。</p>
-<p>国外常见的vps有Linode、<a href="http://www.vultr.com/?ref=6934523-3B" target="_blank" rel="noopener">Vultr</a>、SugarHosts、bandwagonhost等。</p>
-<p>看了网上的一些评测，如《Vultr超高性价比VPS评测使用教程》，以及<a href="http://www.vultr.com/?ref=6934523-3B" target="_blank" rel="noopener">Vultr</a>每月$2.5的费用，觉得可以入手，因为网上购买一个vpn也差不多这个费用。</p>
-<h1 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h1><p>首先，登陆<a href="http://www.vultr.com/?ref=6934523-3B" target="_blank" rel="noopener">Vultr官网</a>，点击Create Account注册即可，之前官方搞活动，暑假注册使用免费送$20，现在好像没有什么优惠了，期待下次还有活动。现在最新优惠是每月$2.5的实例，不过经常没货。</p>
-<p>注册并不会收费，只有创建了实例才会收费，如果觉得不好用可以直接删除自己创建的实例，这样就不会收费了。注意，如果实例关机但没有把实例删除，还是会收费的，毕竟该实例占用了公网IP和硬盘空间。</p>
-<p>可喜的是，现在vultr已经支持支付宝付款了。</p>
-<h1 id="选择机房"><a href="#选择机房" class="headerlink" title="选择机房"></a>选择机房</h1><p>如何选择一个好的机房，当然是自己测过才放心。这里推荐使用<a href="http://www.nirsoft.net/utils/pinginfoview.zip" target="_blank" rel="noopener">PingInfoView</a>来测试。以下是vultr的机房：<br><a href="http://ou7ri10jn.bkt.clouddn.com/vps/vultr_area.jpeg" target="_blank" rel="noopener"><img src="http://ou7ri10jn.bkt.clouddn.com/vps/vultr_area.jpeg" alt="vultr_area"></a></p>
-<p>列表如下，贴到PingInfoView上即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sgp-ping.vultr.com</span><br><span class="line">hnd-jp-ping.vultr.com</span><br><span class="line">syd-au-ping.vultr.com</span><br><span class="line">fra-de-ping.vultr.com</span><br><span class="line">ams-nl-ping.vultr.com</span><br><span class="line">lon-gb-ping.vultr.com</span><br><span class="line">par-fr-ping.vultr.com</span><br><span class="line">wa-us-ping.vultr.com</span><br><span class="line">sjo-ca-us-ping.vultr.com</span><br><span class="line">lax-ca-us-ping.vultr.com</span><br><span class="line">il-us-ping.vultr.com</span><br><span class="line">nj-us-ping.vultr.com</span><br><span class="line">tx-us-ping.vultr.com</span><br><span class="line">ga-us-ping.vultr.com</span><br><span class="line">fl-us-ping.vultr.com</span><br></pre></td></tr></table></figure>
-<p>linux/mac用户可以使用我写的脚本<a href="https://github.com/rukesun/vultr_test.git" target="_blank" rel="noopener">vultr_test</a>来测试。</p>
-<p>以下是我的测试结果：<br><a href="http://ou7ri10jn.bkt.clouddn.com/vps/my_ping_test.png" target="_blank" rel="noopener"><img src="http://ou7ri10jn.bkt.clouddn.com/vps/my_ping_test.png" alt="img"></a><br>选择的原则是，ping值最小，丢包率最小。比如我的测试结果中，较不错的是sjo、wa和lax，都是美国机房。</p>
-<h1 id="部署实例"><a href="#部署实例" class="headerlink" title="部署实例"></a>部署实例</h1><p>点击Servers，然后点右边的+号<br><a href="http://ou7ri10jn.bkt.clouddn.com/vps/new_vultr_instance.png" target="_blank" rel="noopener"><img src="http://ou7ri10jn.bkt.clouddn.com/vps/new_vultr_instance.png" alt="img"></a><br>依次选择自己测试比较好的机房，选择操作系统版本，选择方案（$2.5的低配方案搭vpn已经够用，另外还可以自己搭个博客什么的），然后部署就搞定了。</p>
-<p>如果vps使用linux操作系统，可以使用ssh的客户端登录，比如SecureCRT，这里就不再详细说明。</p>
-<blockquote>
-<p>转载地址: <a href="http://blog.noahsun.top/2018/04/07/%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E4%B8%93%E5%B1%9E%E7%9A%84vpn%E2%80%94%E2%80%94%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AAvps/" target="_blank" rel="noopener">http://blog.noahsun.top/2018/04/07/%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E4%B8%93%E5%B1%9E%E7%9A%84vpn%E2%80%94%E2%80%94%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AAvps/</a></p>
+        <blockquote>
+<p>由于平常查询资料经常需要翻墙google之类的网站,之前一直买的第三方的VPN账号,但是经常遇到不稳定或者访问比较慢的问题.后来实在是无法忍受了,决定搭建一个属于自己的VPN.具体的步骤总结一下,也希望能帮到需要的朋友.</p>
 </blockquote>
+<h4 id="选择服务器"><a href="#选择服务器" class="headerlink" title="选择服务器"></a>选择服务器</h4><p>首先需要购买服务器,购买前我也看了好几家的云服务器,价钱都差不多,最低配置的价格都是5$</p>
+<ul>
+<li>亚马逊的<a href="https://amazonlightsail.com/" target="_blank" rel="noopener">LigntSail</a>, 需要绑定信用卡,扣了我12块钱预付费,收到短信才知道直接偷偷扣钱了(真心无语),随后主机也弄好了,ssh秘钥也生成了,但是就是本地ssh不能访问服务器,换了其他的地区和操作系统,仍然不能访问,索性放弃了,估计是QWS的bug…</li>
+<li><a href="https://www.digitalocean.com/" target="_blank" rel="noopener">digitalocean</a> 可以支持信用卡和<a href="https://www.paypal.com" target="_blank" rel="noopener">PayPal</a>支付,既然可以不用绑定信用卡当然选择用PayPal支付,随后注册了一个PayPal账户,绑定一下银行卡,就可以直接支付服务器的费用了.</li>
+<li><a href="https://www.vultr.com/" target="_blank" rel="noopener">vultr</a> 这个是我最终的选择,重要一点是可以支持支付宝付款,很方便,机房也挺多的,我选的是日本的服务器,也建议选择这个区域的,网速还可以.</li>
+</ul>
+<h4 id="安装Shadowsocks服务端"><a href="#安装Shadowsocks服务端" class="headerlink" title="安装Shadowsocks服务端"></a>安装Shadowsocks服务端</h4><p>使用root用户登录你的服务器,运行一下命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</span><br><span class="line">chmod +x shadowsocksR.sh</span><br><span class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</span><br></pre></td></tr></table></figure>
+<p><strong>安装完成后，脚本提示如下：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Congratulations, ShadowsocksR server install completed!</span><br><span class="line">Your Server IP        :your_server_ip</span><br><span class="line">Your Server Port      :your_server_port</span><br><span class="line">Your Password         :your_password</span><br><span class="line">Your Protocol         :your_protocol</span><br><span class="line">Your obfs             :your_obfs</span><br><span class="line">Your Encryption Method:your_encryption_method</span><br><span class="line"></span><br><span class="line">Welcome to visit:https://shadowsocks.be/9.html</span><br><span class="line">Enjoy it!</span><br></pre></td></tr></table></figure>
+<p><strong>默认配置：</strong><br>服务器端口：自己设定（如不设定，默认为 8989）<br>密码：自己设定（如不设定，默认为 teddysun.com）<br>加密方式：自己设定（如不设定，默认为 aes-256-cfb）<br>协议（Protocol）：自己设定（如不设定，默认为 origin）<br>混淆（obfs）：自己设定（如不设定，默认为 plain）</p>
+<p><strong>卸载方法：</strong><br>使用 root 用户登录，运行命令：<code>./shadowsocksR.sh uninstall</code></p>
+<p>安装完成后即已后台启动 ShadowsocksR ，运行：<code>/etc/init.d/shadowsocks status</code><br>可以查看 ShadowsocksR 进程是否已经启动。<br>本脚本安装完成后，已将 ShadowsocksR 自动加入开机自启动。</p>
+<p><strong>使用命令：</strong><br>启动：<code>/etc/init.d/shadowsocks start</code><br>停止：<code>/etc/init.d/shadowsocks stop</code><br>重启：<code>/etc/init.d/shadowsocks restart</code><br>状态：<code>/etc/init.d/shadowsocks status</code></p>
+<p>配置文件路径：<code>/etc/shadowsocks.json</code><br>日志文件路径：<code>/var/log/shadowsocks.log</code><br>代码安装目录：<code>/usr/local/shadowsocks</code></p>
+<h4 id="客户端安装"><a href="#客户端安装" class="headerlink" title="客户端安装"></a>客户端安装</h4><p>服务端安装完之后,安装客户端进行连接</p>
+<p><a href="https://github.com/iMeiji/shadowsocks_install/releases/tag/0.13" target="_blank" rel="noopener">https://github.com/iMeiji/shadowsocks_install/releases/tag/0.13</a></p>
+<p>连接成功就可以翻墙了,很简单的.</p>
+<p><strong>注意事项：</strong><br>本脚本没有对防火墙（IPv4 是 iptables，IPv6 是 ip6tables）进行任何设置。<br>因此，在安装完毕，如果你发现连接不上，可以尝试更改防火墙设置或关闭防火墙。</p>
+<p><strong>参考连接</strong>:</p>
+<p><a href="https://github.com/iMeiji/shadowsocks_install/wiki/shadowsocksR-%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85" target="_blank" rel="noopener">https://github.com/iMeiji/shadowsocks_install/wiki/shadowsocksR-%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85</a></p>
 
       
     </div>
@@ -504,8 +507,6 @@
           
             <a href="/tags/vpn/" rel="tag"># vpn</a>
           
-            <a href="/tags/vps/" rel="tag"># vps</a>
-          
         </div>
       
 
@@ -517,8 +518,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/20171202-select-vpn/" rel="next" title="搭建自己专属的vpn——Centos搭建vpn的几种办法">
-                <i class="fa fa-chevron-left"></i> 搭建自己专属的vpn——Centos搭建vpn的几种办法
+              <a href="/20171201-vps/" rel="next" title="搭建自己专属的vpn——选择一个vps">
+                <i class="fa fa-chevron-left"></i> 搭建自己专属的vpn——选择一个vps
               </a>
             
           </div>
@@ -527,8 +528,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/20180120-jvm/" rel="prev" title="JVM笔记整理">
-                JVM笔记整理 <i class="fa fa-chevron-right"></i>
+              <a href="/20171203-select-vpn/" rel="prev" title="搭建自己专属的vpn——Centos搭建vpn的几种办法">
+                搭建自己专属的vpn——Centos搭建vpn的几种办法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -752,7 +753,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择一个vps"><span class="nav-number">2.</span> <span class="nav-text">选择一个vps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注册账号"><span class="nav-number">3.</span> <span class="nav-text">注册账号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择机房"><span class="nav-number">4.</span> <span class="nav-text">选择机房</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署实例"><span class="nav-number">5.</span> <span class="nav-text">部署实例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择服务器"><span class="nav-number">1.</span> <span class="nav-text">选择服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Shadowsocks服务端"><span class="nav-number">2.</span> <span class="nav-text">安装Shadowsocks服务端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端安装"><span class="nav-number">3.</span> <span class="nav-text">客户端安装</span></a></li></ol></div>
             
 
           </div>
@@ -930,9 +931,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://fhaoer.com/20171203-vps/';
-          this.page.identifier = '20171203-vps/';
-          this.page.title = '搭建自己专属的vpn——选择一个vps';
+          this.page.url = 'http://fhaoer.com/20171202-vpn/';
+          this.page.identifier = '20171202-vpn/';
+          this.page.title = '自己动手搭建免费的VPN服务器';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://fhaoer.disqus.com/embed.js';
