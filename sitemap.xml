@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://fhaoer.com/20180626-Centos-install-serverspeeder/</loc>
+    
+    <lastmod>2018-06-26T06:19:13.614Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fhaoer.com/20180120-jvm/</loc>
+    
+    <lastmod>2018-06-26T05:56:48.103Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://fhaoer.com/20171202-web-https/</loc>
     
     <lastmod>2018-06-26T03:50:29.788Z</lastmod>
@@ -33,13 +47,6 @@
     <loc>http://fhaoer.com/hello-world/</loc>
     
     <lastmod>2018-03-23T01:51:52.627Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://fhaoer.com/20180120-jvm/</loc>
-    
-    <lastmod>2018-03-22T01:43:38.440Z</lastmod>
     
   </url>
   

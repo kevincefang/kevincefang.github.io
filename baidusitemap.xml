@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>http://fhaoer.com/20180626-Centos-install-serverspeeder/</loc>
+    <lastmod>2018-06-26T06:19:13.614Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS7.3更换内核安装锐速破解版</title>
+        <pubTime>2017-12-01T14:30:10.000Z</pubTime>
+        
+        <tag>vpn</tag>
+         
+        <tag>centos</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://fhaoer.com/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://fhaoer.com/20180120-jvm/</loc>
+    <lastmod>2018-06-26T05:56:48.103Z</lastmod>
+    <data>
+        <display>
+        <title>JVM笔记整理</title>
+        <pubTime>2018-01-29T16:00:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>jvm</tag>
+         
+         
+           
+             
+              <breadCrumb title="jvm" url="http://fhaoer.com/categories/jvm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://fhaoer.com/20171202-web-https/</loc>
     <lastmod>2018-06-26T03:50:29.788Z</lastmod>
     <data>
@@ -80,28 +124,6 @@
            
              
               <breadCrumb title="hexo" url="http://fhaoer.com/categories/hexo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://fhaoer.com/20180120-jvm/</loc>
-    <lastmod>2018-03-22T01:43:38.440Z</lastmod>
-    <data>
-        <display>
-        <title>JVM笔记整理</title>
-        <pubTime>2018-01-29T16:00:00.000Z</pubTime>
-        
-        <tag>java</tag>
-         
-        <tag>jvm</tag>
-         
-         
-           
-             
-              <breadCrumb title="jvm" url="http://fhaoer.com/categories/jvm/"/>
           
         </display>
     </data>
@@ -272,9 +294,9 @@
         <title>SonarQube 代码质量管理平台的搭建</title>
         <pubTime>2017-06-15T02:03:44.000Z</pubTime>
         
-        <tag>SonarQube</tag>
-         
         <tag>java</tag>
+         
+        <tag>SonarQube</tag>
          
          
            
