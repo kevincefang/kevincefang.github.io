@@ -4,11 +4,11 @@
 
     
   <url>
-    <loc>http://fhaoer.com/lambda-stream-1/</loc>
-    <lastmod>2018-06-27T03:20:29.085Z</lastmod>
+    <loc>http://fhaoer.com/lambda-stream-2/</loc>
+    <lastmod>2018-06-27T03:56:14.615Z</lastmod>
     <data>
         <display>
-        <title>Java8新特性——StreamAPI(一)</title>
+        <title>Java8新特性——StreamAPI(二)</title>
         <pubTime>2018-06-26T16:00:00.000Z</pubTime>
         
         <tag>java8</tag>
@@ -26,11 +26,11 @@
 
     
   <url>
-    <loc>http://fhaoer.com/lambda-stream-2/</loc>
-    <lastmod>2018-06-27T03:20:19.805Z</lastmod>
+    <loc>http://fhaoer.com/lambda-stream-1/</loc>
+    <lastmod>2018-06-27T03:20:29.085Z</lastmod>
     <data>
         <display>
-        <title>Java8新特性——StreamAPI(二)</title>
+        <title>Java8新特性——StreamAPI(一)</title>
         <pubTime>2018-06-26T16:00:00.000Z</pubTime>
         
         <tag>java8</tag>
