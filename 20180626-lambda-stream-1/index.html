@@ -98,11 +98,11 @@
 <meta name="keywords" content="java8,lambda">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java8新特性——StreamAPI(一)">
-<meta property="og:url" content="http://fhaoer.com/lambda-stream-1/index.html">
+<meta property="og:url" content="http://fhaoer.com/20180626-lambda-stream-1/index.html">
 <meta property="og:site_name" content="Haoer Blog">
 <meta property="og:description" content="1. 流的基本概念1.1 什么是流？流是Java8引入的全新概念，它用来处理集合中的数据，暂且可以把它理解为一种高级集合。 众所周知，集合操作非常麻烦，若要对集合进行筛选、投影，需要写大量的代码，而流是以声明的形式操作集合，它就像SQL语句，我们只需告诉流需要对集合进行什么操作，它就会自动进行操作，并将执行结果交给你，无需我们自己手写代码。 因此，流的集合操作对我们来说是透明的，我们只需向流下达命">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-27T03:20:29.085Z">
+<meta property="og:updated_time" content="2018-06-27T07:27:46.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8新特性——StreamAPI(一)">
 <meta name="twitter:description" content="1. 流的基本概念1.1 什么是流？流是Java8引入的全新概念，它用来处理集合中的数据，暂且可以把它理解为一种高级集合。 众所周知，集合操作非常麻烦，若要对集合进行筛选、投影，需要写大量的代码，而流是以声明的形式操作集合，它就像SQL语句，我们只需告诉流需要对集合进行什么操作，它就会自动进行操作，并将执行结果交给你，无需我们自己手写代码。 因此，流的集合操作对我们来说是透明的，我们只需向流下达命">
@@ -133,7 +133,7 @@
 
 
 
-  <link rel="canonical" href="http://fhaoer.com/lambda-stream-1/"/>
+  <link rel="canonical" href="http://fhaoer.com/20180626-lambda-stream-1/"/>
 
 
 
@@ -332,7 +332,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://fhaoer.com/lambda-stream-1/">
+    <link itemprop="mainEntityOfPage" href="http://fhaoer.com/20180626-lambda-stream-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kevin">
@@ -368,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-27T00:00:00+08:00">
-                Jun 27 2018
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-26T00:00:00+08:00">
+                Jun 26 2018
               </time>
             
 
@@ -431,25 +431,25 @@
       
 
       
-        <h1 id="1-流的基本概念"><a href="#1-流的基本概念" class="headerlink" title="1. 流的基本概念"></a>1. 流的基本概念</h1><h2 id="1-1-什么是流？"><a href="#1-1-什么是流？" class="headerlink" title="1.1 什么是流？"></a>1.1 什么是流？</h2><p>流是Java8引入的全新概念，它用来处理集合中的数据，暂且可以把它理解为一种高级集合。</p>
+        <h3 id="1-流的基本概念"><a href="#1-流的基本概念" class="headerlink" title="1. 流的基本概念"></a>1. 流的基本概念</h3><h4 id="1-1-什么是流？"><a href="#1-1-什么是流？" class="headerlink" title="1.1 什么是流？"></a>1.1 什么是流？</h4><p>流是Java8引入的全新概念，它用来处理集合中的数据，暂且可以把它理解为一种高级集合。</p>
 <p>众所周知，集合操作非常麻烦，若要对集合进行筛选、投影，需要写大量的代码，而流是以声明的形式操作集合，它就像SQL语句，我们只需告诉流需要对集合进行什么操作，它就会自动进行操作，并将执行结果交给你，无需我们自己手写代码。</p>
 <p>因此，流的集合操作对我们来说是透明的，我们只需向流下达命令，它就会自动把我们想要的结果给我们。由于操作过程完全由Java处理，因此它可以根据当前硬件环境选择最优的方法处理，我们也无需编写复杂又容易出错的多线程代码了。</p>
-<h2 id="1-2-流的特点"><a href="#1-2-流的特点" class="headerlink" title="1.2 流的特点"></a>1.2 流的特点</h2><ol>
+<h4 id="1-2-流的特点"><a href="#1-2-流的特点" class="headerlink" title="1.2 流的特点"></a>1.2 流的特点</h4><ol>
 <li>只能遍历一次<br> 我们可以把流想象成一条流水线，流水线的源头是我们的数据源(一个集合)，数据源中的元素依次被输送到流水线上，我们可以在流水线上对元素进行各种操作。一旦元素走到了流水线的另一头，那么这些元素就被“消费掉了”，我们无法再对这个流进行操作。当然，我们可以从数据源那里再获得一个新的流重新遍历一遍。</li>
 <li>采用内部迭代方式<br> 若要对集合进行处理，则需我们手写处理代码，这就叫做外部迭代。而要对流进行处理，我们只需告诉流我们需要什么结果，处理过程由流自行完成，这就称为内部迭代。</li>
 </ol>
-<h2 id="1-3-流的操作种类"><a href="#1-3-流的操作种类" class="headerlink" title="1.3 流的操作种类"></a>1.3 流的操作种类</h2><p>流的操作分为两种，分别为中间操作 和 终端操作。</p>
+<h4 id="1-3-流的操作种类"><a href="#1-3-流的操作种类" class="headerlink" title="1.3 流的操作种类"></a>1.3 流的操作种类</h4><p>流的操作分为两种，分别为中间操作 和 终端操作。</p>
 <ol>
 <li>中间操作<br> 当数据源中的数据上了流水线后，这个过程对数据进行的所有操作都称为“中间操作”。<br> 中间操作仍然会返回一个流对象，因此多个中间操作可以串连起来形成一个流水线。</li>
 <li>终端操作<br> 当所有的中间操作完成后，若要将数据从流水线上拿下来，则需要执行终端操作。<br> 终端操作将返回一个执行结果，这就是你想要的数据。</li>
 </ol>
-<h2 id="1-4-流的操作过程"><a href="#1-4-流的操作过程" class="headerlink" title="1.4 流的操作过程"></a>1.4 流的操作过程</h2><p>使用流一共需要三步：</p>
+<h4 id="1-4-流的操作过程"><a href="#1-4-流的操作过程" class="headerlink" title="1.4 流的操作过程"></a>1.4 流的操作过程</h4><p>使用流一共需要三步：</p>
 <ol>
 <li>准备一个数据源</li>
 <li>执行中间操作<br> 中间操作可以有多个，它们可以串连起来形成流水线。</li>
 <li>执行终端操作<br> 执行终端操作后本次流结束，你将获得一个执行结果。</li>
 </ol>
-<h1 id="2-流的使用"><a href="#2-流的使用" class="headerlink" title="2. 流的使用"></a>2. 流的使用</h1><h2 id="2-1-获取流"><a href="#2-1-获取流" class="headerlink" title="2.1 获取流"></a>2.1 获取流</h2><p>在使用流之前，首先需要拥有一个数据源，并通过StreamAPI提供的一些方法获取该数据源的流对象。数据源可以有多种形式：</p>
+<h3 id="2-流的使用"><a href="#2-流的使用" class="headerlink" title="2. 流的使用"></a>2. 流的使用</h3><h4 id="2-1-获取流"><a href="#2-1-获取流" class="headerlink" title="2.1 获取流"></a>2.1 获取流</h4><p>在使用流之前，首先需要拥有一个数据源，并通过StreamAPI提供的一些方法获取该数据源的流对象。数据源可以有多种形式：</p>
 <ol>
 <li>集合<br> 这种数据源较为常用，通过stream()方法即可获取流对象：</li>
 </ol>
@@ -465,17 +465,17 @@
 <ol>
 <li>文件<br> try(Stream<string> lines = Files.lines(Paths.get(“文件路径名”),Charset.defaultCharset())){<br> //可对lines做一些操作<br> }catch(IOException e){<br> }<br> PS：Java7简化了IO操作，把打开IO操作放在try后的括号中即可省略关闭IO的代码。</string></li>
 </ol>
-<h2 id="2-2-筛选filter"><a href="#2-2-筛选filter" class="headerlink" title="2.2 筛选filter"></a>2.2 筛选filter</h2><p>filter函数接收一个Lambda表达式作为参数，该表达式返回boolean，在执行过程中，流将元素逐一输送给filter，并筛选出执行结果为true的元素。<br> 如，筛选出所有学生：</p>
+<h4 id="2-2-筛选filter"><a href="#2-2-筛选filter" class="headerlink" title="2.2 筛选filter"></a>2.2 筛选filter</h4><p>filter函数接收一个Lambda表达式作为参数，该表达式返回boolean，在执行过程中，流将元素逐一输送给filter，并筛选出执行结果为true的元素。<br> 如，筛选出所有学生：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; result = list.stream()</span><br><span class="line">                    .filter(Person::isStudent)</span><br><span class="line">                    .collect(toList());</span><br></pre></td></tr></table></figure>
-<h2 id="2-3-去重distinct"><a href="#2-3-去重distinct" class="headerlink" title="2.3 去重distinct"></a>2.3 去重distinct</h2><p>去掉重复的结果：</p>
+<h4 id="2-3-去重distinct"><a href="#2-3-去重distinct" class="headerlink" title="2.3 去重distinct"></a>2.3 去重distinct</h4><p>去掉重复的结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; result = list.stream()</span><br><span class="line">                    .distinct()</span><br><span class="line">                    .collect(toList());</span><br></pre></td></tr></table></figure>
-<h2 id="2-4-截取"><a href="#2-4-截取" class="headerlink" title="2.4 截取"></a>2.4 截取</h2><p>截取流的前N个元素：</p>
+<h4 id="2-4-截取"><a href="#2-4-截取" class="headerlink" title="2.4 截取"></a>2.4 截取</h4><p>截取流的前N个元素：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; result = list.stream()</span><br><span class="line">                    .limit(3)</span><br><span class="line">                    .collect(toList());</span><br></pre></td></tr></table></figure>
-<h2 id="2-5-跳过"><a href="#2-5-跳过" class="headerlink" title="2.5 跳过"></a>2.5 跳过</h2><p>跳过流的前n个元素：</p>
+<h4 id="2-5-跳过"><a href="#2-5-跳过" class="headerlink" title="2.5 跳过"></a>2.5 跳过</h4><p>跳过流的前n个元素：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; result = list.stream()</span><br><span class="line">                    .skip(3)</span><br><span class="line">                    .collect(toList());</span><br></pre></td></tr></table></figure>
-<h2 id="2-6-映射"><a href="#2-6-映射" class="headerlink" title="2.6 映射"></a>2.6 映射</h2><p>对流中的每个元素执行一个函数，使得元素转换成另一种类型输出。流会将每一个元素输送给map函数，并执行map中的Lambda表达式，最后将执行结果存入一个新的流中。<br> 如，获取每个人的姓名(实则是将Perosn类型转换成String类型)：</p>
+<h4 id="2-6-映射"><a href="#2-6-映射" class="headerlink" title="2.6 映射"></a>2.6 映射</h4><p>对流中的每个元素执行一个函数，使得元素转换成另一种类型输出。流会将每一个元素输送给map函数，并执行map中的Lambda表达式，最后将执行结果存入一个新的流中。<br> 如，获取每个人的姓名(实则是将Perosn类型转换成String类型)：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; result = list.stream()</span><br><span class="line">                    .map(Person::getName)</span><br><span class="line">                    .collect(toList());</span><br></pre></td></tr></table></figure>
-<h2 id="2-7-合并多个流"><a href="#2-7-合并多个流" class="headerlink" title="2.7 合并多个流"></a>2.7 合并多个流</h2><blockquote>
+<h4 id="2-7-合并多个流"><a href="#2-7-合并多个流" class="headerlink" title="2.7 合并多个流"></a>2.7 合并多个流</h4><blockquote>
 <p>例：列出List中各不相同的单词，List集合如下：</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = new ArrayList&lt;String&gt;();</span><br><span class="line">list.add(&quot;I am a boy&quot;);</span><br><span class="line">list.add(&quot;I love the girl&quot;);</span><br><span class="line">list.add(&quot;But the girl loves another girl&quot;);</span><br></pre></td></tr></table></figure>
@@ -502,13 +502,13 @@
 <li>去重</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list.stream()</span><br><span class="line">            .map(line-&gt;line.split(&quot; &quot;))</span><br><span class="line">            .flagmap(Arrays::stream)</span><br><span class="line">            .distinct()</span><br><span class="line">            .collect(toList());</span><br></pre></td></tr></table></figure>
-<h2 id="2-8-是否匹配任一元素：anyMatch"><a href="#2-8-是否匹配任一元素：anyMatch" class="headerlink" title="2.8 是否匹配任一元素：anyMatch"></a>2.8 是否匹配任一元素：anyMatch</h2><p>anyMatch用于判断流中是否存在至少一个元素满足指定的条件，这个判断条件通过Lambda表达式传递给anyMatch，执行结果为boolean类型。<br> 如，判断list中是否有学生：</p>
+<h4 id="2-8-是否匹配任一元素：anyMatch"><a href="#2-8-是否匹配任一元素：anyMatch" class="headerlink" title="2.8 是否匹配任一元素：anyMatch"></a>2.8 是否匹配任一元素：anyMatch</h4><p>anyMatch用于判断流中是否存在至少一个元素满足指定的条件，这个判断条件通过Lambda表达式传递给anyMatch，执行结果为boolean类型。<br> 如，判断list中是否有学生：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">boolean result = list.stream()</span><br><span class="line">            .anyMatch(Person::isStudent);</span><br></pre></td></tr></table></figure>
-<h2 id="2-9-是否匹配所有元素：allMatch"><a href="#2-9-是否匹配所有元素：allMatch" class="headerlink" title="2.9 是否匹配所有元素：allMatch"></a>2.9 是否匹配所有元素：allMatch</h2><p>allMatch用于判断流中的所有元素是否都满足指定条件，这个判断条件通过Lambda表达式传递给anyMatch，执行结果为boolean类型。<br> 如，判断是否所有人都是学生：</p>
+<h4 id="2-9-是否匹配所有元素：allMatch"><a href="#2-9-是否匹配所有元素：allMatch" class="headerlink" title="2.9 是否匹配所有元素：allMatch"></a>2.9 是否匹配所有元素：allMatch</h4><p>allMatch用于判断流中的所有元素是否都满足指定条件，这个判断条件通过Lambda表达式传递给anyMatch，执行结果为boolean类型。<br> 如，判断是否所有人都是学生：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">boolean result = list.stream()</span><br><span class="line">            .allMatch(Person::isStudent);</span><br></pre></td></tr></table></figure>
-<h2 id="2-10-是否未匹配所有元素：noneMatch"><a href="#2-10-是否未匹配所有元素：noneMatch" class="headerlink" title="2.10 是否未匹配所有元素：noneMatch"></a>2.10 是否未匹配所有元素：noneMatch</h2><p>noneMatch与allMatch恰恰相反，它用于判断流中的所有元素是否都不满足指定条件：</p>
+<h4 id="2-10-是否未匹配所有元素：noneMatch"><a href="#2-10-是否未匹配所有元素：noneMatch" class="headerlink" title="2.10 是否未匹配所有元素：noneMatch"></a>2.10 是否未匹配所有元素：noneMatch</h4><p>noneMatch与allMatch恰恰相反，它用于判断流中的所有元素是否都不满足指定条件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">boolean result = list.stream()</span><br><span class="line">            .noneMatch(Person::isStudent);</span><br></pre></td></tr></table></figure>
-<h2 id="2-11-获取任一元素findAny"><a href="#2-11-获取任一元素findAny" class="headerlink" title="2.11 获取任一元素findAny"></a>2.11 获取任一元素findAny</h2><p>findAny能够从流中随便选一个元素出来，它返回一个Optional类型的元素。</p>
+<h4 id="2-11-获取任一元素findAny"><a href="#2-11-获取任一元素findAny" class="headerlink" title="2.11 获取任一元素findAny"></a>2.11 获取任一元素findAny</h4><p>findAny能够从流中随便选一个元素出来，它返回一个Optional类型的元素。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Person&gt; person = list.stream()</span><br><span class="line">                                    .findAny();</span><br></pre></td></tr></table></figure>
 <h3 id="Optional介绍"><a href="#Optional介绍" class="headerlink" title="Optional介绍"></a>Optional介绍</h3><p>Optional是Java8新加入的一个容器，这个容器只存1个或0个元素，它用于防止出现NullpointException，它提供如下方法：</p>
 <ul>
@@ -517,23 +517,23 @@
 <li>T get()<br> 获取容器中的元素，若容器为空则抛出NoSuchElement异常。</li>
 <li>T orElse(T other)<br> 获取容器中的元素，若容器为空则返回括号中的默认值。</li>
 </ul>
-<h2 id="2-12-获取第一个元素findFirst"><a href="#2-12-获取第一个元素findFirst" class="headerlink" title="2.12 获取第一个元素findFirst"></a>2.12 获取第一个元素findFirst</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Person&gt; person = list.stream()</span><br><span class="line">                                    .findFirst();</span><br></pre></td></tr></table></figure>
-<h2 id="2-13-归约"><a href="#2-13-归约" class="headerlink" title="2.13 归约"></a>2.13 归约</h2><p>归约是将集合中的所有元素经过指定运算，折叠成一个元素输出，如：求最值、平均数等，这些操作都是将一个集合的元素折叠成一个元素输出。</p>
+<h4 id="2-12-获取第一个元素findFirst"><a href="#2-12-获取第一个元素findFirst" class="headerlink" title="2.12 获取第一个元素findFirst"></a>2.12 获取第一个元素findFirst</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Person&gt; person = list.stream()</span><br><span class="line">                                    .findFirst();</span><br></pre></td></tr></table></figure>
+<h4 id="2-13-归约"><a href="#2-13-归约" class="headerlink" title="2.13 归约"></a>2.13 归约</h4><p>归约是将集合中的所有元素经过指定运算，折叠成一个元素输出，如：求最值、平均数等，这些操作都是将一个集合的元素折叠成一个元素输出。</p>
 <p>在流中，reduce函数能实现归约。<br> reduce函数接收两个参数：</p>
 <ul>
 <li>初始值</li>
 <li>进行归约操作的Lambda表达式</li>
 </ul>
-<h3 id="2-13-1-元素求和：自定义Lambda表达式实现求和"><a href="#2-13-1-元素求和：自定义Lambda表达式实现求和" class="headerlink" title="2.13.1 元素求和：自定义Lambda表达式实现求和"></a>2.13.1 元素求和：自定义Lambda表达式实现求和</h3><p>例：计算所有人的年龄总和</p>
+<h5 id="2-13-1-元素求和：自定义Lambda表达式实现求和"><a href="#2-13-1-元素求和：自定义Lambda表达式实现求和" class="headerlink" title="2.13.1 元素求和：自定义Lambda表达式实现求和"></a>2.13.1 元素求和：自定义Lambda表达式实现求和</h5><p>例：计算所有人的年龄总和</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int age = list.stream().reduce(0, (person1,person2)-&gt;person1.getAge()+person2.getAge());</span><br></pre></td></tr></table></figure>
 <p>reduce的第一个参数表示初试值为0；<br> reduce的第二个参数为需要进行的归约操作，它接收一个拥有两个参数的Lambda表达式，reduce会把流中的元素两两输给Lambda表达式，最后将计算出累加之和。</p>
-<h3 id="2-13-2-元素求和：使用Integer-sum函数求和"><a href="#2-13-2-元素求和：使用Integer-sum函数求和" class="headerlink" title="2.13.2 元素求和：使用Integer.sum函数求和"></a>2.13.2 元素求和：使用Integer.sum函数求和</h3><p>上面的方法中我们自己定义了Lambda表达式实现求和运算，如果当前流的元素为数值类型，那么可以使用Integer提供了sum函数代替自定义的Lambda表达式，如：</p>
+<h5 id="2-13-2-元素求和：使用Integer-sum函数求和"><a href="#2-13-2-元素求和：使用Integer-sum函数求和" class="headerlink" title="2.13.2 元素求和：使用Integer.sum函数求和"></a>2.13.2 元素求和：使用Integer.sum函数求和</h5><p>上面的方法中我们自己定义了Lambda表达式实现求和运算，如果当前流的元素为数值类型，那么可以使用Integer提供了sum函数代替自定义的Lambda表达式，如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int age = list.stream().reduce(0, Integer::sum);</span><br></pre></td></tr></table></figure>
 <p>Integer类还提供了min、max等一系列数值操作，当流中元素为数值类型时可以直接使用。</p>
-<h2 id="2-14-数值流的使用"><a href="#2-14-数值流的使用" class="headerlink" title="2.14 数值流的使用"></a>2.14 数值流的使用</h2><p>采用reduce进行数值操作会涉及到基本数值类型和引用数值类型之间的装箱、拆箱操作，因此效率较低。<br> 当流操作为纯数值操作时，使用数值流能获得较高的效率。</p>
-<h3 id="2-14-1-将普通流转换成数值流"><a href="#2-14-1-将普通流转换成数值流" class="headerlink" title="2.14.1 将普通流转换成数值流"></a>2.14.1 将普通流转换成数值流</h3><p>StreamAPI提供了三种数值流：IntStream、DoubleStream、LongStream，也提供了将普通流转换成数值流的三种方法：mapToInt、mapToDouble、mapToLong。<br> 如，将Person中的age转换成数值流：</p>
+<h4 id="2-14-数值流的使用"><a href="#2-14-数值流的使用" class="headerlink" title="2.14 数值流的使用"></a>2.14 数值流的使用</h4><p>采用reduce进行数值操作会涉及到基本数值类型和引用数值类型之间的装箱、拆箱操作，因此效率较低。<br> 当流操作为纯数值操作时，使用数值流能获得较高的效率。</p>
+<h5 id="2-14-1-将普通流转换成数值流"><a href="#2-14-1-将普通流转换成数值流" class="headerlink" title="2.14.1 将普通流转换成数值流"></a>2.14.1 将普通流转换成数值流</h5><p>StreamAPI提供了三种数值流：IntStream、DoubleStream、LongStream，也提供了将普通流转换成数值流的三种方法：mapToInt、mapToDouble、mapToLong。<br> 如，将Person中的age转换成数值流：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IntStream stream = list.stream()</span><br><span class="line">                            .mapToInt(Person::getAge);</span><br></pre></td></tr></table></figure>
-<h3 id="2-14-2-数值计算"><a href="#2-14-2-数值计算" class="headerlink" title="2.14.2 数值计算"></a>2.14.2 数值计算</h3><p>每种数值流都提供了数值计算函数，如max、min、sum等。<br> 如，找出最大的年龄：</p>
+<h5 id="2-14-2-数值计算"><a href="#2-14-2-数值计算" class="headerlink" title="2.14.2 数值计算"></a>2.14.2 数值计算</h5><p>每种数值流都提供了数值计算函数，如max、min、sum等。<br> 如，找出最大的年龄：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OptionalInt maxAge = list.stream()</span><br><span class="line">                                .mapToInt(Person::getAge)</span><br><span class="line">                                .max();</span><br></pre></td></tr></table></figure>
 <p>由于数值流可能为空，并且给空的数值流计算最大值是没有意义的，因此max函数返回OptionalInt，它是Optional的一个子类，能够判断流是否为空，并对流为空的情况作相应的处理。<br> 此外，mapToInt、mapToDouble、mapToLong进行数值操作后的返回结果分别为：OptionalInt、OptionalDouble、OptionalLong</p>
 <blockquote>
@@ -604,8 +604,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/20180626-Centos-install-serverspeeder/" rel="next" title="CentOS7.3更换内核安装锐速破解版">
-                <i class="fa fa-chevron-left"></i> CentOS7.3更换内核安装锐速破解版
+              <a href="/20180323-sql/" rel="next" title="数据库SQL语句优化">
+                <i class="fa fa-chevron-left"></i> 数据库SQL语句优化
               </a>
             
           </div>
@@ -614,8 +614,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/lambda-stream-2/" rel="prev" title="Java8新特性——StreamAPI(二)">
-                Java8新特性——StreamAPI(二) <i class="fa fa-chevron-right"></i>
+              <a href="/20180626-lambda/" rel="prev" title="Java8新特性——Lambda表达式">
+                Java8新特性——Lambda表达式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -701,7 +701,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -839,7 +839,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-流的基本概念"><span class="nav-number">1.</span> <span class="nav-text">1. 流的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是流？"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是流？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-流的特点"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 流的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-流的操作种类"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 流的操作种类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-流的操作过程"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 流的操作过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-流的使用"><span class="nav-number">2.</span> <span class="nav-text">2. 流的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-获取流"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 获取流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-筛选filter"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 筛选filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-去重distinct"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 去重distinct</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-截取"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 截取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-跳过"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 跳过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-映射"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-合并多个流"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 合并多个流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-是否匹配任一元素：anyMatch"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 是否匹配任一元素：anyMatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-是否匹配所有元素：allMatch"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 是否匹配所有元素：allMatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-是否未匹配所有元素：noneMatch"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 是否未匹配所有元素：noneMatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-获取任一元素findAny"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 获取任一元素findAny</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Optional介绍"><span class="nav-number">2.11.1.</span> <span class="nav-text">Optional介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-12-获取第一个元素findFirst"><span class="nav-number">2.12.</span> <span class="nav-text">2.12 获取第一个元素findFirst</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-13-归约"><span class="nav-number">2.13.</span> <span class="nav-text">2.13 归约</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-1-元素求和：自定义Lambda表达式实现求和"><span class="nav-number">2.13.1.</span> <span class="nav-text">2.13.1 元素求和：自定义Lambda表达式实现求和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-2-元素求和：使用Integer-sum函数求和"><span class="nav-number">2.13.2.</span> <span class="nav-text">2.13.2 元素求和：使用Integer.sum函数求和</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-14-数值流的使用"><span class="nav-number">2.14.</span> <span class="nav-text">2.14 数值流的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-14-1-将普通流转换成数值流"><span class="nav-number">2.14.1.</span> <span class="nav-text">2.14.1 将普通流转换成数值流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-14-2-数值计算"><span class="nav-number">2.14.2.</span> <span class="nav-text">2.14.2 数值计算</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-流的基本概念"><span class="nav-number">1.</span> <span class="nav-text">1. 流的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-什么是流？"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是流？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-流的特点"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 流的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-流的操作种类"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 流的操作种类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-流的操作过程"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 流的操作过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-流的使用"><span class="nav-number">2.</span> <span class="nav-text">2. 流的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-获取流"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 获取流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-筛选filter"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 筛选filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-去重distinct"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 去重distinct</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-截取"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 截取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-跳过"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 跳过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-映射"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-合并多个流"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 合并多个流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-是否匹配任一元素：anyMatch"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 是否匹配任一元素：anyMatch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-是否匹配所有元素：allMatch"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 是否匹配所有元素：allMatch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-10-是否未匹配所有元素：noneMatch"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 是否未匹配所有元素：noneMatch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-11-获取任一元素findAny"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 获取任一元素findAny</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optional介绍"><span class="nav-number">3.</span> <span class="nav-text">Optional介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-12-获取第一个元素findFirst"><span class="nav-number">3.1.</span> <span class="nav-text">2.12 获取第一个元素findFirst</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-13-归约"><span class="nav-number">3.2.</span> <span class="nav-text">2.13 归约</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-13-1-元素求和：自定义Lambda表达式实现求和"><span class="nav-number">3.2.1.</span> <span class="nav-text">2.13.1 元素求和：自定义Lambda表达式实现求和</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-13-2-元素求和：使用Integer-sum函数求和"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.13.2 元素求和：使用Integer.sum函数求和</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-14-数值流的使用"><span class="nav-number">3.3.</span> <span class="nav-text">2.14 数值流的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-14-1-将普通流转换成数值流"><span class="nav-number">3.3.1.</span> <span class="nav-text">2.14.1 将普通流转换成数值流</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-14-2-数值计算"><span class="nav-number">3.3.2.</span> <span class="nav-text">2.14.2 数值计算</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1017,8 +1017,8 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://fhaoer.com/lambda-stream-1/';
-          this.page.identifier = 'lambda-stream-1/';
+          this.page.url = 'http://fhaoer.com/20180626-lambda-stream-1/';
+          this.page.identifier = '20180626-lambda-stream-1/';
           this.page.title = 'Java8新特性——StreamAPI(一)';
         };
         var d = document, s = d.createElement('script');

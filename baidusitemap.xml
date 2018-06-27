@@ -4,8 +4,52 @@
 
     
   <url>
-    <loc>http://fhaoer.com/lambda-stream-2/</loc>
-    <lastmod>2018-06-27T03:56:14.615Z</lastmod>
+    <loc>http://fhaoer.com/20180626-lambda/</loc>
+    <lastmod>2018-06-27T07:29:29.644Z</lastmod>
+    <data>
+        <display>
+        <title>Java8新特性——Lambda表达式</title>
+        <pubTime>2018-06-25T16:00:00.000Z</pubTime>
+        
+        <tag>java8</tag>
+         
+        <tag>lambda</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://fhaoer.com/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://fhaoer.com/20180626-lambda-stream-1/</loc>
+    <lastmod>2018-06-27T07:27:46.664Z</lastmod>
+    <data>
+        <display>
+        <title>Java8新特性——StreamAPI(一)</title>
+        <pubTime>2018-06-25T16:00:00.000Z</pubTime>
+        
+        <tag>java8</tag>
+         
+        <tag>lambda</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://fhaoer.com/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://fhaoer.com/20180627-lambda-stream-2/</loc>
+    <lastmod>2018-06-27T07:25:32.981Z</lastmod>
     <data>
         <display>
         <title>Java8新特性——StreamAPI(二)</title>
@@ -26,38 +70,16 @@
 
     
   <url>
-    <loc>http://fhaoer.com/lambda-stream-1/</loc>
-    <lastmod>2018-06-27T03:20:29.085Z</lastmod>
+    <loc>http://fhaoer.com/20180627-ThreadLocal/</loc>
+    <lastmod>2018-06-27T07:23:21.603Z</lastmod>
     <data>
         <display>
-        <title>Java8新特性——StreamAPI(一)</title>
+        <title>揭秘ThreadLocal</title>
         <pubTime>2018-06-26T16:00:00.000Z</pubTime>
         
-        <tag>java8</tag>
+        <tag>java</tag>
          
-        <tag>lambda</tag>
-         
-         
-           
-             
-              <breadCrumb title="java" url="http://fhaoer.com/categories/java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://fhaoer.com/lambda/</loc>
-    <lastmod>2018-06-27T03:15:12.480Z</lastmod>
-    <data>
-        <display>
-        <title>Java8新特性——Lambda表达式</title>
-        <pubTime>2018-06-26T16:00:00.000Z</pubTime>
-        
-        <tag>java8</tag>
-         
-        <tag>lambda</tag>
+        <tag>面试</tag>
          
          
            
@@ -117,9 +139,9 @@
         <title>搭建自己专属的vpn——选择一个vps</title>
         <pubTime>2017-12-01T04:30:10.000Z</pubTime>
         
-        <tag>vps</tag>
-         
         <tag>vpn</tag>
+         
+        <tag>vps</tag>
          
          
            

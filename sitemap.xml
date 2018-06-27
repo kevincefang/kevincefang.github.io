@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://fhaoer.com/lambda-stream-2/</loc>
+    <loc>http://fhaoer.com/20180626-lambda/</loc>
     
-    <lastmod>2018-06-27T03:56:14.615Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://fhaoer.com/lambda-stream-1/</loc>
-    
-    <lastmod>2018-06-27T03:20:29.085Z</lastmod>
+    <lastmod>2018-06-27T07:29:29.644Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://fhaoer.com/lambda/</loc>
+    <loc>http://fhaoer.com/20180626-lambda-stream-1/</loc>
     
-    <lastmod>2018-06-27T03:15:12.480Z</lastmod>
+    <lastmod>2018-06-27T07:27:46.664Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fhaoer.com/20180627-lambda-stream-2/</loc>
+    
+    <lastmod>2018-06-27T07:25:32.981Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fhaoer.com/20180627-ThreadLocal/</loc>
+    
+    <lastmod>2018-06-27T07:23:21.603Z</lastmod>
     
   </url>
   

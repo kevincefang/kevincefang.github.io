@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="storm," />
+  <meta name="keywords" content="java8,lambda," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动1.查看zk的状态：./zkServer.sh status 2.如果zk没有开启，将nimbus和supervisor的zk开启./zkServer.sh start 3.启动nimbus（切换到storm的bin目录下）noh">
-<meta name="keywords" content="storm">
+<meta name="description" content="1. 预备知识在了解Lambda表达式之前首先需要了解以下预备知识。 1.1 如何成为一名高级码农？如果老板让你写一个用于毁灭地球的函数，而你写了一个毁灭行星的函数，若要毁灭地球只需将毁灭地球的过程传递给“毁灭行星”。能做到这一点，你就是一名高级码农。 以上这个问题体现了程序可扩展性的思想。总结一下，要成为一名高级码农">
+<meta name="keywords" content="java8,lambda">
 <meta property="og:type" content="article">
-<meta property="og:title" content="storm 启动相关命令">
-<meta property="og:url" content="http://fhaoer.com/20170531-start-storm-command/index.html">
+<meta property="og:title" content="Java8新特性——Lambda表达式">
+<meta property="og:url" content="http://fhaoer.com/20180626-lambda/index.html">
 <meta property="og:site_name" content="Haoer Blog">
-<meta property="og:description" content="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动1.查看zk的状态：./zkServer.sh status 2.如果zk没有开启，将nimbus和supervisor的zk开启./zkServer.sh start 3.启动nimbus（切换到storm的bin目录下）nohup ./storm nimbus &amp;amp; 4.启动supervisorno">
+<meta property="og:description" content="1. 预备知识在了解Lambda表达式之前首先需要了解以下预备知识。 1.1 如何成为一名高级码农？如果老板让你写一个用于毁灭地球的函数，而你写了一个毁灭行星的函数，若要毁灭地球只需将毁灭地球的过程传递给“毁灭行星”。能做到这一点，你就是一名高级码农。 以上这个问题体现了程序可扩展性的思想。总结一下，要成为一名高级码农，在编码的时候要以发展的眼光看待问题。一个具体问题到来的时候，你需要基于当前问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-02T04:36:18.000Z">
+<meta property="og:updated_time" content="2018-06-27T07:29:29.644Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="storm 启动相关命令">
-<meta name="twitter:description" content="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动1.查看zk的状态：./zkServer.sh status 2.如果zk没有开启，将nimbus和supervisor的zk开启./zkServer.sh start 3.启动nimbus（切换到storm的bin目录下）nohup ./storm nimbus &amp;amp; 4.启动supervisorno">
+<meta name="twitter:title" content="Java8新特性——Lambda表达式">
+<meta name="twitter:description" content="1. 预备知识在了解Lambda表达式之前首先需要了解以下预备知识。 1.1 如何成为一名高级码农？如果老板让你写一个用于毁灭地球的函数，而你写了一个毁灭行星的函数，若要毁灭地球只需将毁灭地球的过程传递给“毁灭行星”。能做到这一点，你就是一名高级码农。 以上这个问题体现了程序可扩展性的思想。总结一下，要成为一名高级码农，在编码的时候要以发展的眼光看待问题。一个具体问题到来的时候，你需要基于当前问题">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://fhaoer.com/20170531-start-storm-command/"/>
+  <link rel="canonical" href="http://fhaoer.com/20180626-lambda/"/>
 
 
 
 
 
-  <title> storm 启动相关命令 | Haoer Blog </title>
+  <title> Java8新特性——Lambda表达式 | Haoer Blog </title>
   <meta name="baidu-site-verification" content="zNdCOPSVXp" />
 </head>
 
@@ -332,7 +332,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://fhaoer.com/20170531-start-storm-command/">
+    <link itemprop="mainEntityOfPage" href="http://fhaoer.com/20180626-lambda/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kevin">
@@ -353,7 +353,7 @@
             
             
               
-                storm 启动相关命令
+                Java8新特性——Lambda表达式
               
             
           </h2>
@@ -368,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T00:00:00+08:00">
-                May 31 2017
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-26T00:00:00+08:00">
+                Jun 26 2018
               </time>
             
 
@@ -391,8 +391,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/storm/" itemprop="url" rel="index">
-                    <span itemprop="name">storm</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -431,13 +431,61 @@
       
 
       
-        <h5 id="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动"><a href="#在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动" class="headerlink" title="在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动"></a>在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动</h5><h6 id="1-查看zk的状态："><a href="#1-查看zk的状态：" class="headerlink" title="1.查看zk的状态："></a>1.查看zk的状态：</h6><p><code>./zkServer.sh status</code></p>
-<h5 id="2-如果zk没有开启，将nimbus和supervisor的zk开启"><a href="#2-如果zk没有开启，将nimbus和supervisor的zk开启" class="headerlink" title="2.如果zk没有开启，将nimbus和supervisor的zk开启"></a>2.如果zk没有开启，将nimbus和supervisor的zk开启</h5><p><code>./zkServer.sh start</code></p>
-<h5 id="3-启动nimbus（切换到storm的bin目录下）"><a href="#3-启动nimbus（切换到storm的bin目录下）" class="headerlink" title="3.启动nimbus（切换到storm的bin目录下）"></a>3.启动nimbus（切换到storm的bin目录下）</h5><p><code>nohup ./storm nimbus &amp;</code></p>
-<h5 id="4-启动supervisor"><a href="#4-启动supervisor" class="headerlink" title="4.启动supervisor"></a>4.启动supervisor</h5><p><code>nohup ./storm supervisor  &amp;</code></p>
-<h5 id="4-启动storm-UI"><a href="#4-启动storm-UI" class="headerlink" title="4.启动storm UI"></a>4.启动storm UI</h5><p><code>nohup ./storm ui &amp;</code>    </p>
-<pre><code>在浏览器中输入ip:8080/index.html进入storm UI界面（注意端口不一定是8080，注意配置）
-</code></pre>
+        <h3 id="1-预备知识"><a href="#1-预备知识" class="headerlink" title="1. 预备知识"></a>1. 预备知识</h3><p>在了解Lambda表达式之前首先需要了解以下预备知识。</p>
+<h4 id="1-1-如何成为一名高级码农？"><a href="#1-1-如何成为一名高级码农？" class="headerlink" title="1.1 如何成为一名高级码农？"></a>1.1 如何成为一名高级码农？</h4><p>如果老板让你写一个用于毁灭地球的函数，而你写了一个毁灭行星的函数，若要毁灭地球只需将毁灭地球的过程传递给“毁灭行星”。能做到这一点，你就是一名高级码农。</p>
+<p>以上这个问题体现了程序可扩展性的思想。总结一下，要成为一名高级码农，在编码的时候要以发展的眼光看待问题。一个具体问题到来的时候，你需要基于当前问题抽象出解决这一类问题的办法，那么当相似的问题到来时，你只需花少量的时间就能完成任务，而且避免了代码复制，降低了bug的风险。</p>
+<h4 id="1-2-实现程序可扩展性的例子"><a href="#1-2-实现程序可扩展性的例子" class="headerlink" title="1.2 实现程序可扩展性的例子"></a>1.2 实现程序可扩展性的例子</h4><p>在Java8以前，要实现程序的可扩展性，我们常用匿名内部类传递用于扩展的代码，举个例子：</p>
+<blockquote>
+<p>实现一个能从List集合中筛选指定对象的函数filter。</p>
+</blockquote>
+<ol>
+<li>若List中存放Person对象，要求筛选出30岁以上的Person</li>
+<li>若List中存放Apple，要求筛选出红色的Apple</li>
+</ol>
+<p>使用匿名内部类的解决方案：</p>
+<ul>
+<li>实现filter函数</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;T&gt; <span class="title">filter</span><span class="params">(List&lt;T&gt; list, FilterProcessor filterProcessor)</span></span>&#123;</span><br><span class="line">    List&lt;T&gt; result = <span class="keyword">new</span> ArrayList&lt;T&gt;();</span><br><span class="line">    <span class="keyword">for</span>(T t : list)&#123;</span><br><span class="line">        <span class="keyword">if</span>(filterProcessor.process(t))</span><br><span class="line">            result.add(t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定义FilterProcessor接口</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">FilterProcessor</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">process</span><span class="params">(T)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用匿名内部类实现筛选出30岁以上的Person</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; result = filter(list, <span class="keyword">new</span> FilterProcessor&lt;Person&gt;()&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Person person)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(person.getAge()&gt;=<span class="number">30</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用匿名内部类筛选出红色的Apple</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Apple&gt; result = filter(list, <span class="keyword">new</span> FilterProcessor&lt;Apple&gt;()&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Apple apple)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(apple.getColor().equals(<span class="string">"red"</span>))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>若要增加新的筛选规则，只需给filter函数传递新的匿名内部类即可。程序具有了可扩展性，恭喜你已经成为一名高级码农！</p>
+<h4 id="1-3-什么是“策略模式”？"><a href="#1-3-什么是“策略模式”？" class="headerlink" title="1.3 什么是“策略模式”？"></a>1.3 什么是“策略模式”？</h4><p>上述过程总结来说，当我们需要解决同一类问题的时候，若发现这类问题大部分处理过程是一致的，只是核心步骤存在差异，这时候就可以使用上述方式：先把函数相同的部分写好，再抽象出一个接口，不同部分的代码放在接口的实现类中。要使用时，只需将实现类的对象传递给该函数即可。<br> 这种方式在设计模式中称为“策略模式”。</p>
+<h4 id="1-4-使用匿名内部类实现策略模式的弊端？"><a href="#1-4-使用匿名内部类实现策略模式的弊端？" class="headerlink" title="1.4 使用匿名内部类实现策略模式的弊端？"></a>1.4 使用匿名内部类实现策略模式的弊端？</h4><p>使用匿名内部类实现策略模式代码比较冗余，不易阅读，就像这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Apple&gt; result = filter(list, <span class="keyword">new</span> FilterProcessor&lt;Apple&gt;()&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Apple apple)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(apple.getColor().equals(<span class="string">"red"</span>))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Java8提出了Lambda表达式，它是实现策略模式的另外一种方式，目的就是为了使代码简单清晰。<br> 使用Lambda表达式实现相同功能：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Apple&gt; result = filter(list, (Apple apple)—&gt;apple.getColor().equals(<span class="string">"red"</span>));</span><br></pre></td></tr></table></figure>
+<p>这样是不是简单多了！Lambda表达式本质上是将一个函数的代码作为一个参数或变量进行传递，这种处理方式有个专门的名字——函数式编程。</p>
+<h4 id="1-5-什么是函数式编程？"><a href="#1-5-什么是函数式编程？" class="headerlink" title="1.5 什么是函数式编程？"></a>1.5 什么是函数式编程？</h4><p>所谓“函数式”编程，就是将函数的代码当作一个变量，传递给另一个变量或传递给一个函数，这种编程方式就称为“函数式编程”。<br> Java8中采用Lambda表达式实现函数式编程，它是策略模式的第二种实现方式，目的就是简化策略模式的代码实现。</p>
+<h3 id="2-Lambda表达式的语法"><a href="#2-Lambda表达式的语法" class="headerlink" title="2. Lambda表达式的语法"></a>2. Lambda表达式的语法</h3><p>Lambda表达式用于表示一个函数，所以它和函数一样，也拥有参数、返回值、函数体，但它没有函数名，所以Lambda表达式相当于一个匿名函数。语法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Person person)—&gt;person.getAge()&gt;<span class="number">30</span></span><br></pre></td></tr></table></figure>
+<p>Lambda表达式用—&gt;连接，-&gt;左侧为函数的参数，-&gt;右侧为函数体。<br> 若右侧由多条语句构成则需要用{}包裹，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Person person)—&gt;&#123;person.getAge()&gt;<span class="number">30</span>;System.out.println(person.getName());&#125;</span><br></pre></td></tr></table></figure>
+<p>Lambda表达式无需显示指定返回值类型，JVM会根据-&gt;右侧语句的返回结果自动判断返回值类型，如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Person person)—&gt;person.getAge()&gt;30 #自动判断返回值为boolean型</span><br></pre></td></tr></table></figure>
+<h3 id="3-如何使用Lambda表达式？"><a href="#3-如何使用Lambda表达式？" class="headerlink" title="3. 如何使用Lambda表达式？"></a>3. 如何使用Lambda表达式？</h3><blockquote>
+<p>仍以筛选年龄大于30的Person对象为例：</p>
+</blockquote>
+<h4 id="3-1-为Lambda表达式定义函数式接口"><a href="#3-1-为Lambda表达式定义函数式接口" class="headerlink" title="3.1 为Lambda表达式定义函数式接口"></a>3.1 为Lambda表达式定义函数式接口</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">FilterProcessor</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">process</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>PS：该接口只能有一个抽象函数！接下来Lambda表达式就是该抽象函数的实现。<br> PS：在为Lambda表达式定义函数式接口时，需要加上注解@FunctionalInterface，这样当该接口中抽象函数个数不是1时就会报错提示。</p>
+<h4 id="3-2-实现筛选函数"><a href="#3-2-实现筛选函数" class="headerlink" title="3.2 实现筛选函数"></a>3.2 实现筛选函数</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;T&gt; <span class="title">filter</span><span class="params">(List&lt;T&gt; list, FilterProcessor&lt;T&gt; filterProcessor)</span></span>&#123;</span><br><span class="line">    List&lt;T&gt; result = <span class="keyword">new</span> ArrayList&lt;T&gt;();</span><br><span class="line">    <span class="keyword">if</span>(filterProcessor.process(t))</span><br><span class="line">        result.add(t);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>filter函数接收一个函数式接口，该参数用于接收一个Lambda表达式。</p>
+<h4 id="3-3-传递Lambda表达式"><a href="#3-3-传递Lambda表达式" class="headerlink" title="3.3 传递Lambda表达式"></a>3.3 传递Lambda表达式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; result = filter(list, (Person p)-&gt;p.getAge()&gt;<span class="number">30</span>);</span><br></pre></td></tr></table></figure>
+<p>直接将Lambda表达式作为参数传递给filter的函数式接口即可，从而在result中就能获取年龄超过30岁的Person对象。</p>
+<blockquote>
+<p>转载地址: <a href="https://www.jianshu.com/p/ce76ff43f8c2" target="_blank" rel="noopener">https://www.jianshu.com/p/ce76ff43f8c2</a></p>
+</blockquote>
+
       
     </div>
 
@@ -487,7 +535,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/storm/" rel="tag"># storm</a>
+            <a href="/tags/java8/" rel="tag"># java8</a>
+          
+            <a href="/tags/lambda/" rel="tag"># lambda</a>
           
         </div>
       
@@ -500,8 +550,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/20170512-push-request/" rel="next" title="github提交代码到开源项目">
-                <i class="fa fa-chevron-left"></i> github提交代码到开源项目
+              <a href="/20180626-lambda-stream-1/" rel="next" title="Java8新特性——StreamAPI(一)">
+                <i class="fa fa-chevron-left"></i> Java8新特性——StreamAPI(一)
               </a>
             
           </div>
@@ -510,8 +560,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/20170531-storm-life-cycle/" rel="prev" title="Topology的初始化流程">
-                Topology的初始化流程 <i class="fa fa-chevron-right"></i>
+              <a href="/20180626-Centos-install-serverspeeder/" rel="prev" title="CentOS7.3更换内核安装锐速破解版">
+                CentOS7.3更换内核安装锐速破解版 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -735,7 +785,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动"><span class="nav-number">1.</span> <span class="nav-text">在启动storm之前要确保nimbus和supervisor上的Zookeeper已经启动</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-查看zk的状态："><span class="nav-number">1.1.</span> <span class="nav-text">1.查看zk的状态：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-如果zk没有开启，将nimbus和supervisor的zk开启"><span class="nav-number">2.</span> <span class="nav-text">2.如果zk没有开启，将nimbus和supervisor的zk开启</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-启动nimbus（切换到storm的bin目录下）"><span class="nav-number">3.</span> <span class="nav-text">3.启动nimbus（切换到storm的bin目录下）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-启动supervisor"><span class="nav-number">4.</span> <span class="nav-text">4.启动supervisor</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-启动storm-UI"><span class="nav-number">5.</span> <span class="nav-text">4.启动storm UI</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-预备知识"><span class="nav-number">1.</span> <span class="nav-text">1. 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-如何成为一名高级码农？"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 如何成为一名高级码农？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-实现程序可扩展性的例子"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 实现程序可扩展性的例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-什么是“策略模式”？"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 什么是“策略模式”？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-使用匿名内部类实现策略模式的弊端？"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 使用匿名内部类实现策略模式的弊端？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-什么是函数式编程？"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 什么是函数式编程？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Lambda表达式的语法"><span class="nav-number">2.</span> <span class="nav-text">2. Lambda表达式的语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-如何使用Lambda表达式？"><span class="nav-number">3.</span> <span class="nav-text">3. 如何使用Lambda表达式？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-为Lambda表达式定义函数式接口"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 为Lambda表达式定义函数式接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-实现筛选函数"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 实现筛选函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-传递Lambda表达式"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 传递Lambda表达式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -913,9 +963,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://fhaoer.com/20170531-start-storm-command/';
-          this.page.identifier = '20170531-start-storm-command/';
-          this.page.title = 'storm 启动相关命令';
+          this.page.url = 'http://fhaoer.com/20180626-lambda/';
+          this.page.identifier = '20180626-lambda/';
+          this.page.title = 'Java8新特性——Lambda表达式';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://fhaoer.disqus.com/embed.js';
