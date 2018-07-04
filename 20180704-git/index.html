@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java,jvm," />
+  <meta name="keywords" content="git,工具," />
 
 
 
@@ -94,21 +94,18 @@
 
 
 
-<meta name="description" content="谈到JVM大家可能会想到JVM调优.最近在学习JVM之类的知识,整理了一些相关的笔记.  1.为什么要调优?说到调优其实不是每个系统都需要调优,其实在默认情况下,JVM默认的参数已经是最优的了,大部分的应用无需再修改任何的JVM参数,对于有钱的公司一般最有效和最方便的方法就是加机器,加机器,还是加机器.只有当加机器还是">
-<meta name="keywords" content="java,jvm">
+<meta name="description" content="命令别名平时不太用GUI，都是在IDEA中直接敲命令进行相关操作，觉得命令行相对于GUI来说效率还是要高一些，一开始老老实实的敲完整的命令，比如 123git checkout  devgit statusgit commit -m &apos;update&apos; 后来才发现，Git有别名这一功能，通过下面几个命">
+<meta name="keywords" content="git,工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM笔记整理">
-<meta property="og:url" content="http://fhaoer.com/20180120-jvm/index.html">
+<meta property="og:title" content="git常用技巧">
+<meta property="og:url" content="http://fhaoer.com/20180704-git/index.html">
 <meta property="og:site_name" content="Haoer Blog">
-<meta property="og:description" content="谈到JVM大家可能会想到JVM调优.最近在学习JVM之类的知识,整理了一些相关的笔记.  1.为什么要调优?说到调优其实不是每个系统都需要调优,其实在默认情况下,JVM默认的参数已经是最优的了,大部分的应用无需再修改任何的JVM参数,对于有钱的公司一般最有效和最方便的方法就是加机器,加机器,还是加机器.只有当加机器还是无法解决问题时,这时候就可以考虑JVM调优了. 2. 如何知道性能需要提升调优">
+<meta property="og:description" content="命令别名平时不太用GUI，都是在IDEA中直接敲命令进行相关操作，觉得命令行相对于GUI来说效率还是要高一些，一开始老老实实的敲完整的命令，比如 123git checkout  devgit statusgit commit -m &apos;update&apos; 后来才发现，Git有别名这一功能，通过下面几个命令可以把比较长的命令使用简短两个字母代替。 1234git config --global alia">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20180205/YoungGC-log.jpg">
-<meta property="og:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20180205/FullGC-log.jpg">
-<meta property="og:updated_time" content="2018-06-26T05:56:48.103Z">
+<meta property="og:updated_time" content="2018-07-04T05:52:56.678Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM笔记整理">
-<meta name="twitter:description" content="谈到JVM大家可能会想到JVM调优.最近在学习JVM之类的知识,整理了一些相关的笔记.  1.为什么要调优?说到调优其实不是每个系统都需要调优,其实在默认情况下,JVM默认的参数已经是最优的了,大部分的应用无需再修改任何的JVM参数,对于有钱的公司一般最有效和最方便的方法就是加机器,加机器,还是加机器.只有当加机器还是无法解决问题时,这时候就可以考虑JVM调优了. 2. 如何知道性能需要提升调优">
-<meta name="twitter:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20180205/YoungGC-log.jpg">
+<meta name="twitter:title" content="git常用技巧">
+<meta name="twitter:description" content="命令别名平时不太用GUI，都是在IDEA中直接敲命令进行相关操作，觉得命令行相对于GUI来说效率还是要高一些，一开始老老实实的敲完整的命令，比如 123git checkout  devgit statusgit commit -m &apos;update&apos; 后来才发现，Git有别名这一功能，通过下面几个命令可以把比较长的命令使用简短两个字母代替。 1234git config --global alia">
 
 
 
@@ -136,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://fhaoer.com/20180120-jvm/"/>
+  <link rel="canonical" href="http://fhaoer.com/20180704-git/"/>
 
 
 
 
 
-  <title> JVM笔记整理 | Haoer Blog </title>
+  <title> git常用技巧 | Haoer Blog </title>
   <meta name="baidu-site-verification" content="zNdCOPSVXp" />
 </head>
 
@@ -335,7 +332,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://fhaoer.com/20180120-jvm/">
+    <link itemprop="mainEntityOfPage" href="http://fhaoer.com/20180704-git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kevin">
@@ -356,7 +353,7 @@
             
             
               
-                JVM笔记整理
+                git常用技巧
               
             
           </h2>
@@ -371,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T00:00:00+08:00">
-                Jan 30 2018
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-04T00:00:00+08:00">
+                Jul 4 2018
               </time>
             
 
@@ -394,8 +391,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jvm/" itemprop="url" rel="index">
-                    <span itemprop="name">jvm</span>
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
                   </a>
                 </span>
 
@@ -434,52 +431,22 @@
       
 
       
-        <blockquote>
-<p>谈到JVM大家可能会想到JVM调优.最近在学习JVM之类的知识,整理了一些相关的笔记.</p>
-</blockquote>
-<h5 id="1-为什么要调优"><a href="#1-为什么要调优" class="headerlink" title="1.为什么要调优?"></a>1.为什么要调优?</h5><p>说到调优其实不是每个系统都需要调优,其实在默认情况下,JVM默认的参数已经是最优的了,大部分的应用无需再修改任何的JVM参数,对于有钱的公司一般最有效和最方便的方法就是加机器,加机器,还是加机器.只有当加机器还是无法解决问题时,这时候就可以考虑JVM调优了.</p>
-<h5 id="2-如何知道性能需要提升"><a href="#2-如何知道性能需要提升" class="headerlink" title="2. 如何知道性能需要提升"></a>2. 如何知道性能需要提升</h5><p>调优当然需要知道是哪里出了问题,现在有很多的开源的监控工具可以协助我们找出问题根源,例如:点评的CAT,还有Pinpoint(一个分布式事务跟踪系统的平台),都很好用的.</p>
-<p>当问题出现了,一般从四个方面来分析:</p>
-<ul>
-<li>cpu</li>
-</ul>
-<ul>
-<li>memory</li>
-<li>io</li>
-<li>network</li>
-</ul>
-<p>关于cpu,可以使用top命令,观察导致cpu标高进程或者线程,然后再配合jstack工具找出具体的元婴</p>
-<figure class="highlight plain"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">top (找到cpu高的线程PID) 或者 使用 top -H -p 16326 找到java进程包含的线程PID (16326是通过jps命令查到java进程的ID)</span><br><span class="line">jstack PID &gt; a.txt (输出到文件中)</span><br><span class="line">printf &quot;%x \n&quot; PID  //3fc6 (转换10进制为16进度)</span><br><span class="line">在a.txt文件中查询十六进制3fc6,对应的线程栈信息,锁定问题的根源.</span><br></pre></td></tr></table></figure>
-<p>查看机器的IO可以使用命令<code>iostat</code>观察</p>
-<h5 id="3-JDK自带的监控工具"><a href="#3-JDK自带的监控工具" class="headerlink" title="3. JDK自带的监控工具"></a>3. JDK自带的监控工具</h5><figure class="highlight plain"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jmap -heap pid 堆使用情况</span><br><span class="line">jstat  -gcutil pid 1000 5 </span><br><span class="line">jstack  线程pid</span><br><span class="line">jvisualvm</span><br><span class="line">jconsole</span><br><span class="line">jinfo 查看JVM启动参数</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>JDK官方文档: <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/toc.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/technotes/tools/windows/toc.html</a></p>
-</blockquote>
-<h5 id="4-JVM参数"><a href="#4-JVM参数" class="headerlink" title="4. JVM参数"></a>4. JVM参数</h5><blockquote>
-<p>-X 开头的参数都是非标准的参数（不是所有的JVM都实现了）</p>
-</blockquote>
-<ul>
-<li><code>java -X</code>可查看JVM参数的含义</li>
-</ul>
-<ul>
-<li>常用参数:</li>
-</ul>
-<figure class="highlight plain"><figcaption><span>starting</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-Xms :设置Java堆栈的初始化大小(starting)</span><br><span class="line">-Xmx :设置最大的java堆大小(max)</span><br><span class="line">-Xmn :设置Young区大小(new)</span><br><span class="line">-Xss :设置java线程堆栈大小</span><br><span class="line">-XX:PermSize and MaxPermSize :设置持久带的大小</span><br><span class="line">-XX:NewRatio :设置年轻代和老年代的比值</span><br><span class="line">-XX:NewSize :设置年轻代的大小</span><br><span class="line">-XX:SurvivorRation=n :设置年轻代中E去与俩个S去的比值 //-XX:SurvivorRatio=8 对象分配eden 8:1:1</span><br></pre></td></tr></table></figure>
-<p>官方文档: <a href="http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html</a></p>
-<h5 id="5-GC日志"><a href="#5-GC日志" class="headerlink" title="5. GC日志"></a>5. GC日志</h5><ul>
-<li><p>输出日志</p>
-<p>-verbose:gc :记录GC运行以及运行时间,一般用来查看GC是否有瓶颈<br>-XX:+PrintGCDetails :记录GC运行时的详细数据信息，包括新生占用的内存大小及消耗时间<br>-XX:-PrintGCTimeStamps :打印收集的时间戳<br>-XX:+UseParallelGC :使用并行垃圾收集器<br>-XX:-UseConcMarkSweepGC :使用并发标志扫描收集器<br>-XX:-UseSerialGC :使用串行垃圾收集器<br>-Xloggc:/data/gc/gc.log :设置GC记录的文件</p>
-</li>
-<li><p>日志文件控制</p>
-<p>-XX:-UseGCLogFileRotation //启用GC日志文件的自动转储<br>-XX:GCLogFileSize=8K //控制GC日志文件的大小</p>
-</li>
-<li>YoungGC对照图</li>
-</ul>
-<p><img src="http://p066mj5r9.bkt.clouddn.com/static/images/20180205/YoungGC-log.jpg" alt="1"></p>
-<ul>
-<li>FullGC对照图</li>
-</ul>
-<p><img src="http://p066mj5r9.bkt.clouddn.com/static/images/20180205/FullGC-log.jpg" alt="1"></p>
+        <h3 id="命令别名"><a href="#命令别名" class="headerlink" title="命令别名"></a>命令别名</h3><p>平时不太用GUI，都是在IDEA中直接敲命令进行相关操作，觉得命令行相对于GUI来说效率还是要高一些，一开始老老实实的敲完整的命令，比如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout  dev</span><br><span class="line">git status</span><br><span class="line">git commit -m <span class="string">'update'</span></span><br></pre></td></tr></table></figure>
+<p>后来才发现，Git有别名这一功能，通过下面几个命令可以把比较长的命令使用简短两个字母代替。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.co checkout</span><br><span class="line">git config --global alias.ci commit</span><br><span class="line">git config --global alias.br branch</span><br><span class="line">git config --global alias.st status</span><br></pre></td></tr></table></figure>
+<p>然后就可以愉快的敲 <code>git st</code> 来查看当前状态了，除了这种简单的替换，还可以进行复杂的替换，比如要显示一个牛逼的提交记录，可以把lg替换成很长的一段命令组合，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.lg <span class="built_in">log</span> --color --graph --pretty=format:<span class="string">'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'</span> --abbrev-commit</span><br></pre></td></tr></table></figure>
+<p>配置完了,直接输入 <code>git lg</code></p>
+<h3 id="如何放弃本地修改"><a href="#如何放弃本地修改" class="headerlink" title="如何放弃本地修改"></a>如何放弃本地修改</h3><p>这个功能平时用的还是比较多的，经常功能加了之后发现并没什么卵用，需要放弃这些修改，不过这也分为好几种情况。</p>
+<h4 id="1、未进行add操作"><a href="#1、未进行add操作" class="headerlink" title="1、未进行add操作"></a>1、未进行add操作</h4><p>这种情况，应该是最常见的，一般修改不会轻易进行<code>git add &lt;file&gt;</code>操作，这个时候只需要进行简单的 <code>git checkout -- .</code> 撤销全部, 或者 <code>git checkout -- &lt;file&gt;</code> 恢复具体的文件。</p>
+<p>命令中的–很重要，没有–，就可能变成 “分支切换” 的命令，但是如果没写–，且没有对应的分支，也可以恢复，为了保险，还是老老实实加上。</p>
+<p>该命令就是用来放弃那些还未加入缓存区的修改操作，包括文件内容的修改和文件的删除，但是对于那些新建的文件来说，并不把它删掉，因为刚新建的文件对于Git来说是未知的，需要手动的删除。 </p>
+<h4 id="2、已经被add进缓存"><a href="#2、已经被add进缓存" class="headerlink" title="2、已经被add进缓存"></a>2、已经被add进缓存</h4><p>好吧，这种情况，我也是经常遇到，因为手速太快，执行完<code>git add .</code> 之后，发现一些有问题，怎么办？</p>
+<p>因为这些修改已经被放入缓存区了，<code>git checkout</code> 操作已经无力回天，这个时候，可以使用 <code>git reset HEAD &lt;file&gt;</code> 命令来放弃指定的文件的缓存，如果要放弃所有修改的缓存，可以使用 <code>git reset HEAD .</code></p>
+<p>该命令相当于撤销 <code>git add</code> 的影响，在执行该命令后，本地的修改并不会消失，而是回到add之前的状态。</p>
+<h4 id="3、add完之后，还commit了"><a href="#3、add完之后，还commit了" class="headerlink" title="3、add完之后，还commit了"></a>3、add完之后，还commit了</h4><p> 这种情况最糟心，还好没有push到远程仓库，还可以抢救。其实方法也很简单，可以使用 <code>git reset --hard HEAD^</code> 来回退到上一次commit的状态。</p>
+<p>另外使用此命令可以回退到任意版本：<code>git reset --hard commitid</code><br> 这里的commitId就是使用 <code>git log</code> 显示的提交历史中的SHA码，只需要前面几位即可。 </p>
 
       
     </div>
@@ -530,9 +497,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
+            <a href="/tags/git/" rel="tag"># git</a>
           
-            <a href="/tags/jvm/" rel="tag"># jvm</a>
+            <a href="/tags/工具/" rel="tag"># 工具</a>
           
         </div>
       
@@ -545,8 +512,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/20171207-Centos-install-serverspeeder/" rel="next" title="CentOS7.3更换内核安装锐速破解版">
-                <i class="fa fa-chevron-left"></i> CentOS7.3更换内核安装锐速破解版
+              <a href="/20180627-ThreadLocal/" rel="next" title="揭秘ThreadLocal">
+                <i class="fa fa-chevron-left"></i> 揭秘ThreadLocal
               </a>
             
           </div>
@@ -554,10 +521,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/20180323-sql/" rel="prev" title="数据库SQL语句优化">
-                数据库SQL语句优化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -780,7 +743,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-为什么要调优"><span class="nav-number">1.</span> <span class="nav-text">1.为什么要调优?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-如何知道性能需要提升"><span class="nav-number">2.</span> <span class="nav-text">2. 如何知道性能需要提升</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-JDK自带的监控工具"><span class="nav-number">3.</span> <span class="nav-text">3. JDK自带的监控工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-JVM参数"><span class="nav-number">4.</span> <span class="nav-text">4. JVM参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-GC日志"><span class="nav-number">5.</span> <span class="nav-text">5. GC日志</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令别名"><span class="nav-number">1.</span> <span class="nav-text">命令别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何放弃本地修改"><span class="nav-number">2.</span> <span class="nav-text">如何放弃本地修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、未进行add操作"><span class="nav-number">2.1.</span> <span class="nav-text">1、未进行add操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、已经被add进缓存"><span class="nav-number">2.2.</span> <span class="nav-text">2、已经被add进缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、add完之后，还commit了"><span class="nav-number">2.3.</span> <span class="nav-text">3、add完之后，还commit了</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -958,9 +921,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://fhaoer.com/20180120-jvm/';
-          this.page.identifier = '20180120-jvm/';
-          this.page.title = 'JVM笔记整理';
+          this.page.url = 'http://fhaoer.com/20180704-git/';
+          this.page.identifier = '20180704-git/';
+          this.page.title = 'git常用技巧';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://fhaoer.disqus.com/embed.js';
