@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://ou7ri10jn.bkt.clouddn.com/vpn/before_speed_test2.png">
 <meta property="og:image" content="http://ou7ri10jn.bkt.clouddn.com/vpn/after_speed_test2.png">
 <meta property="og:image" content="http://ou7ri10jn.bkt.clouddn.com/vpn/vultr_openvpn.png">
-<meta property="og:updated_time" content="2018-06-26T08:17:56.667Z">
+<meta property="og:updated_time" content="2018-07-23T05:53:47.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建自己专属的vpn——Centos搭建vpn的几种办法">
 <meta name="twitter:description" content="方法一：搭建shadowsocks+serverspeeder（特别推荐）shadowsocks服务端安装参考官方Shadowsocks使用说明： CentOS: 12yum install python-setuptools &amp;amp;&amp;amp; easy_install pip  pip install shadowsocks Debian / Ubuntu: 12apt-get instal">
@@ -509,7 +509,19 @@
 <p>下行速度瞬间提升，是不是觉得有点小激动？<br>一键安装serverspeeder<br>注：参考<a href="https://github.com/91yun/serverspeeder" target="_blank" rel="noopener">serverspeeder锐速一键破解安装版</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh &amp;&amp; bash serverspeeder.sh</span><br></pre></td></tr></table></figure>
 <p>如果报内核不支持，可以更换系统内核</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">下载内核安装包  </span><br><span class="line">wget http://ftp.scientificlinux.org/linux/scientific/6.6/x86_64/updates/security/kernel-2.6.32-504.3.3.el6.x86_64.rpm  </span><br><span class="line">  </span><br><span class="line">更换内核  </span><br><span class="line">rpm -ivh kernel-2.6.32-504.3.3.el6.x86_64.rpm --force  </span><br><span class="line">  </span><br><span class="line">重启  </span><br><span class="line">reboot  </span><br><span class="line">  </span><br><span class="line">查看内核版本是否替换成功  </span><br><span class="line">cat /proc/version</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CentO S7.3的内核3.10.0-514.16.1.el7.x86_64暂不支持安装锐速，故更换为3.10.0-229.1.2.el7.x86_64</span><br><span class="line">下载内核安装包 </span><br><span class="line">rpm -ivh http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm --force</span><br><span class="line"></span><br><span class="line">查看内核是否安装成功</span><br><span class="line">rpm  -qa | grep kernel</span><br><span class="line"></span><br><span class="line">重启  </span><br><span class="line">reboot </span><br><span class="line"></span><br><span class="line">查看内核版本是否替换成功</span><br><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>更换完内核后开始安装锐速破解版</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh &amp;&amp; bash serverspeeder.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service serverSpeeder status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看实时信息</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service serverSpeeder stats</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <p>如果系统内核已更新，再次执行一键安装serverspeeder方法即可。至此serverspeeder安装完毕，快去试试速度是不提升了。</p>
 <p>卸载serverspeeder的方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.sh uninstall -f</span><br></pre></td></tr></table></figure>
