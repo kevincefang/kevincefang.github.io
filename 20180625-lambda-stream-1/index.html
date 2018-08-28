@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Haoer Blog">
 <meta property="og:description" content="1. 流的基本概念1.1 什么是流？流是Java8引入的全新概念，它用来处理集合中的数据，暂且可以把它理解为一种高级集合。 众所周知，集合操作非常麻烦，若要对集合进行筛选、投影，需要写大量的代码，而流是以声明的形式操作集合，它就像SQL语句，我们只需告诉流需要对集合进行什么操作，它就会自动进行操作，并将执行结果交给你，无需我们自己手写代码。 因此，流的集合操作对我们来说是透明的，我们只需向流下达命">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-27T07:35:32.657Z">
+<meta property="og:updated_time" content="2018-08-28T03:56:59.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8新特性——StreamAPI(一)">
 <meta name="twitter:description" content="1. 流的基本概念1.1 什么是流？流是Java8引入的全新概念，它用来处理集合中的数据，暂且可以把它理解为一种高级集合。 众所周知，集合操作非常麻烦，若要对集合进行筛选、投影，需要写大量的代码，而流是以声明的形式操作集合，它就像SQL语句，我们只需告诉流需要对集合进行什么操作，它就会自动进行操作，并将执行结果交给你，无需我们自己手写代码。 因此，流的集合操作对我们来说是透明的，我们只需向流下达命">
@@ -536,9 +536,6 @@
 <h5 id="2-14-2-数值计算"><a href="#2-14-2-数值计算" class="headerlink" title="2.14.2 数值计算"></a>2.14.2 数值计算</h5><p>每种数值流都提供了数值计算函数，如max、min、sum等。<br> 如，找出最大的年龄：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OptionalInt maxAge = list.stream()</span><br><span class="line">                                .mapToInt(Person::getAge)</span><br><span class="line">                                .max();</span><br></pre></td></tr></table></figure>
 <p>由于数值流可能为空，并且给空的数值流计算最大值是没有意义的，因此max函数返回OptionalInt，它是Optional的一个子类，能够判断流是否为空，并对流为空的情况作相应的处理。<br> 此外，mapToInt、mapToDouble、mapToLong进行数值操作后的返回结果分别为：OptionalInt、OptionalDouble、OptionalLong</p>
-<blockquote>
-<p>转载地址: <a href="https://www.jianshu.com/p/833a879d9c7c" target="_blank" rel="noopener">https://www.jianshu.com/p/833a879d9c7c</a></p>
-</blockquote>
 
       
     </div>
@@ -701,7 +698,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -712,7 +709,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -723,7 +720,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

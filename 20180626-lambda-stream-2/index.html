@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Haoer Blog">
 <meta property="og:description" content="1. 收集器简介收集器用来将经过筛选、映射的流进行最后的整理，可以使得最后的结果以不同的形式展现。 collect方法即为收集器，它接收Collector接口的实现作为具体收集器的收集方法。 Collector接口提供了很多默认实现的方法，我们可以直接使用它们格式化流的结果；也可以自定义Collector接口的实现，从而定制自己的收集器。 这里先介绍Collector常用默认静态方法的使用，自定义">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-27T07:35:42.601Z">
+<meta property="og:updated_time" content="2018-08-28T03:57:08.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8新特性——StreamAPI(二)">
 <meta name="twitter:description" content="1. 收集器简介收集器用来将经过筛选、映射的流进行最后的整理，可以使得最后的结果以不同的形式展现。 collect方法即为收集器，它接收Collector接口的实现作为具体收集器的收集方法。 Collector接口提供了很多默认实现的方法，我们可以直接使用它们格式化流的结果；也可以自定义Collector接口的实现，从而定制自己的收集器。 这里先介绍Collector常用默认静态方法的使用，自定义">
@@ -517,9 +517,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,Integer&gt; map = list.stream()</span><br><span class="line">                            .collect(groupingBy(Person::getSex,</span><br><span class="line">                            collectingAndThen(</span><br><span class="line">                            maxBy(comparingInt(Person::getAge)),</span><br><span class="line">                            Optional::get</span><br><span class="line">                            )));</span><br></pre></td></tr></table></figure>
 <p>此时返回的是一个Map&lt; String,Integer&gt;，String表示每组的组名(男、女)，Integer为每组最大的年龄。<br> 如果不用collectingAndThen包裹maxBy，那么最后返回的结果为Map&lt; String,Optional&lt; Person&gt;&gt;。<br> 使用collectingAndThen包裹maxBy后，首先会执行maxBy函数，该函数执行完后便会执行Optional::get，从而将Optional中的元素取出来。</p>
 <h3 id="2-3-分区"><a href="#2-3-分区" class="headerlink" title="2.3 分区"></a>2.3 分区</h3><p>分区是分组的一种特殊情况，它只能分成true、false两组。<br> 分组使用partitioningBy方法，该方法接收一个Lambda表达式，该表达是必须返回boolean类型，partitioningBy方法会将Lambda返回结果为true和false的元素各分成一组。<br> partitioningBy方法返回的结果为Map&lt; Boolean,List&lt; T&gt;&gt;。<br> 此外，partitioningBy方法和groupingBy方法一样，也可以接收第二个参数，实现二级分区或对分区结果进行统计。</p>
-<blockquote>
-<p> 转载地址: <a href="https://www.jianshu.com/p/8854fa9b72c2" target="_blank" rel="noopener">https://www.jianshu.com/p/8854fa9b72c2</a></p>
-</blockquote>
 
       
     </div>
@@ -682,7 +679,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -693,7 +690,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -704,7 +701,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
