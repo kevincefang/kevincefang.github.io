@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="#####安装常用工具 1yum install git wget vim -y #####安装编译工具  CentOS  1yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel l">
+<meta name="description" content="安装常用工具1yum install git wget vim -y 安装编译工具 CentOS  1yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel p">
 <meta name="keywords" content="vpn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装并配置shadowsocks-libev（yum源方式）">
 <meta property="og:url" content="http://fhaoer.com/20190617-shadowsocks-libev/index.html">
 <meta property="og:site_name" content="Haoer Blog">
-<meta property="og:description" content="#####安装常用工具 1yum install git wget vim -y #####安装编译工具  CentOS  1yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel -y    Ubuntu  1sud">
+<meta property="og:description" content="安装常用工具1yum install git wget vim -y 安装编译工具 CentOS  1yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel -y    Ubuntu  1sudo apt-get in">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-17T06:00:32.240Z">
+<meta property="og:updated_time" content="2019-06-17T06:05:13.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装并配置shadowsocks-libev（yum源方式）">
-<meta name="twitter:description" content="#####安装常用工具 1yum install git wget vim -y #####安装编译工具  CentOS  1yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel -y    Ubuntu  1sud">
+<meta name="twitter:description" content="安装常用工具1yum install git wget vim -y 安装编译工具 CentOS  1yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel -y    Ubuntu  1sudo apt-get in">
 
 
 
@@ -431,10 +431,8 @@
       
 
       
-        <p>#####安装常用工具</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git wget vim -y</span><br></pre></td></tr></table></figure>
-<p>#####安装编译工具</p>
-<ul>
+        <h5 id="安装常用工具"><a href="#安装常用工具" class="headerlink" title="安装常用工具"></a>安装常用工具</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git wget vim -y</span><br></pre></td></tr></table></figure>
+<h5 id="安装编译工具"><a href="#安装编译工具" class="headerlink" title="安装编译工具"></a>安装编译工具</h5><ul>
 <li><p>CentOS</p>
 <ul>
 <li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel -y</span><br></pre></td></tr></table></figure>
@@ -448,9 +446,8 @@
 </ul>
 </li>
 </ul>
-<p>######单独安装 libsodium</p>
-<p>libsodium 是一个先进而且易用的加密库。 主要用于加密、解密、签名和生成密码哈希。 Note：可以点击这里查看 <a href="https://download.libsodium.org/libsodium/releases/" target="_blank" rel="noopener">Libsodium</a> 的最新版本。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`export LIBSODIUM_VER=1.0.17wget https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VER.tar.gztar xvf libsodium-$LIBSODIUM_VER.tar.gzpushd libsodium-$LIBSODIUM_VER./configure --prefix=/usr &amp;&amp; makesudo make installpopdsudo ldconfig`</span><br></pre></td></tr></table></figure>
+<h5 id="单独安装-libsodium"><a href="#单独安装-libsodium" class="headerlink" title="单独安装 libsodium"></a>单独安装 libsodium</h5><p>libsodium 是一个先进而且易用的加密库。 主要用于加密、解密、签名和生成密码哈希。 Note：可以点击这里查看 <a href="https://download.libsodium.org/libsodium/releases/" target="_blank" rel="noopener">Libsodium</a> 的最新版本。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export LIBSODIUM_VER=1.0.17</span><br><span class="line">wget https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VER.tar.gz</span><br><span class="line">tar xvf libsodium-$LIBSODIUM_VER.tar.gz</span><br><span class="line">pushd libsodium-$LIBSODIUM_VER</span><br><span class="line">./configure --prefix=/usr &amp;&amp; make</span><br><span class="line">sudo make install</span><br><span class="line">popd</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
 <h6 id="单独安装-mbedtls"><a href="#单独安装-mbedtls" class="headerlink" title="单独安装 mbedtls"></a>单独安装 mbedtls</h6><p>SSL和TLS</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export MBEDTLS_VER=2.6.0</span><br><span class="line">wget https://tls.mbed.org/download/mbedtls-$MBEDTLS_VER-gpl.tgz</span><br><span class="line">tar xvf mbedtls-$MBEDTLS_VER-gpl.tgz</span><br><span class="line">pushd mbedtls-$MBEDTLS_VER</span><br><span class="line">make SHARED=1 CFLAGS=-fPIC</span><br><span class="line">sudo make DESTDIR=/usr install</span><br><span class="line">popd</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
 <h5 id="安装-simple-obfs（已被-v2ray-plugin-取代-）"><a href="#安装-simple-obfs（已被-v2ray-plugin-取代-）" class="headerlink" title="安装 simple-obfs（已被 v2ray-plugin 取代 ）"></a>安装 simple-obfs（已被 v2ray-plugin 取代 ）</h5><blockquote>
@@ -458,17 +455,13 @@
 </blockquote>
 <ul>
 <li><p>安装编译必须的软件</p>
-<ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install zlib-devel openssl-devel -y</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install zlib-devel openssl-devel -y</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装 simple-obfs</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/shadowsocks/simple-obfs.git</span><br><span class="line">cd simple-obfs</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">./autogen.sh</span><br><span class="line">./configure &amp;&amp; make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>#####安装 v2ray-plugin （simple-obfs 和 v2ray-plugin 不能同时开启，安装其中一个即可）</p>
-<blockquote>
+<h5 id="安装-v2ray-plugin-（simple-obfs-和-v2ray-plugin-不能同时开启，安装其中一个即可）"><a href="#安装-v2ray-plugin-（simple-obfs-和-v2ray-plugin-不能同时开启，安装其中一个即可）" class="headerlink" title="安装 v2ray-plugin （simple-obfs 和 v2ray-plugin 不能同时开启，安装其中一个即可）"></a>安装 v2ray-plugin （simple-obfs 和 v2ray-plugin 不能同时开启，安装其中一个即可）</h5><blockquote>
 <p>请先安装 SS 后，再来看此连接内容</p>
 </blockquote>
 <p>避免文章内容过长，影响浏览体验，故单独提取到了 gist 上（可能得科学上网才能访问） <a href="https://gist.github.com/Shuanghua/c9c448f9bd12ebbfd720b34f4e1dd5c6" target="_blank" rel="noopener">v2ray-plugin 安装</a></p>
@@ -510,11 +503,7 @@
 <p>多个端口号配置：nohup ss-manager -c /etc/shadowsocks-libev/config.json &amp;</p>
 </li>
 <li><p>是通过将信息写在命令行中启动</p>
-</li>
-<li><ul>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss-server -s 服务器IP -p 端口 -k 密码 -m chacha20-ietf-poly1305 -u -l 1080 -t 600 --fast-open true --plugin obfs-server --plugin-opts obfs=http;fast-open</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss-server -s 服务器IP -p 端口 -k 密码 -m chacha20-ietf-poly1305 -u -l 1080 -t 600 --fast-open true --plugin obfs-server --plugin-opts obfs=http;fast-open</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -811,7 +800,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#单独安装-mbedtls"><span class="nav-number">1.</span> <span class="nav-text">单独安装 mbedtls</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装-simple-obfs（已被-v2ray-plugin-取代-）"><span class="nav-number"></span> <span class="nav-text">安装 simple-obfs（已被 v2ray-plugin 取代 ）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装-SS"><span class="nav-number"></span> <span class="nav-text">安装 SS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开放防火墙端口"><span class="nav-number"></span> <span class="nav-text">开放防火墙端口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开启服务"><span class="nav-number"></span> <span class="nav-text">开启服务</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装常用工具"><span class="nav-number">1.</span> <span class="nav-text">安装常用工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装编译工具"><span class="nav-number">2.</span> <span class="nav-text">安装编译工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单独安装-libsodium"><span class="nav-number">3.</span> <span class="nav-text">单独安装 libsodium</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单独安装-mbedtls"><span class="nav-number">3.1.</span> <span class="nav-text">单独安装 mbedtls</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装-simple-obfs（已被-v2ray-plugin-取代-）"><span class="nav-number">4.</span> <span class="nav-text">安装 simple-obfs（已被 v2ray-plugin 取代 ）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装-v2ray-plugin-（simple-obfs-和-v2ray-plugin-不能同时开启，安装其中一个即可）"><span class="nav-number">5.</span> <span class="nav-text">安装 v2ray-plugin （simple-obfs 和 v2ray-plugin 不能同时开启，安装其中一个即可）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装-SS"><span class="nav-number">6.</span> <span class="nav-text">安装 SS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开放防火墙端口"><span class="nav-number">7.</span> <span class="nav-text">开放防火墙端口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开启服务"><span class="nav-number">8.</span> <span class="nav-text">开启服务</span></a></li></ol></div>
             
 
           </div>
