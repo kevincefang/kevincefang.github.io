@@ -103,9 +103,9 @@
 <meta property="og:description" content="SpringMvc是Spring框架的web模块,是目前最常用的web框架之一.下面让我们一起通过阅读源码来揭秘一下他的神奇之处吧.  SpringMvc初始化SpringMVC框架是依托于Spring容器。Spring初始化的过程其实就是IoC容器启动的过程，也就是上下文建立的过程。 ServletContext每一个web应用中都有一个Servlet上下文。servlet容器提供一个全局上下">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20180828/1.png">
-<meta property="og:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20180828/2.webp">
-<meta property="og:image" content="http://p066mj5r9.bkt.clouddn.com/static/images/20180828/3.webp">
-<meta property="og:updated_time" content="2018-08-28T05:57:03.826Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/kevincefang/hexo_blog/master/static/images/20180828/2.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/kevincefang/hexo_blog/master/static/images/20180828/3.webp">
+<meta property="og:updated_time" content="2019-06-17T08:25:16.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC源码分析-DispatcherServlet">
 <meta name="twitter:description" content="SpringMvc是Spring框架的web模块,是目前最常用的web框架之一.下面让我们一起通过阅读源码来揭秘一下他的神奇之处吧.  SpringMvc初始化SpringMVC框架是依托于Spring容器。Spring初始化的过程其实就是IoC容器启动的过程，也就是上下文建立的过程。 ServletContext每一个web应用中都有一个Servlet上下文。servlet容器提供一个全局上下">
@@ -514,8 +514,8 @@
 </li>
 </ul>
 <h4 id="SpingMVC-请求处理流程"><a href="#SpingMVC-请求处理流程" class="headerlink" title="SpingMVC 请求处理流程"></a>SpingMVC 请求处理流程</h4><p><code>SpringMVC</code>框架是围绕<code>DispatcherServlet</code>设计的。<code>DispatcherServlet</code>负责将请求分发给对应的处理程序。从网上找了两个图，可以大致了解<code>SpringMVC</code>的框架对请求的处理流程。</p>
-<p><img src="http://p066mj5r9.bkt.clouddn.com/static/images/20180828/2.webp" alt="1"></p>
-<p><img src="http://p066mj5r9.bkt.clouddn.com/static/images/20180828/3.webp" alt="1"></p>
+<p><img src="https://raw.githubusercontent.com/kevincefang/hexo_blog/master/static/images/20180828/2.webp" alt="1"></p>
+<p><img src="https://raw.githubusercontent.com/kevincefang/hexo_blog/master/static/images/20180828/3.webp" alt="1"></p>
 <ul>
 <li><p>用户发送请求，<code>Front Controller</code>（<code>DispatcherServlet</code>）根据请求信息将请求委托给对应的<code>Controller</code>进行处理。</p>
 </li>
