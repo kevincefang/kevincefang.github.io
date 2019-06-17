@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="安装常用工具1yum install git wget vim -y 安装编译工具 CentOS  1yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel p">
+<meta name="description" content="安装常用工具1yum install git wget vim -y 安装编译工具 CentOS 1yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pc">
 <meta name="keywords" content="vpn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装并配置shadowsocks-libev（yum源方式）">
 <meta property="og:url" content="http://fhaoer.com/20190617-shadowsocks-libev/index.html">
 <meta property="og:site_name" content="Haoer Blog">
-<meta property="og:description" content="安装常用工具1yum install git wget vim -y 安装编译工具 CentOS  1yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel -y    Ubuntu  1sudo apt-get in">
+<meta property="og:description" content="安装常用工具1yum install git wget vim -y 安装编译工具 CentOS 1yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel -y  Ubuntu 1sudo apt-get instal">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-17T06:05:13.905Z">
+<meta property="og:updated_time" content="2019-06-17T06:12:41.382Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装并配置shadowsocks-libev（yum源方式）">
-<meta name="twitter:description" content="安装常用工具1yum install git wget vim -y 安装编译工具 CentOS  1yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel -y    Ubuntu  1sudo apt-get in">
+<meta name="twitter:description" content="安装常用工具1yum install git wget vim -y 安装编译工具 CentOS 1yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel -y  Ubuntu 1sudo apt-get instal">
 
 
 
@@ -434,16 +434,10 @@
         <h5 id="安装常用工具"><a href="#安装常用工具" class="headerlink" title="安装常用工具"></a>安装常用工具</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git wget vim -y</span><br></pre></td></tr></table></figure>
 <h5 id="安装编译工具"><a href="#安装编译工具" class="headerlink" title="安装编译工具"></a>安装编译工具</h5><ul>
 <li><p>CentOS</p>
-<ul>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel -y</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release gcc gettext autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel pcre-devel -y</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Ubuntu</p>
-<ul>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev asciidoc xmlto libev-dev libc-ares-dev automake -y</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev asciidoc xmlto libev-dev libc-ares-dev automake -y</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h5 id="单独安装-libsodium"><a href="#单独安装-libsodium" class="headerlink" title="单独安装 libsodium"></a>单独安装 libsodium</h5><p>libsodium 是一个先进而且易用的加密库。 主要用于加密、解密、签名和生成密码哈希。 Note：可以点击这里查看 <a href="https://download.libsodium.org/libsodium/releases/" target="_blank" rel="noopener">Libsodium</a> 的最新版本。</p>
@@ -469,9 +463,9 @@
 <p>前面一些环境搭建好了，现在正式安装我们的主角。</p>
 </blockquote>
 <p>(1)下载源码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`git clone https://github.com/shadowsocks/shadowsocks-libev.gitcd shadowsocks-libevgit submodule update --init --recursive`</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/shadowsocks/shadowsocks-libev.git</span><br><span class="line">cd shadowsocks-libev</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
 <p>(2)编译源码并安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`cd shadowsocks-libev //确保是在 ss 目录中执行编译./autogen.sh &amp;&amp; ./configure &amp;&amp; makesudo make install // root 权限下安装`</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd shadowsocks-libev //确保是在 ss 目录中执行编译</span><br><span class="line">./autogen.sh &amp;&amp; ./configure &amp;&amp; make</span><br><span class="line">sudo make install // root 权限下安装</span><br></pre></td></tr></table></figure>
 <p>(3)创建账号配置文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/shadowsocks-libev</span><br><span class="line">vim /etc/shadowsocks-libev/config.json</span><br></pre></td></tr></table></figure>
 <p>先按 <strong>i</strong> 键进入编辑模式，然后复制下面内容到文件中，自行替换相应地方。</p>
@@ -497,15 +491,14 @@
 </ul>
 <h5 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h5><p>到此已经完成所有安装，启动 ss 有两种方式，任选一种方式</p>
 <ul>
-<li><p>是通过使用创建好的配置文件来启动</p>
-</li>
-<li><p>单个端口号配置：nohup ss-server -c /etc/shadowsocks-libev/config.json &amp;</p>
-<p>多个端口号配置：nohup ss-manager -c /etc/shadowsocks-libev/config.json &amp;</p>
-</li>
-<li><p>是通过将信息写在命令行中启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss-server -s 服务器IP -p 端口 -k 密码 -m chacha20-ietf-poly1305 -u -l 1080 -t 600 --fast-open true --plugin obfs-server --plugin-opts obfs=http;fast-open</span><br></pre></td></tr></table></figure>
-</li>
+<li>是通过使用创建好的配置文件来启动</li>
 </ul>
+<p>单个端口号配置：nohup ss-server -c /etc/shadowsocks-libev/config.json &amp;</p>
+<p>多个端口号配置：nohup ss-manager -c /etc/shadowsocks-libev/config.json &amp;</p>
+<ul>
+<li>是通过将信息写在命令行中启动</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss-server -s 服务器IP -p 端口 -k 密码 -m chacha20-ietf-poly1305 -u -l 1080 -t 600 --fast-open true --plugin obfs-server --plugin-opts obfs=http;fast-open</span><br></pre></td></tr></table></figure>
 
       
     </div>
