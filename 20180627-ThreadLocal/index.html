@@ -102,12 +102,12 @@
 <meta property="og:site_name" content="Haoer Blog">
 <meta property="og:description" content="ThreadLocal是开发中最常用的技术之一，也是面试重要的考点。本文将由浅入深，介绍ThreadLocal的使用方式、实现原理、内存泄漏问题以及使用场景。  ThreadLocal作用在并发编程中时常有这样一种需求：每条线程都需要存取一个同名变量，但每条线程中该变量的值均不相同。 如果是你，该如何实现上述功能？常规的思路如下： 使用一个线程共享的Map&amp;lt;Thread,Object&amp;gt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/kevincefang/hexo_blog/master/static/images/20180627/1.png">
-<meta property="og:updated_time" content="2019-06-17T08:24:31.938Z">
+<meta property="og:image" content="http://fhaoer.com/hexo_blog/static/images/20180627/1.png">
+<meta property="og:updated_time" content="2019-11-18T07:31:42.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="揭秘ThreadLocal">
 <meta name="twitter:description" content="ThreadLocal是开发中最常用的技术之一，也是面试重要的考点。本文将由浅入深，介绍ThreadLocal的使用方式、实现原理、内存泄漏问题以及使用场景。  ThreadLocal作用在并发编程中时常有这样一种需求：每条线程都需要存取一个同名变量，但每条线程中该变量的值均不相同。 如果是你，该如何实现上述功能？常规的思路如下： 使用一个线程共享的Map&amp;lt;Thread,Object&amp;gt">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/kevincefang/hexo_blog/master/static/images/20180627/1.png">
+<meta name="twitter:image" content="http://fhaoer.com/hexo_blog/static/images/20180627/1.png">
 
 
 
@@ -452,7 +452,7 @@
 </li>
 </ul>
 <p>ThreadLocal的使用方法非常简单，关键在于它背后的实现原理。回到上面的问题：ThreadLocal究竟是如何避免同步锁，从而保证读写的高效？</p>
-<p><img src="https://raw.githubusercontent.com/kevincefang/hexo_blog/master/static/images/20180627/1.png" alt="1"></p>
+<p><img src="http://fhaoer.com/hexo_blog/static/images/20180627/1.png" alt="1"></p>
 <p><code>ThreadLocal</code>并不维护<code>ThreadLocalMap</code>，并不是一个存储数据的容器，它只是相当于一个工具包，提供了操作该容器的方法，如get、set、remove等。而<code>ThreadLocal</code>内部类<code>ThreadLocalMap</code>才是存储数据的容器，并且该容器由<code>Thread</code>维护。</p>
 <p>每一个<code>Thread</code>对象均含有一个<code>ThreadLocalMap</code>类型的成员变量<code>threadLocals</code>，它存储本线程中所有ThreadLocal对象及其对应的值。</p>
 <p><code>ThreadLocalMap</code>由一个个<code>Entry</code>对象构成，<code>Entry</code>的代码如下：</p>
