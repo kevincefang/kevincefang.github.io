@@ -410,11 +410,6 @@
           
 
           
-            <!--<span class="post-meta-divider">|</span>-->
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>times
-            </span>
-          
 
           
 
@@ -431,12 +426,12 @@
       
 
       
-        <h4 id="首先-在github中把开源项目fork到自己的仓库"><a href="#首先-在github中把开源项目fork到自己的仓库" class="headerlink" title="首先,在github中把开源项目fork到自己的仓库"></a>首先,在github中把开源项目fork到自己的仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git clone https://github.com/kevincefang/test.git</span><br><span class="line"><span class="meta">$</span> cd test</span><br><span class="line"><span class="meta">$</span> git config user.name "yourname"</span><br><span class="line"><span class="meta">$</span> git config user.email "your email"</span><br></pre></td></tr></table></figure>
-<h4 id="更新内容提交后-并推送到自己的仓库"><a href="#更新内容提交后-并推送到自己的仓库" class="headerlink" title="更新内容提交后,并推送到自己的仓库"></a>更新内容提交后,并推送到自己的仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> #do some change on the content</span><br><span class="line"><span class="meta">$</span> git add .</span><br><span class="line"><span class="meta">$</span> git commit -m "Fix issue"</span><br><span class="line"><span class="meta">$</span> git push</span><br></pre></td></tr></table></figure>
+        <h4 id="首先-在github中把开源项目fork到自己的仓库"><a href="#首先-在github中把开源项目fork到自己的仓库" class="headerlink" title="首先,在github中把开源项目fork到自己的仓库"></a>首先,在github中把开源项目fork到自己的仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/kevincefang/test.git</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> <span class="built_in">test</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config user.name <span class="string">"yourname"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config user.email <span class="string">"your email"</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="更新内容提交后-并推送到自己的仓库"><a href="#更新内容提交后-并推送到自己的仓库" class="headerlink" title="更新内容提交后,并推送到自己的仓库"></a>更新内容提交后,并推送到自己的仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="comment">#do some change on the content</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git add .</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">"Fix issue"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push</span></span><br></pre></td></tr></table></figure>
 <h4 id="最后，在-GitHub-网站上提交-pull-request-即可。"><a href="#最后，在-GitHub-网站上提交-pull-request-即可。" class="headerlink" title="最后，在 GitHub 网站上提交 pull request 即可。"></a>最后，在 GitHub 网站上提交 pull request 即可。</h4><blockquote>
 <p>另外，建议定期使用项目仓库内容更新自己仓库内容。</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git remote add upstream https://github.com/kevincefang/test.git</span><br><span class="line"><span class="meta">$</span> git fetch upstream</span><br><span class="line"><span class="meta">$</span> git checkout master</span><br><span class="line"><span class="meta">$</span> git rebase upstream/master</span><br><span class="line"><span class="meta">$</span> git push -f origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git remote add upstream https://github.com/kevincefang/test.git</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git fetch upstream</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git checkout master</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git rebase upstream/master</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push -f origin master</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -793,22 +788,21 @@
 
   
     <span class="site-uv">
-      <i class="fa fa-user"></i>
+      <i class="fa fa-user"></i>本站访问数
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       人
     </span>
   
 
-  <!-- 
+  
     <span class="site-pv">
-      <i class="fa fa-eye"></i>
+      <i class="fa fa-eye"></i>本站总访问量
       <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
       次
     </span>
   
-  -->
-</div>
 
+</div>
 
         
       </div>
