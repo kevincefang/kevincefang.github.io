@@ -71,7 +71,9 @@
 
 
 
-<link href="/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/5.1.0/js/all.js" rel="stylesheet" type="text/css" />
 
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
@@ -1094,157 +1096,6 @@ CentOS:
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://fhaoer.com/20171129-synchronized/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kevin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haoer Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/20171129-synchronized/" itemprop="url">
-                  同步锁Synchronized及实现原理
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T18:30:10+08:00">
-                Nov 29 2017
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          同步的基本思想为了保证共享数据在同一时刻只被一个线程使用，我们有一种很简单的实现思想:
-
-在共享数据里保存一个锁 ，当没有线程访问时，锁是空的。当有第一个线程访问时，就在锁里保存这个线程的标识 并允许这个线程访问共享数据。在当前线程释放共享数据之前，如果再有其他线程想要访问共享数据，就要等待锁释放。
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/20171129-synchronized/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://fhaoer.com/20171129-zuoxi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1352,6 +1203,157 @@ CentOS:
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/20171129-zuoxi/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://fhaoer.com/20171129-synchronized/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kevin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haoer Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/20171129-synchronized/" itemprop="url">
+                  同步锁Synchronized及实现原理
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T18:30:10+08:00">
+                Nov 29 2017
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          同步的基本思想为了保证共享数据在同一时刻只被一个线程使用，我们有一种很简单的实现思想:
+
+在共享数据里保存一个锁 ，当没有线程访问时，锁是空的。当有第一个线程访问时，就在锁里保存这个线程的标识 并允许这个线程访问共享数据。在当前线程释放共享数据之前，如果再有其他线程想要访问共享数据，就要等待锁释放。
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/20171129-synchronized/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
