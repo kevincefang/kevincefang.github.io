@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://fhaoer.com/20191119-SPI/</loc>
+    <lastmod>2019-11-19T05:28:19.693Z</lastmod>
+    <data>
+        <display>
+        <title>SPI机制的原理和应用</title>
+        <pubTime>2019-11-18T16:00:00.000Z</pubTime>
+        
+        <tag>SPI</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://fhaoer.com/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://fhaoer.com/20180828-springmvc-analysis/</loc>
     <lastmod>2019-11-18T07:32:29.405Z</lastmod>
     <data>
@@ -594,9 +614,9 @@
         <title>SonarQube 代码质量管理平台的搭建</title>
         <pubTime>2017-06-15T02:03:44.000Z</pubTime>
         
-        <tag>SonarQube</tag>
-         
         <tag>java</tag>
+         
+        <tag>SonarQube</tag>
          
          
            
