@@ -328,8 +328,8 @@
         <category>SonarQube</category>
       </categories>
       <tags>
-        <tag>SonarQube</tag>
         <tag>java</tag>
+        <tag>SonarQube</tag>
       </tags>
   </entry>
   <entry>
